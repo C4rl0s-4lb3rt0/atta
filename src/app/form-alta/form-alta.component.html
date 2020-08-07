@@ -1,0 +1,101 @@
+<form autocomplete="off" [formGroup]="forma" (ngSubmit)="guardar()">
+     <div class="form-row">
+          
+          <div class="cont-input">
+               <mat-form-field class="example-full-width">
+                         <mat-label>User</mat-label>
+                         <input 
+                              matInput 
+                              type="text"
+                              placeholder="User" 
+                              name="user"
+                              required
+                              formControlName="user"
+                              >
+               </mat-form-field>
+          </div>    
+          <div class="cont-input">
+               <mat-form-field class="example-full-width">
+                    <mat-label>First Name</mat-label>
+                    <input 
+                         matInput 
+                         type="text"
+                         placeholder="First Name" 
+                         name="name"
+                         required
+                         formControlName="firstName"
+                         >
+               </mat-form-field>
+          </div>    
+          <div class="cont-input">
+               <mat-form-field class="example-full-width">
+                    <mat-label>Last Name</mat-label>
+                    <input 
+                         matInput 
+                         type="text"
+                         placeholder="Last Name" 
+                         name="last_name"
+                         required
+                         formControlName="lastName"
+                    >
+               </mat-form-field>
+          </div>    
+     </div>
+     <div class="form-row">
+          <div class="cont-input">
+               <mat-form-field class="example-full-width">
+                    <mat-label>Email</mat-label>
+                    <input 
+                         matInput 
+                         type="email"
+                         placeholder="jane_@gmail.com" 
+                         name="email"
+                         required
+                         formControlName="email"
+                         >
+               </mat-form-field>
+          </div>    
+          <div class="cont-input">
+               <mat-form-field appearance="fill">
+                    <mat-label>Business Unit</mat-label>
+                    <mat-select required                          formControlName="business"
+                    >
+                         <mat-option *ngFor="let busine of business"  [value]="busine.value">
+                              {{busine.viewValue}}
+                         </mat-option>
+                    </mat-select>
+               </mat-form-field>
+          </div>    
+          <div class="cont-input">
+               <mat-form-field appearance="fill">
+                    <mat-label>Level</mat-label>
+                    <mat-select required
+                    formControlName="level">
+                         <mat-option *ngFor="let level of levels"  [value]="level">
+                              {{level}}
+                         </mat-option>
+                    </mat-select>
+               </mat-form-field>
+          </div>    
+               
+     </div>
+     <div class="form-row align-left">
+               <div class="cont-text">
+                    <p *ngIf="!auxtext ">*Make sure you’re using the correct character convenon. </p>    
+               </div>
+               <div class="cont-buttons">
+                         <!-- <button mat-raised-button color="primary" class="login" >Cancel</button> -->
+                         <button mat-raised-button color="primary" class="login" type="submit">Next</button>
+               </div>    
+                 
+     </div>
+</form>
+
+<pre>
+     edo del form : {{ forma.valid }}
+</pre>
+
+<pre>
+
+     {{ forma.value | json }}
+</pre>

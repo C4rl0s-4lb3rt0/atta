@@ -1,0 +1,28 @@
+.confondo{
+     background-color: white;
+}
+.example{
+     // outline: 1px solid red;
+     width:300px;
+}
+
+.wrapper{
+     height: 92vh;
+     display: flex;
+     width: 100%;
+     .wrapper-left{
+          background-image: url(../../assets/img/fondo.png); 
+          background-size: 800px;
+          background-repeat:no-repeat; 
+          background-position: center center;
+          flex-basis: 50%;
+     }
+     .wrapper-right{
+          background: white;
+          flex-basis: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+     }
+
+}

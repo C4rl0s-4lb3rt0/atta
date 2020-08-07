@@ -1,1 +1,65 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+
+html, body { height: 100%;background: white; margin:0}
+body { margin: 0; font-family: 'Roboto', sans-serif;}
+
+
+.swal2-styled.swal2-confirm{
+
+     background-color: #673ab7 !important;
+     box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12) !important;
+     margin-bottom: 30px !important;
+     margin-top: 30px !important;
+     width: 100% !important;
+     box-sizing: border-box !important;
+    position: relative !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    cursor: pointer !important;
+    outline: none !important;
+    border: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    display: inline-block !important;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+    vertical-align: baseline !important;
+    text-align: center !important;
+    margin: 0 !important;
+    min-width: 64px !important;
+    line-height: 36px !important;
+    padding: 0 16px !important;
+    border-radius: 4px !important;
+ 
+ }
+
+.animated {
+     -webkit-animation-duration: 1s;
+     animation-duration: 1s;
+     -webkit-animation-fill-mode: both;
+     animation-fill-mode: both;
+   }
+   
+   .fast {
+     -webkit-animation-duration: 0.4s;
+     animation-duration: 0.4s;
+     -webkit-animation-fill-mode: both;
+     animation-fill-mode: both;
+   }
+   
+   @keyframes fadeIn {
+     from {
+       opacity: 0;
+     }
+   
+     to {
+       opacity: 1;
+     }
+   }
+   
+   .fadeIn {
+     animation-name: fadeIn;
+   }

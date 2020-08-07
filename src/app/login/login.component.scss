@@ -1,0 +1,77 @@
+@import '~@sweetalert2/theme-material-ui/material-ui.scss';
+
+.confondo{
+  background-color: white;
+}
+.example{
+  // outline: 1px solid red;
+  width:300px;
+}
+
+.wrapper{
+  height: 92vh;
+  display: flex;
+  width: 100%;
+  .wrapper-left{
+       background-image: url(../../assets/img/fondo.png); 
+       background-size: 800px;
+       background-repeat:no-repeat; 
+       background-position: center center;
+       flex-basis: 50%;
+  }
+  .wrapper-right{
+       background: white;
+       flex-basis: 50%;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+  }
+
+}
+
+.example-form {
+     min-width: 150px;
+     height:300px;
+      width: 380px;
+   }
+   
+   .example-full-width {
+     width: 100%;
+   }
+
+   h4{
+     font-size: 2em;
+     text-align: center;
+   }
+   p{
+     text-align: center;
+     span{
+      color:rebeccapurple;
+     }
+   }
+   .check-link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     mat-checkbox.check-login{
+      //  margin-top: 120px;
+      //  outline: 5px solid pink;
+      }
+      a.link{
+        cursor: pointer;
+        color:rebeccapurple;
+        transition: 1s;
+        text-decoration: none;
+        &:hover{
+          text-decoration: line-through;
+        }
+      }
+
+   }
+    button.login,button.btn-linkedIn,button.btn-google{
+      margin-bottom: 30px;
+      margin-top: 30px;
+     width: 100%;
+   }
+
+   
