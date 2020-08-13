@@ -1,26 +1,29 @@
-
-<mat-drawer-container class="left-container">
-          <mat-drawer mode="side" class="sidenav" opened>
-              
-               <p><button mat-button routerLink="/dashboard">Dash Board </button></p>
-               <p><button mat-button  class="active-but" >ABC ATTA</button></p>
-               <p><button mat-button>Search</button></p>
-               <p><button mat-button>Parmeters</button></p>
-         <!-- <button mat-button color="primary">Primary</button>
-         <button mat-button color="accent">Accent</button> -->
-          </mat-drawer>
-          <mat-drawer-content class="content animated fadeIn">
-               <div class="content-head">
-                    <div class="content-title">
-                         <h1>Create User</h1>
-                         <p>The new informa4on will be check to maintain database integrity</p>
+<div>
+     <app-main-nav>
+     </app-main-nav>
+     <mat-drawer-container class="left-container">
+               <mat-drawer mode="side" class="sidenav" opened>
+                   
+                    <p><button mat-button routerLink="/dashboard">Dash Board </button></p>
+                    <p><button mat-button  class="active-but" >ABC ATTA</button></p>
+                    <p><button mat-button>Search</button></p>
+                    <p><button mat-button>Parmeters</button></p>
+              <!-- <button mat-button color="primary">Primary</button>
+              <button mat-button color="accent">Accent</button> -->
+               </mat-drawer>
+               <mat-drawer-content class="content animated fadeIn">
+                    <div class="content-head">
+                         <div class="content-title">
+                              <h1>Create User</h1>
+                              <p>The new informa4on will be check to maintain database integrity</p>
+                         </div>
+                         <div class="content-progress">
+                              progress
+                         </div>
                     </div>
-                    <div class="content-progress">
-                         progress
+                    <div class="content-body">
+                         <app-form-alta></app-form-alta>
                     </div>
-               </div>
-               <div class="content-body">
-                    <app-form-alta></app-form-alta>
-               </div>
-          </mat-drawer-content> 
+               </mat-drawer-content> 
      </mat-drawer-container>
+</div>

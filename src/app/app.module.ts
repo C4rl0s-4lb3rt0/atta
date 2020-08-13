@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'; 
 
 
-import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -46,6 +45,11 @@ import { FormAltaComponent } from './form-alta/form-alta.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+
 
 
 @NgModule({
@@ -82,7 +86,17 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
 
     FormsModule,
+    
     HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (http: HttpClient) => {
+          return new TranslateHttpLoader(http);
+        },
+        deps: [ HttpClient ]
+      }
+    })
 
   ],
   providers: [],

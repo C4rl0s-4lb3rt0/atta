@@ -38,6 +38,13 @@ mat-sidenav-content{
     height: auto;
   }
 }
+button{
+  display: block;
+  &.active{
+    display: none;
+    // outline:1px solid red;
+  }
+}
 
 @media(max-width:600px){
   mat-toolbar a{ 

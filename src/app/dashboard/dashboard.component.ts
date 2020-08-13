@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
 
   salir(){
       this.auth.logout();
+      localStorage.setItem('lenguaje', JSON.stringify('en'));
       this.router.navigateByUrl('/login');
   }
 }

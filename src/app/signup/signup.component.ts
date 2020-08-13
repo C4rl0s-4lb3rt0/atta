@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { ValidadoresService } from '../services/validadores.service';
 import Swal from 'sweetalert2';
 
+import { TranslateService } from '@ngx-translate/core';
+
 
 
 @Component({
@@ -18,13 +20,20 @@ export class SignupComponent implements OnInit {
   usuario: UsuarioModel;
 
   forma: FormGroup;
+  public activeLang='en';
 
   constructor( private auth:AuthService,  
                 private router: Router,
                 private fb: FormBuilder,
-                private validadores:ValidadoresService  ) { 
+                private validadores:ValidadoresService,
+                private translate: TranslateService  ) { 
 
-    this.crearFormulario();                
+    this.crearFormulario(); 
+   
+  
+        this.translate.setDefaultLang(this.activeLang)  
+
+
   }
 
   ngOnInit(): void {

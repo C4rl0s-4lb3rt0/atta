@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 // import Swal from 'sweetalert2';
 import Swal from 'sweetalert2/src/sweetalert2.js'
 
+import { TranslateService } from '@ngx-translate/core';
 
 
 
@@ -19,11 +20,14 @@ export class LoginComponent implements OnInit {
 
   forma:FormGroup
   usuario: UsuarioModel;
+  aux;
   constructor( private fb: FormBuilder,private auth : AuthService, 
                 private router: Router,
+                private translate: TranslateService
                 ) { 
 
     this.crearFormulario();
+   
   }
 
   ngOnInit(): void {
