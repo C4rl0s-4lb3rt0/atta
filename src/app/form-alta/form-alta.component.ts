@@ -15,6 +15,10 @@ interface Business {
 })
 export class FormAltaComponent implements OnInit {
 
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+
+
   forma: FormGroup;
 
   business: Business[] = [
@@ -27,22 +31,29 @@ export class FormAltaComponent implements OnInit {
   auxtext:Boolean=true;
 
   constructor( private fb: FormBuilder,
-              private router: Router) { 
+              private router: Router,
+              private _formBuilder: FormBuilder) { 
       this.crearFormulario();
   }
   
   ngOnInit(): void {
-  }
-  
-  crearFormulario(){
-    this.forma = this.fb.group({
+    this.firstFormGroup = this._formBuilder.group({
       user:['', Validators.required],
       firstName:['', Validators.required],
       lastName:['',Validators.required],
       email:['',[Validators.required , Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       business:['',Validators.required],
       level:['',Validators.required] 
-    })
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
+  }
+  
+  crearFormulario(){
+    // this.forma = this.fb.group({
+      
+    // })
   }
 
   guardar(){

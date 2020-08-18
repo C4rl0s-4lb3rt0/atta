@@ -44,10 +44,15 @@ import { FormAltaComponent } from './form-alta/form-alta.component';
 
 
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatSortModule} from '@angular/material/sort';
+import {MatTableModule} from '@angular/material/table';
+
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {MatStepperModule} from '@angular/material/stepper';
+
 
 
 
@@ -84,6 +89,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     MatMenuModule,
     MatSelectModule,
     ReactiveFormsModule,
+    MatSortModule,
+    MatTableModule,
+    MatStepperModule,
 
     FormsModule,
     

@@ -1,3 +1,6 @@
+.mat-form-field {
+     margin-top: 16px;
+}
 .form-row{
      display: flex;
      width: 100%;
@@ -40,4 +43,24 @@
                }
           }
      }
+}
+
+
+.titulo{
+     height: 40px;
+     width:300px;
+     outline: 3px solid blue;
+
+}
+::ng-deep .mat-horizontal-stepper-header-container {
+     order: solid 1px red;
+    width: 30%;
+    position: relative;
+    right: -70%;
+
+   }
+   
+::ng-deep mat-stepper-horizontal, mat-stepper-horizontal {
+border: dashed 10px blue; 
+padding: 1em;
 }

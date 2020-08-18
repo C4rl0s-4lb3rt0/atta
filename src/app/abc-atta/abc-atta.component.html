@@ -12,18 +12,230 @@
               <button mat-button color="accent">Accent</button> -->
                </mat-drawer>
                <mat-drawer-content class="content animated fadeIn">
-                    <div class="content-head">
-                         <div class="content-title">
-                              <h1>Create User</h1>
-                              <p>The new informa4on will be check to maintain database integrity</p>
-                         </div>
-                         <div class="content-progress">
-                              progress
-                         </div>
-                    </div>
-                    <div class="content-body">
-                         <app-form-alta></app-form-alta>
-                    </div>
+                    
+<mat-horizontal-stepper labelPosition="bottom" #stepper>
+          <!-- <div class="titulo"> -->
+                    <ng-container matColumnDef="position">
+                              <th > No. </th>
+                              <td mat-cell *matCellDef="let element"> hola </td>
+                            </ng-container>
+          <!-- </div> -->
+          <mat-step [stepControl]="firstFormGroup">
+                    <form autocomplete="off"  [formGroup]="firstFormGroup" >
+                    <!-- <form autocomplete="off"  [formGroup]="firstFormGroup" (ngSubmit)="guardar()"> -->
+                              <div class="form-row">
+                                   
+                                   <div class="cont-input">
+                                        <mat-form-field class="example-full-width">
+                                                  <mat-label>User</mat-label>
+                                                  <input 
+                                                       matInput 
+                                                       type="text"
+                                                       placeholder="User" 
+                                                       name="user"
+                                                       required
+                                                       formControlName="user"
+                                                       >
+                                        </mat-form-field>
+                                   </div>    
+                                   <div class="cont-input">
+                                        <mat-form-field class="example-full-width">
+                                             <mat-label>First Name</mat-label>
+                                             <input 
+                                                  matInput 
+                                                  type="text"
+                                                  placeholder="First Name" 
+                                                  name="name"
+                                                  required
+                                                  formControlName="firstName"
+                                                  >
+                                        </mat-form-field>
+                                   </div>    
+                                   <div class="cont-input">
+                                        <mat-form-field class="example-full-width">
+                                             <mat-label>Last Name</mat-label>
+                                             <input 
+                                                  matInput 
+                                                  type="text"
+                                                  placeholder="Last Name" 
+                                                  name="last_name"
+                                                  required
+                                                  formControlName="lastName"
+                                             >
+                                        </mat-form-field>
+                                   </div>    
+                              </div>
+                              <div class="form-row">
+                                   <div class="cont-input">
+                                        <mat-form-field class="example-full-width">
+                                             <mat-label>Email</mat-label>
+                                             <input 
+                                                  matInput 
+                                                  type="email"
+                                                  placeholder="jane_@gmail.com" 
+                                                  name="email"
+                                                  required
+                                                  formControlName="email"
+                                                  >
+                                        </mat-form-field>
+                                   </div>    
+                                   <div class="cont-input">
+                                        <mat-form-field appearance="fill">
+                                             <mat-label>Business Unit</mat-label>
+                                             <mat-select required                          formControlName="business"
+                                             >
+                                                  <mat-option *ngFor="let busine of business"  [value]="busine.value">
+                                                       {{busine.viewValue}}
+                                                  </mat-option>
+                                             </mat-select>
+                                        </mat-form-field>
+                                   </div>    
+                                   <div class="cont-input">
+                                        <mat-form-field appearance="fill">
+                                             <mat-label>Level</mat-label>
+                                             <mat-select required
+                                             formControlName="level">
+                                                  <mat-option *ngFor="let level of levels"  [value]="level">
+                                                       {{level}}
+                                                  </mat-option>
+                                             </mat-select>
+                                        </mat-form-field>
+                                   </div>    
+                                        
+                              </div>
+                              <div>
+                                   <button mat-button matStepperNext>Next</button>
+                              </div>
+                    </form>
+          </mat-step>
+          <mat-step [stepControl]="secondFormGroup" id="carlos">
+            <form [formGroup]="secondFormGroup">
+              <!-- <ng-template matStepLabel>Fill out your address</ng-template> -->
+              <mat-form-field>
+                <mat-label>Address</mat-label>
+                <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                       required>
+              </mat-form-field>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step>
+            <!-- <ng-template matStepLabel>Done</ng-template> -->
+            <p>You are now done.</p>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button (click)="stepper.reset()">Reset</button>
+            </div>
+          </mat-step>
+</mat-horizontal-stepper>
+        
+
+
+
+<!-- <form autocomplete="off"  [formGroup]="firstFormGroup" (ngSubmit)="guardar()">
+     <div class="form-row">
+          
+          <div class="cont-input">
+               <mat-form-field class="example-full-width">
+                         <mat-label>User</mat-label>
+                         <input 
+                              matInput 
+                              type="text"
+                              placeholder="User" 
+                              name="user"
+                              required
+                              formControlName="user"
+                              >
+               </mat-form-field>
+          </div>    
+          <div class="cont-input">
+               <mat-form-field class="example-full-width">
+                    <mat-label>First Name</mat-label>
+                    <input 
+                         matInput 
+                         type="text"
+                         placeholder="First Name" 
+                         name="name"
+                         required
+                         formControlName="firstName"
+                         >
+               </mat-form-field>
+          </div>    
+          <div class="cont-input">
+               <mat-form-field class="example-full-width">
+                    <mat-label>Last Name</mat-label>
+                    <input 
+                         matInput 
+                         type="text"
+                         placeholder="Last Name" 
+                         name="last_name"
+                         required
+                         formControlName="lastName"
+                    >
+               </mat-form-field>
+          </div>    
+     </div>
+     <div class="form-row">
+          <div class="cont-input">
+               <mat-form-field class="example-full-width">
+                    <mat-label>Email</mat-label>
+                    <input 
+                         matInput 
+                         type="email"
+                         placeholder="jane_@gmail.com" 
+                         name="email"
+                         required
+                         formControlName="email"
+                         >
+               </mat-form-field>
+          </div>    
+          <div class="cont-input">
+               <mat-form-field appearance="fill">
+                    <mat-label>Business Unit</mat-label>
+                    <mat-select required                          formControlName="business"
+                    >
+                         <mat-option *ngFor="let busine of business"  [value]="busine.value">
+                              {{busine.viewValue}}
+                         </mat-option>
+                    </mat-select>
+               </mat-form-field>
+          </div>    
+          <div class="cont-input">
+               <mat-form-field appearance="fill">
+                    <mat-label>Level</mat-label>
+                    <mat-select required
+                    formControlName="level">
+                         <mat-option *ngFor="let level of levels"  [value]="level">
+                              {{level}}
+                         </mat-option>
+                    </mat-select>
+               </mat-form-field>
+          </div>    
+               
+     </div>
+     <div class="form-row align-left">
+               <div class="cont-text">
+                    <p *ngIf="!auxtext ">*Make sure you’re using the correct character convenon. </p>    
+               </div>
+               <div class="cont-buttons">
+                         <button mat-raised-button color="primary" class="login" >Cancel</button>
+                         <button mat-raised-button color="primary" class="login" type="submit">Next</button>
+               </div>    
+                 
+     </div>
+</form> -->
+
+<pre>
+     edo del form : {{ firstFormGroup.valid }}
+</pre>
+
+<pre>
+
+     {{ firstFormGroup.value | json }}
+</pre>
                </mat-drawer-content> 
      </mat-drawer-container>
 </div>
