@@ -1,0 +1,31 @@
+.nav-bar-right{
+     outline: 1px solid red;
+     width: 400px;
+     height: 100%;
+     position: fixed;
+     top: 0;
+     right: -400px;
+     z-index: 2;
+     background: #9c73e8;
+     transition: 2s;
+     padding: 20px;
+     box-sizing: border-box;
+     &.active{
+          position: fixed;
+
+          right: 0px;
+     }
+}
+
+.form-row{
+     display: flex;
+     width: 100%;
+     justify-content: space-between;
+     .cont-input{
+          flex-basis: 45%;
+          width: 45%;
+          mat-form-field{
+               width: 100%;
+          }
+     }    
+}

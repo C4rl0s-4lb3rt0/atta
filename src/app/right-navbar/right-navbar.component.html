@@ -1,0 +1,57 @@
+<!-- <p> se selecció el iD:
+          {{ childMessage }}
+          
+     </p> -->
+
+<div [ngClass]="{ 'active':activeNav,'':!activeNav }" class="nav-bar-right" >
+     <h1>nombre</h1>
+     {{ auxUser.name }}
+     <h1>id {{ childMessage }}</h1>
+     <button (click)="salirNav()">
+
+          x 
+     </button>
+
+     <div class="edit-contact">
+          <form autocomplete="off" [formGroup]=forma (ngSubmit)="guardar()" >
+               <!-- <form autocomplete="off"  [formGroup]="firstFormGroup" (ngSubmit)="guardar()"> -->
+               <div class="form-row">
+                    <div class="cont-input">
+                         <mat-form-field class="example-full-width">
+                              <mat-label>User</mat-label>
+                              <input 
+                                   matInput 
+                                   type="text"
+                                   name="user"
+                                   required
+                                        >
+                         </mat-form-field>
+                    </div>    
+               </div>
+               <div class="form-row">
+                    <div class="cont-input">
+                         <mat-form-field appearance="fill">
+                              <mat-label>Business Unit</mat-label>
+                              <mat-select required  formControlName="reclutadorId">
+                                   <mat-option  >
+                                        
+                                   </mat-option>
+                              </mat-select>
+                         </mat-form-field>
+                    </div>
+               </div>
+               <div class="form-row">
+                    <div class="cont-input">
+                         <mat-form-field appearance="fill">
+                              <mat-label>more Unit</mat-label>
+                              <mat-select required formControlName="status">
+                                   <mat-option  >
+                                        
+                                   </mat-option>
+                              </mat-select>
+                         </mat-form-field>
+                    </div>
+               </div>
+          </form>
+     </div>   
+</div>

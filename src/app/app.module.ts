@@ -56,6 +56,29 @@ import {MatStepperModule} from '@angular/material/stepper';
 
 
 
+// servicios
+import { UsersService } from './services/user.service'
+
+// import { MatTableModule } from '@angular/material/table';
+// import {MatCheckboxModule} from '@angular/material/checkbox';
+// import { MatSelectModule } from '@angular/material/select';
+// import { MatInputModule } from '@angular/material/input';
+// import { MatButtonModule } from '@angular/material/button';
+// import { TableComponent } from './table/table.component';
+
+import {MatPaginatorModule} from '@angular/material/paginator';
+
+// import {MatSidenavModule} from '@angular/material/sidenav';
+
+
+
+// sort
+// import {MatSortModule} from '@angular/material/sort';
+import { RightNavbarComponent } from './right-navbar/right-navbar.component';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -68,6 +91,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     SignupComponent,
     AbcAttaComponent,
     FormAltaComponent,
+    RightNavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,7 +116,6 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatSortModule,
     MatTableModule,
     MatStepperModule,
-
     FormsModule,
     
     HttpClientModule,
@@ -107,7 +130,9 @@ import {MatStepperModule} from '@angular/material/stepper';
     })
 
   ],
-  providers: [],
+  providers: [
+    UsersService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

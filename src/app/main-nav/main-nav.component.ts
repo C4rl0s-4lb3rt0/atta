@@ -30,9 +30,9 @@ export class MainNavComponent implements OnInit{
 
     
     constructor(private breakpointObserver: BreakpointObserver, private auth: AuthService,private translate: TranslateService) { 
-      console.log('aca hay--');
-      console.log(this.activeLang);
-      console.log('aca hay--');
+      // console.log('aca hay--');
+      // console.log(this.activeLang);
+      // console.log('aca hay--');
       if(localStorage.getItem('lenguaje')){
         this.aux=localStorage.getItem('lenguaje')
       }else{
