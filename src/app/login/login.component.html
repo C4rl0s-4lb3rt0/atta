@@ -29,6 +29,8 @@
                                                   formControlName="email"
                                                   >
                                         </mat-form-field>
+                                        
+                                        <!-- <an-text class="div-an-text" [name]="'nombre'" [label]="'nombre'"   placeholder="email@mail.com" ></an-text>                                       -->
                                              <!-- <span *ngIf="form.submitted  && form.controls['email'].errors">Email requerido </span> -->
                                       
                                         <mat-form-field class="example-full-width">
@@ -46,8 +48,12 @@
                                         
                                         
                                         
-                                        <button mat-raised-button color="primary" class="login" type="submit">Log In</button>
+                                        <!-- <button mat-raised-button color="primary" class="login" type="submit">Log In</button> -->
                                         
+                                        <an-button [className]="'success'" type="submit">Log In</an-button>
+
+
+
                                         <div class="check-link">
                                              <!-- <mat-checkbox color="primary" class="check-login">Remember me</mat-checkbox> -->
                                               <a class="link" routerLink="/signup">SIGN UP</a>

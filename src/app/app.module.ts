@@ -59,22 +59,19 @@ import {MatStepperModule} from '@angular/material/stepper';
 // servicios
 import { UsersService } from './services/user.service'
 
-// import { MatTableModule } from '@angular/material/table';
-// import {MatCheckboxModule} from '@angular/material/checkbox';
-// import { MatSelectModule } from '@angular/material/select';
-// import { MatInputModule } from '@angular/material/input';
-// import { MatButtonModule } from '@angular/material/button';
-// import { TableComponent } from './table/table.component';
 
 import {MatPaginatorModule} from '@angular/material/paginator';
 
-// import {MatSidenavModule} from '@angular/material/sidenav';
-
+// libreria Anzen
+import { AnzenComponentsModule } from 'anzen-components';
 
 
 // sort
 // import {MatSortModule} from '@angular/material/sort';
 import { RightNavbarComponent } from './right-navbar/right-navbar.component';
+
+import {MatChipsModule} from '@angular/material/chips';
+
 
 
 
@@ -117,6 +114,9 @@ import { RightNavbarComponent } from './right-navbar/right-navbar.component';
     MatTableModule,
     MatStepperModule,
     FormsModule,
+    MatChipsModule,
+    
+    AnzenComponentsModule,
     
     HttpClientModule,
     TranslateModule.forRoot({

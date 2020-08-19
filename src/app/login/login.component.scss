@@ -72,6 +72,21 @@
       margin-bottom: 30px;
       margin-top: 30px;
      width: 100%;
+    //  outline: 10px solid red;
    }
 
    
+
+   ::ng-deep an-button{
+     display: flex;
+     justify-content: center;
+     button{ 
+      //  outline: 10px solid red;
+       width: 150px;
+       text-align: center;
+       margin: 0 auto;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+    } 
+   } 

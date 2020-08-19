@@ -49,13 +49,44 @@
                }
                .content-progress{
                     flex-basis: 30%;
-                    outline: 1px solid red;
+                    // outline: 1px solid red;
                }
           }
      }
 }
    
-   
+::ng-deep  .left-container .content .content-body .filtro .mat-form-field .mat-form-field-underline {
+     background-color: transparent;
+ }  
+
+ ::ng-deep .left-container .content .content-body .filtro .mat-form-field.mat-focused .mat-form-field-ripple {
+     background-color: transparent;
+ }
+ 
+ ::ng-deep .left-container .content .content-body .filtro .mat-form-field {
+     display: flex;
+     justify-content: flex-end;
+     width: 100%;
+     // outline: 1px solid red;
+     .mat-form-field-wrapper{
+          width: 100%;
+          // outline: 1px solid red;
+          .mat-form-field-infix {
+               // display: block;
+               position: relative;
+               flex: auto;
+               min-width: 0;
+               width: 180px;
+               display: flex;
+               justify-content: flex-end;
+           }
+
+     }
+
+ }
+
+ 
+
    
 table {
      width: 100%;
@@ -64,3 +95,162 @@ table {
    th.mat-sort-header-sorted {
      color: black;
    }
+
+.content-body{
+     .filtro{
+          display: flex;
+          justify-content: space-between;
+          background: rgba(0,0,0,.2);
+          height:60px ;
+          .cont-chips-title{
+             width: 400px;  
+          //    outline: 1px solid red;
+             display: flex;
+             justify-content: flex-start;
+             align-items: center;
+             h2{
+                  margin-top:0 ;
+                  margin-bottom:0 ;
+             }
+          }
+          .cont-chips-prin{
+               // outline: 1px solid blue;
+               width: 500px;
+               display: flex;
+               justify-content: flex-end;
+
+               .cont-chips-cont{
+                    
+                    width: 400px;
+                    .mat-form-field-appearance-legacy .mat-form-field-underline{
+                         border:5px solid red !important;
+                         outline: 1px solid blue;
+                    }
+                    .mat-form-field{
+                         width: 400px;
+                         .mat-input-underline {
+                              display: none;
+                          }
+                         // outline: 1px solid blue;
+                         .mat-form-field-wrapper {
+                              // outline: 1px solid red;
+     
+                         }
+                         .mat-chip-list-wrapper{
+                              justify-content: flex-end;
+                         }
+                         
+                    }
+               }
+               .cont-chips-button{
+                    width:50px;
+                    // outline: 1px solid green;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+               }
+          }
+     }
+     table{
+          width: 100%;
+         }
+         
+         .mat-column-select {
+           word-wrap: break-word !important;
+           white-space: unset !important;
+           flex: 0 0 5% !important;
+           width: 5% !important;
+           outline: 1px solid red;
+           overflow-wrap: break-word;
+           word-wrap: break-word;
+         
+           word-break: break-word;
+         
+           -ms-hyphens: auto;
+           -moz-hyphens: auto;
+           -webkit-hyphens: auto;
+           hyphens: auto;
+           padding-left: 0px;
+           justify-content: center;
+         }
+         
+         .mat-column-id {
+           word-wrap: break-word !important;
+           white-space: unset !important;
+           flex: 0 0 20% !important;
+           width: 20% !important;
+           overflow-wrap: break-word;
+           word-wrap: break-word;
+         
+           word-break: break-word;
+         
+           -ms-hyphens: auto;
+           -moz-hyphens: auto;
+           -webkit-hyphens: auto;
+           hyphens: auto;
+           outline: 1px solid pink;
+           justify-content: center;
+           align-items: center;
+         }
+         
+         .mat-column-name {
+           word-wrap: break-word !important;
+           white-space: unset !important;
+           flex: 0 0 20% !important;
+           width: 20% !important;
+           overflow-wrap: break-word;
+           word-wrap: break-word;
+         
+           word-break: break-word;
+         
+           -ms-hyphens: auto;
+           -moz-hyphens: auto;
+           -webkit-hyphens: auto;
+           hyphens: auto;
+           outline: 1px solid green;
+           justify-content: center;
+           align-items: center;
+
+         }
+         
+         .mat-column-status {
+           word-wrap: break-word !important;
+           white-space: unset !important;
+           flex: 0 0 20% !important;
+           width: 20% !important;
+           overflow-wrap: break-word;
+           word-wrap: break-word;
+         
+           word-break: break-word;
+         
+           -ms-hyphens: auto;
+           -moz-hyphens: auto;
+           -webkit-hyphens: auto;
+           hyphens: auto;
+           outline: 1px solid blue;
+           justify-content: center;
+           align-items: center;
+
+         }
+         .mat-column-options {
+          word-wrap: break-word !important;
+          white-space: unset !important;
+          flex: 0 0 30% !important;
+          width: 30% !important;
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+        
+          word-break: break-word;
+        
+          -ms-hyphens: auto;
+          -moz-hyphens: auto;
+          -webkit-hyphens: auto;
+          hyphens: auto;
+          outline: 1px solid black;
+          justify-content: center;
+           align-items: center;
+
+        }
+         
+         
+}

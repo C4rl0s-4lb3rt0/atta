@@ -2,100 +2,100 @@
      <app-main-nav>
 
      </app-main-nav>
-     
-<div class="wrapper">
-     <div class="wrapper-left">
           
-     </div>
-     <div class="wrapper-right">
+     <div class="wrapper">
+          <div class="wrapper-left">
+               
+          </div>
+          <div class="wrapper-right">
 
 
-          <div class="example-form animated fadeIn">
-                    <h4>{{ 'principal.titulo' | translate }}</h4>
-               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. 
-               </p>
-                    <!-- <span>Create an acount </span>
-               <p>New to Agile Thought <span>Create an acount </span></p> -->
-               
-               <form [formGroup]="forma" (ngSubmit)="onSubmit()"
-                    #form="ngForm">
-                    <mat-form-field class="example-full-width">
-                         <mat-label>User Id</mat-label>
-                         <input 
-                              matInput 
-                              type="text"
-                              placeholder="Your ID" 
-                              name="user"
-                              formControlName="user"
-                              required
-                              minlength="6"
-                              >
-                         </mat-form-field>
-                         <!-- <span *ngIf="form.submitted  && form.controls['email'].errors">Email requerido </span> -->
-               
-                    <mat-form-field class="example-full-width">
-                              <mat-label>Email </mat-label>
+               <div class="example-form animated fadeIn">
+                         <h4>{{ 'principal.titulo' | translate }}</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. 
+                    </p>
+                         <!-- <span>Create an acount </span>
+                    <p>New to Agile Thought <span>Create an acount </span></p> -->
+                    
+                    <form [formGroup]="forma" (ngSubmit)="onSubmit()"
+                         #form="ngForm">
+                         <mat-form-field class="example-full-width">
+                              <mat-label>User Id</mat-label>
                               <input 
                                    matInput 
-                                   type="email "
-                                   placeholder="email@email.com" 
-                                   name="email"
+                                   type="text"
+                                   placeholder="Your ID" 
+                                   name="user"
+                                   formControlName="user"
                                    required
-                                   email
-                                   formControlName="email"
+                                   minlength="6"
+                                   >
+                              </mat-form-field>
+                              <!-- <span *ngIf="form.submitted  && form.controls['email'].errors">Email requerido </span> -->
+                    
+                         <mat-form-field class="example-full-width">
+                                   <mat-label>Email </mat-label>
+                                   <input 
+                                        matInput 
+                                        type="email "
+                                        placeholder="email@email.com" 
+                                        name="email"
+                                        required
+                                        email
+                                        formControlName="email"
+                                        >
+                              </mat-form-field>
+
+                         <mat-form-field class="example-full-width">
+                              <mat-label>Password</mat-label>
+                              <input 
+                                   matInput  
+                                   placeholder="********" 
+                                   formControlName="password"
+                                   type="password"
+                                   name="password"
+                                   password
+                                   required 
+                                   minlength="6"
+
                                    >
                          </mat-form-field>
-
-                    <mat-form-field class="example-full-width">
-                         <mat-label>Password</mat-label>
-                         <input 
-                              matInput  
-                              placeholder="********" 
-                              formControlName="password"
-                              type="password"
-                              name="password"
-                              password
-                              required 
-                              minlength="6"
-
-                              >
-                    </mat-form-field>
-                    
-                    <mat-form-field class="example-full-width" 
-                    [class.mat-form-field-invalid]="pass2Novalido">
-                         <mat-label>Confirm Password</mat-label>
-                         <input 
-                              matInput  
-                              placeholder="********" 
-                              type="password"
-                              name="conf_password"
-                              formControlName="conf_password"
-                              required 
-                              password
-                              minlength="6"
+                         
+                         <mat-form-field class="example-full-width" 
+                         [class.mat-form-field-invalid]="pass2Novalido">
+                              <mat-label>Confirm Password</mat-label>
+                              <input 
+                                   matInput  
+                                   placeholder="********" 
+                                   type="password"
+                                   name="conf_password"
+                                   formControlName="conf_password"
+                                   required 
+                                   password
+                                   minlength="6"
+                                   
+                                   >
+                         </mat-form-field>
+                         
+                         
+                         
+                         <button mat-raised-button color="primary" class="login" type="submit">Sign In</button>
+                         
+                         <!-- <button  mat-raised-button class="btn-linkedIn" type="button">Login with Linked In</button>
+                              <button mat-raised-button class="btn-google" type="button">Login with Google In</button> -->
                               
-                              >
-                    </mat-form-field>
-                    
-                    
-                    
-                    <button mat-raised-button color="primary" class="login" type="submit">Sign In</button>
-                    
-                    <!-- <button  mat-raised-button class="btn-linkedIn" type="button">Login with Linked In</button>
-                         <button mat-raised-button class="btn-google" type="button">Login with Google In</button> -->
-                         
-                    <div class="check-link">
-                         <p>By crea(ng an account, you agree to our terms.</p>
-                         <p>Already have an account? <a class="link" routerLink="/login">Log In</a></p>
-                    </div>
-               </form> 
-               <!-- <pre>
-                         estado del formulario {{ forma.valid }} 
-                         
-                         Status: {{ forma.value | json }}
-                    </pre> -->
+                         <div class="check-link">
+                              <p>By crea(ng an account, you agree to our terms.</p>
+                              <p>Already have an account? <a class="link" routerLink="/login">Log In</a></p>
+                         </div>
+                    </form> 
+                    <!-- <pre>
+                              estado del formulario {{ forma.valid }} 
+                              
+                              Status: {{ forma.value | json }}
+                         </pre> -->
+               </div>
           </div>
      </div>
-</div>
 
 </div>

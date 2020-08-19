@@ -96,6 +96,15 @@ export class UsersService{
             website: 'ambrose.net',
             status: 'Active'
           },
+          // {
+          //      id: '1',
+          //      name: 'Elwyn.Skiles',
+          //      username: 'Nicholas Runolfsdottir V',
+          //      email: 'Rey.Padberg@karina.biz',
+          //      phone: '586.493.6943 x140',
+          //      website: 'conrad.com',
+          //      status: 'Blocked'
+          //    },
      ]
 
      constructor(){
@@ -108,9 +117,9 @@ export class UsersService{
      }
      getUser(idUser:string){
           let aux = this.user.find(x => x.id === idUser);
-          console.log(aux)
-          console.log('sii')
-          return aux
+          // console.log(aux)
+          // console.log('sii')
+          return aux;
      }
 
 }
