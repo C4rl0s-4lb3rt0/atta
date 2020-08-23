@@ -4,54 +4,141 @@
      </p> -->
 
 <div [ngClass]="{ 'active':activeNav,'':!activeNav }" class="nav-bar-right" >
-     <h1>nombre</h1>
-     {{ auxUser.name }}
-     <h1>id {{ childMessage }}</h1>
-     <button (click)="salirNav()">
+          
+          
+     
+     
+     <div class="cont-reasignar" *ngIf="childTitle === 'reasignar'">
+          <div class="cont-header">
+               <h1>  EDIT </h1> <button (click)="salirNav(true)"> x </button>
 
-          x 
-     </button>
-
-     <div class="edit-contact">
-          <form autocomplete="off" [formGroup]=forma (ngSubmit)="guardar()" >
-               <!-- <form autocomplete="off"  [formGroup]="firstFormGroup" (ngSubmit)="guardar()"> -->
-               <div class="form-row">
-                    <div class="cont-input">
-                         <mat-form-field class="example-full-width">
-                              <mat-label>User</mat-label>
-                              <input 
-                                   matInput 
-                                   type="text"
-                                   name="user"
-                                   required
-                                        >
-                         </mat-form-field>
-                    </div>    
-               </div>
-               <div class="form-row">
-                    <div class="cont-input">
+          </div>
+          <!-- <form [formGroup]="formaReasignar" autocomplete="off" (ngSubmit)="onSubmitReasignar()"
+               #formReasignar="ngForm">
+               <div class="cont-top">
+                    <h1>  EDIT </h1>
+                    <h2>{{ auxUser.name }}</h2>
+                    <hr>
+                    <h2>Recluter ID:</h2>
+                    <h3>35761212-{{ auxUser.id }}</h3>
+                    <hr>
+                    <div class="cont-select">            
                          <mat-form-field appearance="fill">
-                              <mat-label>Business Unit</mat-label>
-                              <mat-select required  formControlName="reclutadorId">
-                                   <mat-option  >
-                                        
-                                   </mat-option>
+                              <h3> Id Recluter</h3>     
+                              <mat-form-field class="example-full-width" style="display: none">
+                                   <input matInput formControlName="idUser">
+                              </mat-form-field>     
+                              <br>    
+                              <mat-select  formControlName="selectIdRecluter">
+                                   <mat-option  value="121213"> 121213 </mat-option>
+                                   <mat-option  value="121245"> 121243 </mat-option>
+                                   <mat-option  value="121247"> 121247 </mat-option>
+                              </mat-select>
+                         </mat-form-field>
+                    </div>
+                    <div class="cont-select">            
+                              <mat-form-field appearance="fill">
+                              <h3> Status</h3>    
+                              <mat-form-field class="example-full-width" style="display: none">
+                                   <input matInput formControlName="idUser">
+                              </mat-form-field>     
+                              <br>    
+                              <mat-select  formControlName="selectStatus">
+                                   <mat-option  [value]="auxUser.website" > {{ auxUser.website}} </mat-option>
+                                   <mat-option  value="121245"> 121243 </mat-option>
+                                   <mat-option  value="121247"> 121247 </mat-option>
                               </mat-select>
                          </mat-form-field>
                     </div>
                </div>
-               <div class="form-row">
-                    <div class="cont-input">
-                         <mat-form-field appearance="fill">
-                              <mat-label>more Unit</mat-label>
-                              <mat-select required formControlName="status">
-                                   <mat-option  >
-                                        
-                                   </mat-option>
-                              </mat-select>
-                         </mat-form-field>
-                    </div>
+               <div class="cont-bottom">
+                    <an-button [className]="'success'" type="submit"> Save Changes </an-button>
                </div>
-          </form>
-     </div>   
+          </form> -->
+     
+          <mat-accordion>
+
+
+                    <!-- <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true" (closed)="panelOpenState = false"> -->
+
+                    <form  [formGroup]="formaContact" autocomplete="off" (ngSubmit)="onSubmitContacto()">
+                         <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+                              <mat-expansion-panel-header>
+                                   <mat-panel-title>
+                                        <p class="title-navbar">JOB APPLICANTS SELECTED</p>
+                                   </mat-panel-title>
+                              
+                              </mat-expansion-panel-header>
+                              <h2>{{ auxUser.name }}</h2>
+                         </mat-expansion-panel>
+                         
+                         
+                         <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+                              <mat-expansion-panel-header>
+                                   <mat-panel-title>
+                                        <p class="title-navbar">Recruiter ID</p>
+                                   </mat-panel-title>
+                              </mat-expansion-panel-header>
+                              <div class="select-navbar">
+                                   <mat-select  formControlName="selectIdRecluter"  >
+                                             <mat-option *ngFor="let item of recluterId"  [value]="item"> {{ item }} </mat-option>
+                                   </mat-select>
+                              </div>
+                         </mat-expansion-panel>
+                         <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+                              <mat-expansion-panel-header>
+                                   <mat-panel-title>
+                                        <p class="title-navbar">Status</p>
+                                   </mat-panel-title>
+                              </mat-expansion-panel-header>
+                              <div class="select-navbar">
+                                   <mat-select  formControlName="selectStatus"  >
+                                             <mat-option *ngFor="let item of status"  [value]="item"> {{ item }} </mat-option>
+                                   </mat-select>
+                              </div>
+                         </mat-expansion-panel>
+                         <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+                              <mat-expansion-panel-header>
+                                   <mat-panel-title>
+                                        <p class="title-navbar">Contact</p>
+                                   </mat-panel-title>
+                              </mat-expansion-panel-header>
+                              <div class="select-navbar">
+                                   <mat-select  formControlName="selectContact"  >
+                                             <mat-option *ngFor="let item of contact"  [value]="item"> {{ item }} </mat-option>
+                                   </mat-select>
+                              </div>
+                         </mat-expansion-panel>
+                         <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+                              <mat-expansion-panel-header>
+                                   <mat-panel-title>
+                                        <p class="title-navbar">Blacklist</p>
+                                   </mat-panel-title>
+                              </mat-expansion-panel-header>
+                              <div class="select-navbar">
+                                   <mat-select  formControlName="selectBlacklist"  >
+                                             <mat-option *ngFor="let item of blacklist"  [value]="item"> {{ item }} </mat-option>
+                                   </mat-select>
+                              </div>
+                         </mat-expansion-panel>
+                         
+                         <div class="cont-bottom">
+                              <an-button [className]="'success'" type="submit"> Save Changes </an-button>
+                         </div>
+
+                    </form> 
+
+          </mat-accordion>
+     </div>
+     
+
+    
+   
+     
+
 </div>

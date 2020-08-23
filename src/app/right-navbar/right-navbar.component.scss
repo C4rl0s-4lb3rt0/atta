@@ -1,20 +1,87 @@
-.nav-bar-right{
-     outline: 1px solid red;
-     width: 400px;
+::ng-deep  .nav-bar-right{
+     // outline: 1px solid red;
+     width: 300px;
      height: 100%;
      position: fixed;
      top: 0;
      right: -400px;
      z-index: 2;
-     background: #9c73e8;
+     background: #ffffff;
      transition: 2s;
      padding: 20px;
      box-sizing: border-box;
+     z-index: 4;
+     -webkit-box-shadow: -1px 2px 16px 2px rgba(0,0,0,0.75);
+     -moz-box-shadow: -1px 2px 16px 2px rgba(0,0,0,0.75);
+     box-shadow: -1px 2px 16px 2px rgba(0,0,0,0.75);
+     // border:1px solid ;
      &.active{
           position: fixed;
 
           right: 0px;
      }
+     .cont-blacklist,.cont-contacto,.cont-reasignar,.cont-status{
+          height: 100%;
+          // outline: 1px solid red;
+          .cont-header{
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
+               margin-bottom:20px;
+               margin-top:20px;
+               h1{
+                    margin-bottom: 0;
+               }
+          }
+          mat-expansion-panel{
+               // margin-top:0px ;
+               // margin-bottom:0px ;
+               .title-navbar{
+                    font-size: 14px;
+                    // color:red;
+                    margin:0
+     
+               }
+               .select-navbar{
+                    // outline: 1px solid pink;
+                    width: 100%;
+                    // mat-select{
+                    //      width: 50%;
+                    // }
+               
+               }
+               
+          }
+          .cont-top{
+               .cont-select{
+                    mat-form-field {
+                         width:100%
+                    }
+     
+               }           
+          }
+          .cont-bottom{
+               width: 260px;
+               position: bottom;
+               // outline: 1px solid blue;
+               position: absolute;
+               bottom: 40px;
+               margin: 0 auto;
+               an-button{
+                    display: flex;
+                    justify-content: center;
+                    button{ 
+                      width: 251px;
+                      height: 50px;
+                      text-align: center;
+                      margin: 0 auto;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                   } 
+               }
+          }
+     } 
 }
 
 .form-row{

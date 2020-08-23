@@ -74,6 +74,14 @@ import {MatChipsModule} from '@angular/material/chips';
 
 
 
+// panel
+import {MatExpansionModule} from '@angular/material/expansion';
+
+// tootip
+import {MatTooltipModule} from '@angular/material/tooltip';
+
+import {MatCardModule} from '@angular/material/card';
+
 
 
 
@@ -115,6 +123,9 @@ import {MatChipsModule} from '@angular/material/chips';
     MatStepperModule,
     FormsModule,
     MatChipsModule,
+    MatExpansionModule,
+    MatTooltipModule,
+    MatCardModule,
     
     AnzenComponentsModule,
     

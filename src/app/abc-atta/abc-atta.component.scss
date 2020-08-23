@@ -18,13 +18,14 @@
      bottom: 60px;
      left: 0;
      right: 0;
+     height: 900px;
      .sidenav {
           padding-top: 40px;
           display: flex;
           align-items: center;
           justify-content: center;
           width: 300px;
-          background: rgba(255, 0, 0, 0.863);
+          background: #2196F3;
           p{
                width: 100%;
                outline: 1px solid red;

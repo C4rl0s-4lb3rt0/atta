@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild,  } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import {MatSort} from '@angular/material/sort';
 import { Router } from '@angular/router';
@@ -19,6 +19,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -26,7 +27,8 @@ import {MatChipInputEvent} from '@angular/material/chips';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  
 })
 
 
@@ -39,6 +41,7 @@ export class DashboardComponent implements OnInit {
   // @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
 
   parentMessage = "message";
+  navTitleChange:string;
   activeNav = false;
   filterValues = {};
   // displayedColumns: string[] = ['select','id', 'name', 'username', 'email', 'phone', 'website', 'status', 'options'];
@@ -64,6 +67,12 @@ export class DashboardComponent implements OnInit {
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
 
   
+  // @ViewChild(MatMenuTrigger) triggerMenu: MatMenuTrigger;
+
+
+  someMethod() {
+    this.trigger.closeMenu(); // <-- put this in your dialog open method
+}
 
   // chips
   visible = true;
@@ -154,11 +163,11 @@ export class DashboardComponent implements OnInit {
   // Called on Filter change
   filterChange(filter, event) {
     //let filterValues = {}
-    console.log(filter);
-    console.log('vamos');
-    console.log(event.target.value.trim().toLowerCase());
+    // console.log(filter);
+    // console.log('vamos');
+    // console.log(event.target.value.trim().toLowerCase());
     
-    console.log('atras');
+    // console.log('atras');
     
     this.filterValues[filter.columnProp] = event.target.value.trim().toLowerCase()
     this.dataSource.filter = JSON.stringify(this.filterValues)
@@ -175,37 +184,20 @@ export class DashboardComponent implements OnInit {
 
 
   filterChangeMore(filter,status) {
-    console.log(filter);
-    console.log('vamos');
-    
-    console.log('atras');
-    
-
     if(this.varChipStatus==null){
       this.filterValues[filter.columnProp] = '';
-      console.log('soy nulo')
     }else{
       this.filterValues[filter.columnProp] = status;
-      console.log('soy ')
-      console.log(status)
     }
     this.dataSource.filter = JSON.stringify(this.filterValues)
   }
 
   filterChangeMoreID(filter,status){
-    console.log(filter);
-    console.log('vamos');
     
-    console.log('atras');
-    
-
     if(this.varChipIdUser==null){
       this.filterValues[filter.columnProp] = '';
-      console.log('soy nulo')
     }else{
       this.filterValues[filter.columnProp] = status;
-      console.log('soy ')
-      console.log(status)
     }
     this.dataSource.filter = JSON.stringify(this.filterValues)
   }
@@ -250,7 +242,6 @@ export class DashboardComponent implements OnInit {
   removableChipIdUser(){
     this.varChipIdUser=null;
     this.dataSource.filterPredicate = this.createFilter();
-    console.log('nada')
     this.resetFiltersIdUser();
   
   }
@@ -258,33 +249,19 @@ export class DashboardComponent implements OnInit {
   removableChipStatus(){
     this.varChipStatus=null;
     this.dataSource.filterPredicate = this.createFilter();
-    console.log('nada')
     this.resetFiltersStatus();
 
     
   }
-
-// chip
-
-
-
-
-// chip
-
 
 resetFiltersIdUser() {
   this.filterValues = {}
   this.filterSelectObj.forEach((value, key) => {
     if(value.name=='ID'){
       value.modelValue = undefined;
-      console.log('quita id');
     }else{
       this.filterSelectObj.forEach( (value ) => {
         if(value.name!='ID'){
-          console.log(value);
-          console.log('debede dejar estatus');
-          console.log('antes de ir ');
-          console.log(this.chipStatus);
           this.filterChangeMore(value,this.varChipStatus)
         }
       })
@@ -299,14 +276,9 @@ resetFiltersStatus() {
   this.filterSelectObj.forEach((value, key) => {
     if(value.name=='STATUS'){
       value.modelValue = undefined;
-      console.log('quita status');
     }else{
       this.filterSelectObj.forEach( (value ) => {
         if(value.name!='status'){
-          console.log(value);
-          console.log('debede dejar id');
-          console.log('antes de ir ');
-          console.log(this.varChipIdUser);
           this.filterChangeMoreID(value,this.varChipIdUser)
         }
       })
@@ -342,30 +314,46 @@ resetFiltersStatus() {
   sendFileInterrupt() {
     // let selectedFileIds: string[] = [];
        for (let item of this.selection.selected) {
-         console.log(item.id);
+        //  console.log(item.id);
         //  selectedFileIds.push(item.fileId);
       }
   }
 
   public editRecord(recordId, change) {
-    // this.dialog.open(this.editMemberComponent, {
-    //   data: {recordId: recordId, idColumn: this.idColumn, paginator: this.paginator, dataSource: this.dataSource}
-    // });
     this.parentMessage = recordId;
+    this.navTitleChange = change;
     this.activeNav = true;
 
-    console.log(recordId);
-    console.log('...');
-    console.log(change);
-    
-    
+    // console.log(recordId);
+    // console.log('...');
+    // console.log(change);
   }
 
+  
+  change_sideBar(data){
+    console.log(data)
+    console.log('data')
+    if(data.saveUser==true){
+      this.selection.clear();
+      this.removableChipIdUser();
+      this.removableChipStatus()
+      this.resetFilters();
+      // console.log('se guardo y se cierra con reseteo')
+    }else{
+      if(data.onlyclosed){
+        console.log('se debe de dejar filtros')
+      }
+    }
+    this.activeNav = false;
 
-  cambiar(foo){
-    this.activeNav =  foo;
-    this.selection.clear()
   }
+
+  // cambiar(foo,registro){
+  //   this.activeNav =  foo;
+  //   if(registro == true){
+  //   }
+  //   // console.log('se cierra solamente')
+  // }
 
 
 
@@ -382,13 +370,19 @@ resetFiltersStatus() {
     /** The label for the checkbox on the passed row */
   checkboxLabel(row?: User): string {
     if (!row) {
-      console.log('si...');
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-    console.log('no...');
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
 
+
+  ngChanges() { 
+    console.log('todos sele')
+  
+      if(this.isAllSelected()== true){
+      }
+
+  }
 
 }
 
