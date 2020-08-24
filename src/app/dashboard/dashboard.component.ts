@@ -21,6 +21,9 @@ import {MatChipInputEvent} from '@angular/material/chips';
 
 import {MatCardModule} from '@angular/material/card';
 
+import { of, interval } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+
 
 
 
@@ -45,7 +48,9 @@ export class DashboardComponent implements OnInit {
   activeNav = false;
   filterValues = {};
   // displayedColumns: string[] = ['select','id', 'name', 'username', 'email', 'phone', 'website', 'status', 'options'];
-  displayedColumns: string[] = ['select','name', 'id',   'status', 'options'];
+  displayedColumns: string[] = ['select','name', 'id', 'status','options'];
+  // status=['Saab', 'Volvo', 'BMW'];
+
 
   filterSelectObj = [];
 
@@ -89,6 +94,13 @@ export class DashboardComponent implements OnInit {
   // chips
 
 
+  recluterId;
+  contact;
+  status;
+
+
+
+
 
   constructor(private auth: AuthService,
               private router: Router,
@@ -126,6 +138,14 @@ export class DashboardComponent implements OnInit {
     // Overrride default filter behaviour of Material Datatable
     this.dataSource.filterPredicate = this.createFilter();
     this.dataSource.sort = this.sort;
+
+    // this.status   = this._usersService.getStatus();
+    // this.recluterId =   this._usersService.getRecluterId();
+    // // // this.contact =  this._usersService.getContact();
+
+    this.status = this._usersService.getStatus();
+
+    console.log(this.status)
 
   }
 
@@ -182,6 +202,7 @@ export class DashboardComponent implements OnInit {
 
   }
 
+  
 
   filterChangeMore(filter,status) {
     if(this.varChipStatus==null){
@@ -378,6 +399,8 @@ resetFiltersStatus() {
 
   ngChanges() { 
     console.log('todos sele')
+      
+
   
       if(this.isAllSelected()== true){
       }

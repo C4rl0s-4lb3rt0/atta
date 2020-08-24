@@ -1,11 +1,4 @@
-<!-- <div class="wrapper-dash">
-     <div class="navi-cont">
-          <app-navigation></app-navigation>
-     </div>
-     <div class="body-cont">
-          body
-     </div>
-</div> -->
+
 <div>
      <div class="modal-fade"></div>
           <app-main-nav>
@@ -15,24 +8,15 @@
                
                <p><button mat-button class="active-but">Dash Board </button></p>
                <p><button mat-button routerLink="/abc-atta"  >ABC ATTA</button></p>
-               <!-- <p><button mat-button>Search</button></p>
-               <p><button mat-button>Parmeters</button></p> -->
                <button (click)="salir()">  Salir  </button>
-               <!-- <button mat-button color="primary">Primary</button>
-                    <button mat-button color="accent">Accent</button> -->
+               
+                    <!-- <button  *ngFor="let item of status"> {{item}} </button> -->
+                    <!-- {{ status }} -->
+                    <!-- <p *ngFor="let statu of status" >{{ statu }} </p> -->
+               
           </mat-drawer>
           <mat-drawer-content class="content animated fadeIn" style="position: relative">
                <div class="contenedor-prin" >
-                    <!-- <div class="content-head">
-                              <div class="content-title">
-                                   
-                                   <h1>{{ 'altaUser.titulo' | translate }}</h1>
-                                   <p>The new informa4on will be check to maintain database integrity</p>
-                              </div>
-                              <div class="content-progress">
-                                   progress
-                         </div>
-                    </div> -->
                     <div class="content-body">
                               <ng-container >
                                    <div class="filtro">
@@ -72,8 +56,10 @@
                                                                  <mat-icon> contact_mail</mat-icon>
                                                             </button>
                                                             <mat-menu #cont="matMenu">
-                                                                 <button mat-menu-item>Item 1</button>
-                                                                 <button mat-menu-item>Item 2</button>
+                                                                 
+                                                                      <button mat-menu-item >Email</button>
+                                                                      <button mat-menu-item >Whatsapp</button>
+                                                                      <button mat-menu-item >Follow Up Email</button>
                                                             </mat-menu>
 
 
@@ -82,17 +68,35 @@
                                                                  <mat-icon> youtube_searched_for</mat-icon>
                                                             </button>
                                                             <mat-menu #search="matMenu">
-                                                                 <button mat-menu-item>Item 1</button>
-                                                                 <button mat-menu-item>Item 2</button>
+                                                                 <button mat-menu-item>paulina.sampson</button>
+                                                                 <button mat-menu-item>rene.jones</button>
+                                                                 <button mat-menu-item>abigail.santos</button>
+                                                                 <button mat-menu-item>jake.margulis</button>
+                                                                 <button mat-menu-item>ana.mckenzie</button>
                                                             </mat-menu>
 
 
-                                                            <button mat-button [matMenuTriggerFor]="search">
+                                                            <button mat-button [matMenuTriggerFor]="status">
                                                                  <mat-icon>ballot</mat-icon>
                                                             </button>
-                                                            <mat-menu #search="matMenu">
-                                                                 <button mat-menu-item>Item 1</button>
-                                                                 <button mat-menu-item>Item 2</button>
+                                                            <mat-menu  class="buscar" #status="matMenu">
+                                                                 <!-- <button mat-menu-item mat-menu-item *ngFor="let item of status "> {{ item.name }} </button> -->
+                                                                 <!-- <button mat-menu-item mat-menu-item  *ngFor="let contact of contacts | async">{{contact.name}}</button> -->
+
+
+                                                                 <button mat-menu-item >NO CONTACT</button>
+                                                                 <button mat-menu-item >EMAIL SENT</button>
+                                                                 <button mat-menu-item >FOLLOW UP</button>
+                                                                 <button mat-menu-item >WAITING RESPONSE</button>
+                                                                 <button mat-menu-item >NO RESPONSE</button>
+                                                                 <button mat-menu-item >SCREENING TO DO</button>
+                                                                 <button mat-menu-item >SCREENING PROCESS</button>
+                                                                 <button mat-menu-item >SCREENING DONE</button>
+                                                                 <button mat-menu-item >NO PROFILE</button>
+                                                                 <button mat-menu-item >PAYLOCITY</button>
+                                                                 <button mat-menu-item >WHATSAPP</button>
+                    
+                                                     
                                                             </mat-menu>    
 
                                                        </div>
@@ -104,7 +108,7 @@
                                              </div>
                                         </div>
                                         
-                                        <mat-menu #menu="matMenu" >
+                                        <mat-menu #menu="matMenu"  class="menu-filtro">
                                              <div (click) = "$event.stopPropagation()" class="content-filtro" >
                                                   <div class="title-filter">
                                                        <p>Filters</p>
@@ -255,17 +259,22 @@
                                    
                                        {{ selection }}
                                      </pre> -->
-                           </ng-container>
+                              </ng-container>
                            
                            
                            
                            
      
      
-                                      
+                    <div style="min-height: 300px; margin-top:50px ;margin-bottom: 150px;">
+                         <app-blacklist></app-blacklist>
+
+                    </div>                  
                     </div>
 
                </div>
+
+
 
 
                <app-right-navbar [childMessage]="parentMessage" [childTitle]="navTitleChange" [activeNav]="activeNav"  (data)="change_sideBar($event)"></app-right-navbar> 

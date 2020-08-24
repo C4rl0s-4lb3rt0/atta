@@ -81,6 +81,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTooltipModule} from '@angular/material/tooltip';
 
 import {MatCardModule} from '@angular/material/card';
+import { BlacklistComponent } from './blacklist/blacklist.component';
 
 
 
@@ -97,6 +98,7 @@ import {MatCardModule} from '@angular/material/card';
     AbcAttaComponent,
     FormAltaComponent,
     RightNavbarComponent,
+    BlacklistComponent,
   ],
   imports: [
     BrowserModule,

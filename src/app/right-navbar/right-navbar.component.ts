@@ -22,16 +22,16 @@ export class RightNavbarComponent implements OnInit {
   panelOpenState = false;
 
   recluterId=['1232','3224','2354','2432','1276']
-  status=['NO CONTACT','EMAIL SENT','FOLLOW UP','WAITING RESPONSE','NO RESPONSE','SCREENING TO DO','SCREENING PROCESS','SCREENING DONE','NO PROFILE','PAYLOCITY','WHATSAPP']
+  // status=['NO CONTACT','EMAIL SENT','FOLLOW UP','WAITING RESPONSE','NO RESPONSE','SCREENING TO DO','SCREENING PROCESS','SCREENING DONE','NO PROFILE','PAYLOCITY','WHATSAPP']
   contact=['EMAIL','WHATSAPP','FOLLOW UP EMAIL']
-  blacklist=['MOVE TO BLACKLIST','MOVE TO JOB APPLICANTS',]
+  blacklist=['MOVE TO BLACKLIST','MOVE TO JOB APPLICANTS']
 
   // @Output() seCierra:EventEmitter<boolean>;
 
   // @Output() updateUser:EventEmitter<boolean>;
 
 
-  
+  status;  
   
   
   // @Output() data:new EventEmitter<{name:string, age:number}>(); 
@@ -60,7 +60,13 @@ export class RightNavbarComponent implements OnInit {
   onlyclosed:boolean=false;
    
   ngOnInit(): void {
-    this.auxUser=this._usersService.getUser('1')
+    this.auxUser  = this._usersService.getUser('1');
+    this.status   = this._usersService.getStatus();
+
+    console.log(this.status);
+    // this.recluterId =   this._usersService.getRecluterId();
+    // this.contact =  this._usersService.getContact();
+    // this.blacklist = this._usersService.getBlacklist();
     
   }
 
@@ -71,6 +77,7 @@ export class RightNavbarComponent implements OnInit {
     if(this.auxUser){
       this.crearFormulario()
     }
+    this.status   = this._usersService.getStatus();
    }
 
 
