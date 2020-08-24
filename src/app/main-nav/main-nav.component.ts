@@ -7,6 +7,8 @@ import { AuthService } from '../services/auth.service';
 import { CanActivate } from '@angular/router';
 
 import { TranslateService } from '@ngx-translate/core';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -29,7 +31,7 @@ export class MainNavComponent implements OnInit{
     
 
     
-    constructor(private breakpointObserver: BreakpointObserver, private auth: AuthService,private translate: TranslateService) { 
+    constructor(private breakpointObserver: BreakpointObserver, private auth: AuthService,private translate: TranslateService, private router: Router) { 
       // console.log('aca hay--');
       // console.log(this.activeLang);
       // console.log('aca hay--');
@@ -80,6 +82,12 @@ export class MainNavComponent implements OnInit{
     }else{
       return false
     }
-    
   }
+
+  salir(){
+    this.auth.logout();
+    localStorage.setItem('lenguaje', JSON.stringify('en'));
+    this.router.navigateByUrl('/login');
+  }
+
 }

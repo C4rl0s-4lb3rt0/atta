@@ -96,7 +96,7 @@
                               </mat-expansion-panel-header>
                               <div class="select-navbar">
                                    <mat-select  formControlName="selectStatus"  >
-                                             <mat-option *ngFor="let item of status"  [value]="item"> {{ item }} </mat-option>
+                                             <mat-option *ngFor="let item of status"  [value]="item.name"> {{ item.name }} </mat-option>
                                    </mat-select>
                               </div>
                          </mat-expansion-panel>

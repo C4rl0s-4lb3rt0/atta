@@ -78,15 +78,6 @@ export class UsersService{
             website: 'jacynthe.com',
             status: 'In-Active'
           },
-          // {
-          //   id: '9',
-          //   name: 'Glenna Reichert',
-          //   username: 'Delphine',
-          //   email: 'Chaim_McDermott@dana.io',
-          //   phone: '(775)976-6794 x41206',
-          //   website: 'conrad.com',
-          //   status: 'In-Active'
-          // },
           {
             id: '10',
             name: 'Clementina DuBuque',
@@ -96,15 +87,6 @@ export class UsersService{
             website: 'ambrose.net',
             status: 'Active'
           },
-          // {
-          //      id: '1',
-          //      name: 'Elwyn.Skiles',
-          //      username: 'Nicholas Runolfsdottir V',
-          //      email: 'Rey.Padberg@karina.biz',
-          //      phone: '586.493.6943 x140',
-          //      website: 'conrad.com',
-          //      status: 'Blocked'
-          //    },
      ]
 
      private userBlacklist:User[] = [
