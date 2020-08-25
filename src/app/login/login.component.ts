@@ -9,6 +9,9 @@ import Swal from 'sweetalert2/src/sweetalert2.js'
 import { TranslateService } from '@ngx-translate/core';
 
 
+import { AuthApiService } from '../services/auth-api.service';
+
+
 
 @Component({
   selector: 'app-login',
@@ -23,7 +26,8 @@ export class LoginComponent implements OnInit {
   aux;
   constructor( private fb: FormBuilder,private auth : AuthService, 
                 private router: Router,
-                private translate: TranslateService
+                private translate: TranslateService,
+                private api:AuthApiService
                 ) { 
 
     this.crearFormulario();
