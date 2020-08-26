@@ -1,13 +1,26 @@
 {
      "principal": {
           "titulo": "EN AgileThought EN",
-          "texto" : "EN It is a long established fact that a reader will be distracted  when looking at its layout. The point of using Lorem Ipsum is that it ha EN"
+          "texto" : "EN It is a long established fact that a reader will be distracted  when looking at its layout. The point of using Lorem Ipsum is that it ha EN",
+          "invalidUser":"Please enter a valid user id",
+          "invalidPass":"Please enter a valid password"
      },
      "altaUser":{
           "titulo":"Create User"
      },
      "dashboard":{
-          "titulo":"Job Applicants"
+          "titulo":"Job Applicants",
+          "link1":"Job Applicants List",
+          "link2":"Recruiters Registration",
+          "title1-table":"Name",
+          "title2-table":"Recruiter ID",
+          "title3-table":"Status",
+          "title-filter":"Filters",
+          "buton-filter":"Apply Filter"
+     },
+     "navbarRight":{
+          "title":"Edit",
+          "button-save":"Save Changes"
      }
 }
 

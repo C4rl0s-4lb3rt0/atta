@@ -71,7 +71,7 @@
                <mat-menu #menu="matMenu" >
                     <div (click) = "$event.stopPropagation()" class="content-filtro" >
                          <div class="title-filter">
-                              <p>Filters</p>
+                              <p>{{ 'dashboard.title-filter' | translate }}</p>
                          </div>
                          <div class="filters">
                               <mat-form-field *ngFor="let filter of filterSelectObj" style="margin-left: 15px;">
@@ -87,7 +87,7 @@
                          justify-content:flex-end">
                                    <button mat-raised-button color="primary"
                                    (click) = "someMethod()"
-                                   >Apply Filter</button>
+                                   >{{ 'dashboard.buton-filter' | translate }}</button>
                          </div>
                     </div>
 
@@ -133,12 +133,12 @@
                   </mat-cell>
               </ng-container>
               <ng-container matColumnDef="name" >
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'dashboard.title1-table' | translate }}  </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
               </ng-container>
           
             <ng-container matColumnDef="id">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> Recruiter ID </mat-header-cell>
+              <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'dashboard.title2-table' | translate }}  </mat-header-cell>
               <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
             </ng-container>
           
@@ -167,7 +167,7 @@
   
           
             <ng-container matColumnDef="status">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+              <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'dashboard.title3-table' | translate }}  </mat-header-cell>
               <mat-cell *matCellDef="let element" > {{element.status}} </mat-cell>
             </ng-container>
   

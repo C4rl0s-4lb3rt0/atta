@@ -1,12 +1,25 @@
 {
      "principal": {
           "titulo": "ES AgileThought ES",
-          "texto" : " ES Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. ES"
+          "texto" : " ES Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. ES",
+          "invalidUser":"Escribe un ID valido",
+          "invalidPass":"Escribe un Password valido"
      },
      "altaUser":{
           "titulo":"Crear Usuario"
      },
      "dashboard":{
-          "titulo":"Aplicantes"
+          "titulo":"Aplicantes",
+          "link1":"Lista de Aplicantes",
+          "link2":"Registro de reclutadores",
+          "title1-table":"Nombre",
+          "title2-table":"ID Reclutador",
+          "title3-table":"Estado",
+          "title-filter":"Filtros",
+          "buton-filter":"Aplicar Filtro"
+     },
+     "navbarRight":{
+          "title":"Editar",
+          "button-save":"Guardar cambios"
      }
 }

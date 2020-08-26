@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthApiService } from '../services/auth-api.service';
 
 // export interface Tile {
 //   color: string;
@@ -25,7 +26,7 @@ export class IntroComponent  {
   // fit:string= '88vh';
 
 
-  constructor() {
+  constructor( private api:AuthApiService) {
     // const mq = window.matchMedia( "(min-width: 500px)" );
     // if (mq.matches) {
     //   console.log("1object")

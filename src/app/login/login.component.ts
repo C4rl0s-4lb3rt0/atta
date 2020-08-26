@@ -24,7 +24,8 @@ export class LoginComponent implements OnInit {
   forma:FormGroup
   usuario: UsuarioModel;
   aux;
-  constructor( private fb: FormBuilder,private auth : AuthService, 
+  constructor( private fb: FormBuilder,
+    private auth : AuthService, 
                 private router: Router,
                 private translate: TranslateService,
                 private api:AuthApiService
@@ -40,6 +41,13 @@ export class LoginComponent implements OnInit {
    
   }
 
+  get inputNoValido(){
+    return this.forma.get('email').invalid && this.forma.get('email').touched
+  }
+  get passNoValido(){
+    return this.forma.get('password').invalid && this.forma.get('password').touched
+  }
+
   crearFormulario(){
     this.forma = this.fb.group({
       email    :['', [Validators.required , Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
@@ -47,6 +55,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  desabilitado(){
+    return (this.inputNoValido && this.passNoValido)
+  }
 
   onSubmit( ){
       if( this.forma.invalid){

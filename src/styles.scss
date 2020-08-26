@@ -63,3 +63,137 @@ body { margin: 0; font-family: 'Roboto', sans-serif;}
    .fadeIn {
      animation-name: fadeIn;
    }
+
+
+//  grid anzen
+
+$device-xs: 540px;
+$device-sm: 768px;
+$device-md: 1024px;
+$device-lg: 1280px;
+$device-xl: 1440px;
+$column-gap: 0.4rem;
+
+.container {
+	box-sizing: border-box;
+  margin: 0 auto;
+
+  // Responsiveness
+  @media screen and (min-width: $device-xs) {
+    max-width: $device-xs;
+  }
+  @media screen and (min-width: $device-sm) {
+    max-width: $device-sm;
+  }
+  @media screen and (min-width: $device-md) {
+    max-width: $device-md;
+  }
+  @media screen and (min-width: $device-lg) {
+    max-width: $device-lg;
+  }
+  @media screen and (min-width: $device-xl) {
+    max-width: $device-xl;
+  }
+}
+
+.col{
+  display: block;
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
+  padding: $column-gap;
+  @for $i from 0 through 12{
+    @media screen and (min-width: $device-xs - 1px) {
+      .row > &.c-#{$i} {
+        flex: none;
+        width: 100%;
+      }
+    }
+    @media screen and (min-width: $device-sm - 1px) {
+      .row > &.c-#{$i} {
+        flex: none;
+        width: percentage($i / 12);
+      }
+      .row > &.c-offset-#{$i} {
+        margin-left: percentage($i / 12);
+      }
+    }
+    @media screen and (min-width: $device-md - 1px) {
+      .row > &.c-#{$i} {
+        flex: none;
+        width: percentage($i / 12);
+      }
+      .row > &.c-offset-#{$i} {
+        margin-left: percentage($i / 12);
+      }
+    }
+    @media screen and (min-width: $device-lg - 1px) {
+      .row > &.c-#{$i} {
+        flex: none;
+        width: percentage($i / 12);
+      }
+      .row > &.c-offset-#{$i} {
+        margin-left: percentage($i / 12);
+      }
+    }
+    @media screen and (min-width: $device-xl - 1px) {
+      .row > &.c-#{$i} {
+        flex: none;
+        width: percentage($i / 12);
+      }
+      .row > &.c-offset-#{$i} {
+        margin-left: percentage($i / 12);
+      }
+    }
+  }
+}
+
+.row {
+  margin-left: (-$column-gap);
+  margin-right: (-$column-gap);
+  margin-top: (-$column-gap);
+  &:last-child {
+    margin-bottom: (-$column-gap);
+  }
+  &:not(:last-child) {
+    margin-bottom: calc(1.5rem - #{$column-gap});
+  }
+  // Modifiers
+  &.centered {
+    justify-content: center
+  }
+  &.gapless {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    & > .col {
+      margin: 0;
+      padding: 0 !important;
+    }
+    &:not(:last-child) {
+      margin-bottom: 1.5rem;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &.vcentered {
+    align-items: center;
+  }
+
+  @media screen and (min-width: $device-xs) {
+    display: block;
+  }
+  @media screen and (min-width: $device-sm) {
+    display: flex
+  }
+  @media screen and (min-width: $device-md) {
+    display: flex
+  }
+  @media screen and (min-width: $device-lg) {
+    display: flex
+  }
+  @media screen and (min-width: $device-xl) {
+    display: flex
+  }
+}

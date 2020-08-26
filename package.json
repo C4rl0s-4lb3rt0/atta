@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -25,7 +25,7 @@
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
     "@sweetalert2/theme-material-ui": "^3.2.0",
-    "anzen-components": "0.0.4",
+    "anzen-components": "0.1.0",
     "rxjs": "~6.5.4",
     "sweetalert2": "^9.17.1",
     "tslib": "^1.13.0",

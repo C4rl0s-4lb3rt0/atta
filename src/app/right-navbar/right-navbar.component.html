@@ -10,7 +10,7 @@
      
      <div class="cont-reasignar" *ngIf="childTitle === 'reasignar'">
           <div class="cont-header">
-               <h1>  EDIT </h1> <button (click)="salirNav(true)"> x </button>
+               <h1>  {{ 'navbarRight.title' | translate }} </h1> <button (click)="salirNav(true)"> x </button>
 
           </div>
           <!-- <form [formGroup]="formaReasignar" autocomplete="off" (ngSubmit)="onSubmitReasignar()"
@@ -58,81 +58,134 @@
      
           <mat-accordion>
 
-
-                    <!-- <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true" (closed)="panelOpenState = false"> -->
-
-                    <form  [formGroup]="formaContact" autocomplete="off" (ngSubmit)="onSubmitContacto()">
-                         <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
-                         (closed)="panelOpenState = false">
-                              <mat-expansion-panel-header>
-                                   <mat-panel-title>
-                                        <p class="title-navbar">JOB APPLICANTS SELECTED</p>
-                                   </mat-panel-title>
+                    <!-- material -->
+                    <!-- <form  [formGroup]="formaContact" autocomplete="off" (ngSubmit)="onSubmitContacto()">
+                              <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
+                              (closed)="panelOpenState = false">
+                                   <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                             <p class="title-navbar">JOB APPLICANTS SELECTED</p>
+                                        </mat-panel-title>
+                                   
+                                   </mat-expansion-panel-header>
+                                   <h2>{{ auxUser.name }}</h2>
+                              </mat-expansion-panel>
                               
-                              </mat-expansion-panel-header>
-                              <h2>{{ auxUser.name }}</h2>
-                         </mat-expansion-panel>
-                         
-                         
-                         <mat-expansion-panel (opened)="panelOpenState = true"
-                         (closed)="panelOpenState = false">
-                              <mat-expansion-panel-header>
-                                   <mat-panel-title>
-                                        <p class="title-navbar">Recruiter ID</p>
-                                   </mat-panel-title>
-                              </mat-expansion-panel-header>
-                              <div class="select-navbar">
-                                   <mat-select  formControlName="selectIdRecluter"  >
-                                             <mat-option *ngFor="let item of recluterId"  [value]="item"> {{ item }} </mat-option>
-                                   </mat-select>
+                              
+                              <mat-expansion-panel (opened)="panelOpenState = true"
+                              (closed)="panelOpenState = false">
+                                   <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                             <p class="title-navbar">Recruiter ID</p>
+                                        </mat-panel-title>
+                                   </mat-expansion-panel-header>
+                                   <div class="select-navbar">
+                                        <mat-select  formControlName="selectIdRecluter"  >
+                                                  <mat-option *ngFor="let item of recluterId"  [value]="item"> {{ item }} </mat-option>
+                                        </mat-select>
+                                   </div>
+                              </mat-expansion-panel>
+                              <mat-expansion-panel (opened)="panelOpenState = true"
+                              (closed)="panelOpenState = false">
+                                   <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                             <p class="title-navbar">Status</p>
+                                        </mat-panel-title>
+                                   </mat-expansion-panel-header>
+                                   <div class="select-navbar">
+                                        <mat-select  formControlName="selectStatus"  >
+                                                  <mat-option *ngFor="let item of status"  [value]="item.name"> {{ item.name }} </mat-option>
+                                        </mat-select>
+                                   </div>
+                              </mat-expansion-panel>
+                              <mat-expansion-panel (opened)="panelOpenState = true"
+                              (closed)="panelOpenState = false">
+                                   <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                             <p class="title-navbar">Contact</p>
+                                        </mat-panel-title>
+                                   </mat-expansion-panel-header>
+                                   <div class="select-navbar">
+                                        <mat-select  formControlName="selectContact"  >
+                                                  <mat-option *ngFor="let item of contact"  [value]="item"> {{ item }} </mat-option>
+                                        </mat-select>
+                                   </div>
+                              </mat-expansion-panel>
+                              <mat-expansion-panel (opened)="panelOpenState = true"
+                              (closed)="panelOpenState = false">
+                                   <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                             <p class="title-navbar">Blacklist</p>
+                                        </mat-panel-title>
+                                   </mat-expansion-panel-header>
+                                   <div class="select-navbar">
+                                        <mat-select  formControlName="selectBlacklist"  >
+                                                  <mat-option *ngFor="let item of blacklist"  [value]="item"> {{ item }} </mat-option>
+                                        </mat-select>
+                                   </div>
+                              </mat-expansion-panel>
+                              
+                              <div class="cont-bottom">
+                                   <an-button [className]="'success'" type="submit"> Save Changes </an-button>
                               </div>
-                         </mat-expansion-panel>
-                         <mat-expansion-panel (opened)="panelOpenState = true"
-                         (closed)="panelOpenState = false">
-                              <mat-expansion-panel-header>
-                                   <mat-panel-title>
-                                        <p class="title-navbar">Status</p>
-                                   </mat-panel-title>
-                              </mat-expansion-panel-header>
-                              <div class="select-navbar">
-                                   <mat-select  formControlName="selectStatus"  >
-                                             <mat-option *ngFor="let item of status"  [value]="item.name"> {{ item.name }} </mat-option>
-                                   </mat-select>
-                              </div>
-                         </mat-expansion-panel>
-                         <mat-expansion-panel (opened)="panelOpenState = true"
-                         (closed)="panelOpenState = false">
-                              <mat-expansion-panel-header>
-                                   <mat-panel-title>
-                                        <p class="title-navbar">Contact</p>
-                                   </mat-panel-title>
-                              </mat-expansion-panel-header>
-                              <div class="select-navbar">
-                                   <mat-select  formControlName="selectContact"  >
-                                             <mat-option *ngFor="let item of contact"  [value]="item"> {{ item }} </mat-option>
-                                   </mat-select>
-                              </div>
-                         </mat-expansion-panel>
-                         <mat-expansion-panel (opened)="panelOpenState = true"
-                         (closed)="panelOpenState = false">
-                              <mat-expansion-panel-header>
-                                   <mat-panel-title>
-                                        <p class="title-navbar">Blacklist</p>
-                                   </mat-panel-title>
-                              </mat-expansion-panel-header>
-                              <div class="select-navbar">
-                                   <mat-select  formControlName="selectBlacklist"  >
-                                             <mat-option *ngFor="let item of blacklist"  [value]="item"> {{ item }} </mat-option>
-                                   </mat-select>
-                              </div>
-                         </mat-expansion-panel>
-                         
-                         <div class="cont-bottom">
-                              <an-button [className]="'success'" type="submit"> Save Changes </an-button>
+     
+                         </form>  -->
+
+                   <!-- anzen -->
+                    <form  [formGroup]="formaContact" autocomplete="off" (ngSubmit)="onSubmitContacto()">
+                         <div>
+                              <!-- <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true"
+                              (closed)="panelOpenState = false">
+                                   <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                             <p class="title-navbar">JOB APPLICANTS SELECTED</p>
+                                        </mat-panel-title>
+                                   
+                                   </mat-expansion-panel-header>
+                                   <h2>{{ auxUser.name }}</h2>
+                              </mat-expansion-panel> -->
+                              <an-accordion-item [label]="'JOB APPLICANTS SELECTED'" [theme]="'light'">
+                                        <h2>{{ auxUser.name }}</h2>
+                              </an-accordion-item>
+
+                              <an-accordion-item [label]="'Recruiter ID'" [theme]="'light'">
+                                   <div class="select-navbar">
+                                        <mat-select  formControlName="selectIdRecluter"  >
+                                                  <mat-option *ngFor="let item of recluterId"  [value]="item"> {{ item }} </mat-option>
+                                        </mat-select>
+                                   </div>     
+                              </an-accordion-item>
+
+                              <an-accordion-item [label]="'Status'" [theme]="'light'">
+                                   <div class="select-navbar">
+                                        <mat-select  formControlName="selectStatus"  >
+                                                  <mat-option *ngFor="let item of status"  [value]="item.name"> {{ item.name }} </mat-option>
+                                        </mat-select>
+                                   </div>   
+                              </an-accordion-item>
+                              
+                              <an-accordion-item [label]="'Contact'" [theme]="'light'">
+                                   <div class="select-navbar">
+                                        <mat-select  formControlName="selectContact"  >
+                                                  <mat-option *ngFor="let item of contact"  [value]="item"> {{ item }} </mat-option>
+                                        </mat-select>
+                                   </div>  
+                              </an-accordion-item>
+                              
+                              <an-accordion-item [label]="'Blacklist'" [theme]="'light'">
+                                   <div class="select-navbar">
+                                             <mat-select  formControlName="selectBlacklist"  >
+                                                  <mat-option *ngFor="let item of blacklist"  [value]="item"> {{ item }} </mat-option>
+                                        </mat-select>
+                                   </div> 
+                              </an-accordion-item>
+                              
+                              <div class="cont-bottom">
+                                        <an-button [className]="'success'" type="submit">  {{ 'navbarRight.button-save' | translate }} </an-button>
+                                   </div>
+                              
                          </div>
-
                     </form> 
-
           </mat-accordion>
      </div>
      

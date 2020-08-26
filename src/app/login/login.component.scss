@@ -35,8 +35,20 @@
       width: 380px;
    }
    
-   .example-full-width {
-     width: 100%;
+   .cont-input{
+      height:80px;
+      position: relative;
+      .example-full-width {
+        width: 100%;
+      }
+      small{
+        position: absolute;
+        bottom: 15px;
+        left: 0;
+        height: 20px;
+        width: 250px;
+        color:Red
+      }
    }
 
    h4{

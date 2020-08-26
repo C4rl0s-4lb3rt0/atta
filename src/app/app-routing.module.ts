@@ -5,11 +5,13 @@ import { SignupComponent } from './signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AbcAttaComponent } from './abc-atta/abc-atta.component';
+import { IntroComponent } from './intro/intro.component';
 
 
 
 const routes: Routes = [
 
+  { path: 'intro', component: IntroComponent},
   { path: 'login', component: LoginComponent},
   { path: 'signup', component: SignupComponent},
   { path: 'dashboard', component: DashboardComponent, canActivate:[ AuthGuard]},
