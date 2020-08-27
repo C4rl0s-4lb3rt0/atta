@@ -16,6 +16,9 @@ import { UsersService } from '../services/user.service';
 import { MatMenuTrigger } from '@angular/material/menu';
 
 
+import { AuthApiService } from '../services/auth-api.service';
+
+
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 
@@ -64,7 +67,7 @@ export class DashboardComponent implements OnInit {
   opened: boolean;
   shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 
-
+  apiUsers:any;
 
  
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -102,9 +105,10 @@ export class DashboardComponent implements OnInit {
 
 
 
-  constructor(private auth: AuthService,
+  constructor(
               private router: Router,
-              private _usersService: UsersService
+              private _usersService: UsersService,
+              private api:AuthApiService
               ) {
       
           this.filterSelectObj = [
@@ -123,7 +127,10 @@ export class DashboardComponent implements OnInit {
           
           this.dataSource = new MatTableDataSource<User>(this.usersData);
 
-
+          this.apiUsers = this.api.getUsers().subscribe(resp=>{
+            this.apiUsers=resp
+            console.log(this.apiUsers)
+          })
       }
 
    
@@ -150,7 +157,7 @@ export class DashboardComponent implements OnInit {
   }
 
   salir(){
-      this.auth.logout();
+      this.api.logout();
       localStorage.setItem('lenguaje', JSON.stringify('en'));
       this.router.navigateByUrl('/login');
   }

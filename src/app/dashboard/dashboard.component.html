@@ -14,10 +14,18 @@
           <mat-drawer-content class="content animated fadeIn" style="position: relative">
                <div class="contenedor-prin" >
                     <div class="content-body">
+                              <ul>
+                                        <li  *ngFor="let item of this.apiUsers" >{{ item.nombre  }} - {{ item.idReclutador }}  - {{item.statusId}}  </li>
+                                   </ul>
                               <ng-container >
                                    <div class="filtro">
                                         <div class="cont-chips-title">
                                              <h2>{{ 'dashboard.titulo' | translate }}</h2>
+                                             <!-- <div *ngFor="let item of this.apiUsers">
+                                                  <h3>{{ item.nombre  }}</h3>
+
+                                             </div> -->
+                                             
                                         </div>
                                         <div class="cont-chips-prin" [ngClass]="{'first': isAllSelected() }">
                                              <div class="cont-tent">

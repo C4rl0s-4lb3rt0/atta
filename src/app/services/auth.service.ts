@@ -21,7 +21,7 @@ export class AuthService {
 
 
   constructor( private http:HttpClient ) { 
-    this. leerToken();
+    this.leerToken();
   }
 
   logout(){

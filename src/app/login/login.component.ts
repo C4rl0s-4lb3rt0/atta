@@ -75,26 +75,45 @@ export class LoginComponent implements OnInit {
       this.usuario.email = this.forma.value.email
       this.usuario.password = this.forma.value.password;
       console.log("holas.-----")
-      this.auth.login(this.usuario)
-          .subscribe( (resp) => {
-            console.log(resp);
-            Swal.close();
-            this.router.navigateByUrl('/dashboard');
+      // this.auth.login(this.usuario)
+      //     .subscribe( (resp) => {
+      //       console.log(resp);
+      //       Swal.close();
+      //       this.router.navigateByUrl('/dashboard');
 
 
 
-          }, (err) => {
-            console.log(err.error.error.message);
-            // alert(err.error.error.message)
-            Swal.fire({
-              allowOutsideClick:false,
-              icon: 'error',
-              title: 'Error!',
-              text: err.error.error.message,
-              // confirmButtonText: 'Cool'
-            })
+      //     }, (err) => {
+      //       console.log(err.error.error.message);
+      //       // alert(err.error.error.message)
+      //       Swal.fire({
+      //         allowOutsideClick:false,
+      //         icon: 'error',
+      //         title: 'Error!',
+      //         text: err.error.error.message,
+      //         // confirmButtonText: 'Cool'
+      //       })
             
-          } )
+      //     } )
+
+
+
+      this.api.getLogin2(this.usuario.email,this.usuario.password)
+        .subscribe( (resp) => {
+          console.log(resp)
+          Swal.close();
+          this.router.navigateByUrl('/dashboard');
+        },(err) => {
+          console.log(err);
+          Swal.fire({
+                    allowOutsideClick:false,
+                    icon: 'error',
+                    title: 'Error!',
+                    text: 'Campos Invalidos',
+                    // confirmButtonText: 'Cool'
+                  })
+
+        })
     console.log(this.forma);
 
   }
