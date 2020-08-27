@@ -185,13 +185,15 @@ export class DashboardComponent implements OnInit {
     //let filterValues = {}
     // console.log(filter);
     // console.log('vamos');
-    // console.log(event.target.value.trim().toLowerCase());
+    console.log(event.target.value.trim().toLowerCase());
     
     // console.log('atras');
-    
     this.filterValues[filter.columnProp] = event.target.value.trim().toLowerCase()
+    console.log(this.filterValues);
+    console.log('qey');
     this.dataSource.filter = JSON.stringify(this.filterValues)
-    
+    console.log(this.dataSource.filter);
+    console.log('filter');
     
     if(filter.name=='ID'){
       this.varChipIdUser = `Id recluter: ${filter.modelValue}`
@@ -230,6 +232,8 @@ export class DashboardComponent implements OnInit {
   createFilter() {
     let filterFunction = function (data: any, filter: string): boolean {
       let searchTerms = JSON.parse(filter);
+      console.log(searchTerms)
+      console.log('searchTerms')
       let isFilterSet = false;
       for (const col in searchTerms) {
         if (searchTerms[col].toString() !== '') {
@@ -369,13 +373,6 @@ resetFiltersStatus() {
 
   }
 
-  // cambiar(foo,registro){
-  //   this.activeNav =  foo;
-  //   if(registro == true){
-  //   }
-  //   // console.log('se cierra solamente')
-  // }
-
 
 
 /** Selects all rows if they are not all selected; otherwise clear selection. */
@@ -406,6 +403,18 @@ resetFiltersStatus() {
       }
 
   }
+
+
+
+// cuando todos esten selecionados
+
+moveToBlackList(){
+  console.log("se moveran a blacklist");
+  console.log(this.dataSource.filter);    
+  
+}
+
+
 
 }
 

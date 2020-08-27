@@ -24,14 +24,15 @@ export class LoginComponent implements OnInit {
   forma:FormGroup
   usuario: UsuarioModel;
   aux;
-  constructor( private fb: FormBuilder,
-    private auth : AuthService, 
+  constructor(   private fb: FormBuilder,
+                private auth : AuthService, 
                 private router: Router,
                 private translate: TranslateService,
                 private api:AuthApiService
                 ) { 
 
     this.crearFormulario();
+    console.log('camos')  
    
   }
 
@@ -50,7 +51,7 @@ export class LoginComponent implements OnInit {
 
   crearFormulario(){
     this.forma = this.fb.group({
-      email    :['', [Validators.required , Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+      email    :['', [Validators.required  ]],
       password : ['', Validators.required],
     });
   }
@@ -64,12 +65,12 @@ export class LoginComponent implements OnInit {
         return;
       }
 
-      
+      console.log(this.forma);
+
       Swal.fire({
         allowOutsideClick:false,
         text: 'Loading...',
       })
-      Swal.showLoading();
 
       this.usuario.email = this.forma.value.email
       this.usuario.password = this.forma.value.password;

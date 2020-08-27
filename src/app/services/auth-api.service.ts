@@ -6,32 +6,75 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthApiService {
-  postId
+  
+  token:string;
+  bea_token:string;
+
   constructor( private http:HttpClient ) { 
     console.log('servicio de api listo')
     
-    this.getUser();
+    // console.log(this.bea_token)
+    // this.getUsers();
+    this.getLogin()
   }
   
-  getUser(){
-    const headers= new HttpHeaders({
+  getLogin(){
+    
+    const headers = new HttpHeaders({
   
-      'username': 'frontendapp',
-      'password': '12345',
-      // 'Access-Control-Allow-Origin':'*',
+      'Content-Type':  'application/json',
+      'Authorization': 'Basic ' + btoa('frontendapp:12345')
+      
     })
 
     let params = new HttpParams().set("username",'norberto.camacho').set("password", '12345').set("grant_type",'password'); //Create new HttpParams
 
-    // username:norberto.camacho
-    // password:12345
-    // grant_type:password
 
-    // const body= {'Username': 'norberto.camacho',
-    // 'Password': '12345',
-    // 'grant_type':'password'}
   //  this.http.get('http://13.64.68.213:3000/dashboard/candidates/ROLE_USER/3', { headers }).subscribe(data => {console.log(data) })
-   this.http.post('/api/security/oauth/token', { headers, params: params }).subscribe(data => {console.log(data) })
+  //  this.http.post('/api/security/oauth/token', { headers }, { params }).subscribe(data => {console.log(data) })
+
+
+   this.http.post('/api/security/oauth/token', { headers }, { params })
+     .subscribe((data:any) => {
+         console.log(data)
+        this.token = data.access_token
+        console.log(this.token)
+      })
+   
+        // console.log(headers);
+        // this.http.post('/api/security/oauth/token', { headers }, {params}).subscribe((data:any) => {
+        //    this.bea_token = `Bearer ${data.access_token}`
+        //     this.token = data.access_token
+        //     console.log(data);
+        // })
+     
+     
+     
+    //  .subscribe((data:any) => {
+    //      this.bea_token = `Bearer ${data.access_token}`
+    //       this.token = data.access_token
+    //   })
+
+      
+
   }
   // 
+
+  getUsers(){
+
+
+    const headers= new HttpHeaders({
+      'Authorization': `${this.bea_token}`
+    })
+
+    let params = new HttpParams().set("username",'norberto.camacho').set("password", '12345').set("grant_type",'password'); //Create new HttpParams
+  
+    this.http.get('/dashboard/candidates/ROLE_USER/3', { headers }).subscribe((data:any) => {
+      console.log(data)})
+
+
+  }
+
+
+
 }
