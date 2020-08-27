@@ -58,6 +58,34 @@
    
    
    
+*{
+     // outline: 1px solid rebeccapurple;
+}
+
+
+::ng-deeo.mat-form-field-wrapper{
+     position: relative;
+     height: 40px !important;
+     outline: 1px solid red; 
+}
+::ng-deep .mat-select-trigger {
+     // outline: 1px solid black;
+     // min-height: 35px;
+     // height: 38px;
+     // .mat-form-field-wrapper{
+          
+     //      outline: 1px solid red;
+     //      margin-bottom: 3px;
+     //      height: 100%;
+     //      .mat-form-field-flex{
+     //           outline: 1px solid blue;
+     //           padding-bottom: 0px;
+     //           height: 100%;
+     //           padding-top: 5px;
+     //      }
+     // }
+}
+
 
 .mat-form-field {
      margin-top: 16px;
