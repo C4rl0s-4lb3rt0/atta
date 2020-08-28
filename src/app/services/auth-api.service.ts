@@ -16,47 +16,7 @@ export class AuthApiService {
     this.leerToken();
   }
   
-  getLogin(){
-    
-    const headers = new HttpHeaders({
-  
-      'Content-Type':  'application/json',
-      'Authorization': 'Basic ' + btoa('frontendapp:12345')
-      
-    })
-
-    let params = new HttpParams().set("username",'norberto.camacho').set("password", '12345').set("grant_type",'password'); //Create new HttpParams
-
-
-  //  this.http.get('http://13.64.68.213:3000/dashboard/candidates/ROLE_USER/3', { headers }).subscribe(data => {console.log(data) })
-  //  this.http.post('/api/security/oauth/token', { headers }, { params }).subscribe(data => {console.log(data) })
-
-
-   this.http.post('/api/security/oauth/token', { headers }, { params })
-     .subscribe((data:any) => {
-         console.log(data)
-        this.userToken = data.access_token
-        console.log(this.userToken)
-        console.log('ssss')
-      })
-   
-        // console.log(headers);
-        // this.http.post('/api/security/oauth/token', { headers }, {params}).subscribe((data:any) => {
-        //    this.bea_token = `Bearer ${data.access_token}`
-        //     this.token = data.access_token
-        //     console.log(data);
-        // })
-     
-     
-     
-    //  .subscribe((data:any) => {
-    //      this.bea_token = `Bearer ${data.access_token}`
-    //       this.token = data.access_token
-    //   })
-
-      
-
-  }
+ 
   // 
 
 
@@ -70,23 +30,38 @@ export class AuthApiService {
     console.log(pass);
     // const headers = new HttpHeaders({
   
-    //   'Content-Type':  'application/json',
-    //   'Authorization': 'Basic ' + btoa('frontendapp:12345')
+    //   'Authorization': Basic 'ZnJvbnRlbmRhcHA6MTIzNDU='
+
       
     // })
+
+    const headers= new HttpHeaders()
+      .set('Authorization', 'Basic ZnJvbnRlbmRhcHA6MTIzNDU=')
+      // .set('password', '12345');
+      
+
+
+
     // const body = JSON.stringify({username: user,
     //   password: pass});
     // console.log(headers);
     // console.log('headers');
 
-    let params = new HttpParams().set("username",'norberto.camacho').set("password", '12345').set("grant_type",'password'); //Create new HttpParams
+    let params = new HttpParams().set("username",user).set("password", pass).set("grant_type",'password'); //Create new HttpParams
 
+console.log(user);
+console.log(pass);
+
+
+console.log(headers);
 
   //  this.http.get('http://13.64.68.213:3000/dashboard/candidates/ROLE_USER/3', { headers }).subscribe(data => {console.log(data) })
   //  this.http.post('/api/security/oauth/token', { headers }, { params }).subscribe(data => {console.log(data) })
 
-    return this.http.post('/api/security/oauth/token',{
-      headers: {'Username':'frontendapp','Password':'12345'}}, { params }).pipe(
+    console.log('peticion')
+    debugger
+
+    return this.http.post('/api/security/oauth/token', { 'headers': headers } , { params }).pipe(
       map( (resp:any) => {
         this.userToken = resp.access_token
         this.guardarToken( resp.access_token )

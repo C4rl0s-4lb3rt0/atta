@@ -74,7 +74,6 @@ export class LoginComponent implements OnInit {
 
       this.usuario.email = this.forma.value.email
       this.usuario.password = this.forma.value.password;
-      console.log("holas.-----")
       // this.auth.login(this.usuario)
       //     .subscribe( (resp) => {
       //       console.log(resp);
@@ -114,7 +113,6 @@ export class LoginComponent implements OnInit {
                   })
 
         })
-    console.log(this.forma);
 
   }
 }
