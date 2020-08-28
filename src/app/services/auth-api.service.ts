@@ -35,33 +35,78 @@ export class AuthApiService {
       
     // })
 
-    const headers= new HttpHeaders()
-      .set('Authorization', 'Basic ZnJvbnRlbmRhcHA6MTIzNDU=')
+    // let headers= new HttpHeaders({
+    //   'Authorization' : 'Basic ZnJvbnRlbmRhcHA6MTIzNDU='
+
+    // })
+
+    const headers  = new HttpHeaders({
+    
+      "Authorization": "Basic " + btoa("frontendapp:12345"),
+      "Content-Type":  "application/json"
+
+    })
+
+   let params = new HttpParams().set("username",user).set("password", pass).set("grant_type",'password');
+
+    // const params = new HttpParams {
+    //   'username': user,
+    //   'password': '12345',
+    //   'grant_type': 'password'
+    // }
+
+
+
+    // let headers= new HttpParams().set("Authorization" , 'Basic ZnJvbnRlbmRhcHA6MTIzNDU=');
+
       // .set('password', '12345');
-      
-
-
+      const httpOptions = {
+           headers : headers,
+           params: params
+      };
 
     // const body = JSON.stringify({username: user,
     //   password: pass});
     // console.log(headers);
     // console.log('headers');
 
-    let params = new HttpParams().set("username",user).set("password", pass).set("grant_type",'password'); //Create new HttpParams
-
+    // let params = new HttpParams().set("username",user).set("password", pass).set("grant_type",'password');
+    
+    //Create new HttpParams
+    
+    debugger
 console.log(user);
 console.log(pass);
 
 
-console.log(headers);
+// console.log(httpHeaders);
 
   //  this.http.get('http://13.64.68.213:3000/dashboard/candidates/ROLE_USER/3', { headers }).subscribe(data => {console.log(data) })
   //  this.http.post('/api/security/oauth/token', { headers }, { params }).subscribe(data => {console.log(data) })
 
     console.log('peticion')
-    debugger
 
-    return this.http.post('/api/security/oauth/token', { 'headers': headers } , { params }).pipe(
+
+  
+  
+    //  let headers = new HttpHeaders();
+    // headers = headers.append("Authorization", "Basic " + btoa("frontendapp:12345"));
+    // headers = headers.append("Content-Type", "application/x-www-form-urlencoded");
+    // // const body = JSON.stringify({username: user,
+    // //   password: pass});
+    // // console.log(headers);
+    // // console.log('headers');
+    // const body = JSON.stringify({username: user, password: pass});
+
+    // let params = new HttpParams().set("username","frontendapp").set("password", "12345")
+
+
+    
+
+
+
+
+    return this.http.post('/api/security/oauth/token', null , httpOptions ).pipe(
       map( (resp:any) => {
         this.userToken = resp.access_token
         this.guardarToken( resp.access_token )
