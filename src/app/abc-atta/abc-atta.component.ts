@@ -18,14 +18,22 @@ export class AbcAttaComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
-
+  language;
   forma: FormGroup;
 
   business: Business[] = [
-    {value: 'finance', viewValue: 'Finance'},
-    {value: 'health', viewValue: 'Health'},
-    {value: 'politic', viewValue: 'Politic'}
+    {value: 'nearshore', viewValue: 'Nearshore'},
+    {value: 'nearshore/corporate', viewValue: 'Nearshore/Corporate'},
+    {value: 'corporate', viewValue: 'Corporate'},
+    {value: 'transformation-mx', viewValue: 'Transformation Mx'},
+    {value: 'time&materials', viewValue: 'Time & Materials'},
+    {value: 'anzen', viewValue: 'Anzen'},
+    {value: 'southamerica', viewValue: 'South America'},
+    {value: 'cloud', viewValue: 'Cloud'},
+    {value: 'hr', viewValue: 'HR'},
   ];
+
+
   levels: string[]= ['1','2','3','4'];
 
   auxtext:Boolean=true;
@@ -35,22 +43,42 @@ export class AbcAttaComponent implements OnInit {
     private _formBuilder: FormBuilder) {
 
       this.crearFormulario();
-     
+      this.language=localStorage.getItem('lenguaje')
+      console.log(this.language)
+      console.log(  this.isEnglish() );
+      console.log("vamos")
     }
 
   ngOnInit(): void {
   
-    this.firstFormGroup = this._formBuilder.group({
-      user:['', Validators.required],
-      firstName:['', Validators.required],
-      lastName:['',Validators.required],
-      email:['',[Validators.required , Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      business:['',Validators.required],
-      level:['',Validators.required] 
+    console.log("ngonit")
+    if( !this.isEnglish() ){
+      console.log('entra a español');
+      this.firstFormGroup = this._formBuilder.group({
+        user:['', Validators.required],
+        firstName:['', Validators.required],
+        lastNameEsp:['', Validators.required],
+        lastName:['',Validators.required],
+        email:['',[Validators.required , Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+        business:['',Validators.required],
+        level:['',Validators.required], 
+        leng:['esp']
     });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
+    }else{
+      console.log('entra a ingle');
+      this.firstFormGroup = this._formBuilder.group({
+          user:['', Validators.required],
+          firstName:['', Validators.required],
+          lastName:['',Validators.required],
+          email:['',[Validators.required , Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+          phone:['',Validators.required],
+          business:['',Validators.required],
+          level:['',Validators.required],
+          leng:['eng']
+      });
+    }
+
+   
 
   }
 
@@ -59,6 +87,14 @@ export class AbcAttaComponent implements OnInit {
       
     // })
   }
+  isEnglish(){
+    let aux = localStorage.getItem('lenguaje').replace(/['"]+/g, '')
+    if(aux == 'en'){
+      return true
+    }else{
+      return false
+    }
+  }
 
   guardar(){
     if(this.forma.invalid){
@@ -66,7 +102,7 @@ export class AbcAttaComponent implements OnInit {
     }else{
     
       console.log(this.forma);
-      this.router.navigateByUrl('/dashboard');
+      // this.router.navigateByUrl('/dashboard');
     }
   }
 

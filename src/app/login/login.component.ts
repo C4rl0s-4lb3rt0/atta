@@ -101,7 +101,7 @@ export class LoginComponent implements OnInit {
         .subscribe( (resp) => {
           console.log(resp)
           Swal.close();
-          this.router.navigateByUrl('/dashboard');
+          this.router.navigateByUrl('/abc-atta');
         },(err) => {
           console.log(err);
           Swal.fire({

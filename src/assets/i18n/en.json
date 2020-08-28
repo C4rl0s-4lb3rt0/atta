@@ -21,6 +21,20 @@
      "navbarRight":{
           "title":"Edit",
           "button-save":"Save Changes"
+     },
+     "abc-atta":{
+          "title":"Create User",
+          "title-table":"Recruiters",
+          "crear-usuario":"Create user",
+          "title1-table":"Name",
+          "title2-table":"Level",
+          "title3-table":"Bussines Unit",
+          "title4-table":"Email",
+          "title5-table":"Recluiter ID"
+     },
+     "abc-atta-createrUser":{
+          "title":"Create User",
+          "sub-title":"Fill all the necesary data to create a new user"
      }
 }
 

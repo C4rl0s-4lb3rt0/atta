@@ -74,7 +74,7 @@ export class AuthApiService {
     
     //Create new HttpParams
     
-    debugger
+    // debugger
 console.log(user);
 console.log(pass);
 

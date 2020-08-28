@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AbcAttaComponent } from './abc-atta/abc-atta.component';
 import { IntroComponent } from './intro/intro.component';
+import { AbcAttaDashComponent } from './abc-atta-dash/abc-atta-dash.component';
 
 
 
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'signup', component: SignupComponent},
   { path: 'dashboard', component: DashboardComponent, canActivate:[ AuthGuard]},
-  { path: 'abc-atta', component: AbcAttaComponent, canActivate:[ AuthGuard]},
+  { path: 'abc-atta', component: AbcAttaDashComponent, canActivate:[ AuthGuard]},
+  { path: 'abc-atta/createUser', component: AbcAttaComponent, canActivate:[ AuthGuard]},
   // { path: 'heroe/:id', component: HeroeComponent},
   // { path: 'buscar/:termino', component: BuscadorComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'login'},

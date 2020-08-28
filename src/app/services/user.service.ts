@@ -9,11 +9,12 @@ export class UsersService{
           { 
             id: '1',
             name: 'Leanne Graham',
-            username: 'Bret',
+            username: 'aaBret',
             email: 'Sincere@april.biz',
             phone: '1-770-736-8031 x56442',
             website: 'hildegard.org',
-            status: 'Active'
+            status: 'Active',
+            level:'2'
           },
           {
             id: '2',
@@ -22,7 +23,8 @@ export class UsersService{
             email: 'Shanna@melissa.tv',
             phone: '010-692-6593 x09125',
             website: 'anastasia.net',
-            status: 'Blocked'
+            status: 'Blocked',
+            level:'1'
           },
           {
             id: '3',
@@ -31,7 +33,8 @@ export class UsersService{
             email: 'Nathan@yesenia.net',
             phone: '1-463-123-4447',
             website: 'ramiro.info',
-            status: 'Blocked'
+            status: 'Blocked',
+            level:'3'
           },
           {
             id: '4',
@@ -40,7 +43,8 @@ export class UsersService{
             email: 'Julianne.OConner@kory.org',
             phone: '493-170-9623 x156',
             website: 'kale.biz',
-            status: 'Active'
+            status: 'Active',
+            level:'1'
           },
           {
             id: '5',
@@ -49,7 +53,8 @@ export class UsersService{
             email: 'Lucio_Hettinger@annie.ca',
             phone: '(254)954-1289',
             website: 'demarco.info',
-            status: 'Active'
+            status: 'Active',
+            level:'3'
           },
           {
             id: '6',
@@ -58,16 +63,18 @@ export class UsersService{
             email: 'Karley_Dach@jasper.info',
             phone: '1-477-935-8478 x6430',
             website: 'ola.org',
-            status: 'In-Active'
+            status: 'In-Active',
+            level:'1'
           },
           {
             id: '7',
             name: 'Kurtis Weissnat',
-            username: 'Elwyn.Skiles',
+            username: 'Elwyn Skiles',
             email: 'Telly.Hoeger@billy.biz',
             phone: '210.067.6132',
             website: 'elvis.io',
-            status: 'Active'
+            status: 'Active',
+            level:'4'
           },
           {
             id: '8',
@@ -76,7 +83,8 @@ export class UsersService{
             email: 'Sherwood@rosamond.me',
             phone: '586.493.6943 x140',
             website: 'jacynthe.com',
-            status: 'In-Active'
+            status: 'In-Active',
+            level:'1'
           },
           {
             id: '10',
@@ -85,7 +93,8 @@ export class UsersService{
             email: 'Rey.Padberg@karina.biz',
             phone: '024-648-3804',
             website: 'ambrose.net',
-            status: 'Active'
+            status: 'Active',
+            level:'2'
           },
      ]
 
@@ -97,7 +106,8 @@ export class UsersService{
         email: 'Sincere@april.biz',
         phone: '1-770-736-8031 x56442',
         website: 'hildegard.org',
-        status: 'Active'
+        status: 'Active',
+        level:'1'
       },
       {
         id: '223',
@@ -106,7 +116,8 @@ export class UsersService{
         email: 'Shanna@melissa.tv',
         phone: '010-692-6593 x09125',
         website: 'anastasia.net',
-        status: 'Blocked'
+        status: 'Blocked',
+        level:'3'
       },
       {
         id: '312',
@@ -115,7 +126,8 @@ export class UsersService{
         email: 'Nathan@yesenia.net',
         phone: '1-463-123-4447',
         website: 'ramiro.info',
-        status: 'Blocked'
+        status: 'Blocked',
+        level:'1'
       },
       {
         id: '544',
@@ -124,7 +136,8 @@ export class UsersService{
         email: 'Julianne.OConner@kory.org',
         phone: '493-170-9623 x156',
         website: 'kale.biz',
-        status: 'Active'
+        status: 'Active',
+        level:'2'
       },
       {
         id: '695',
@@ -133,7 +146,8 @@ export class UsersService{
         email: 'Lucio_Hettinger@annie.ca',
         phone: '(254)954-1289',
         website: 'demarco.info',
-        status: 'Active'
+        status: 'Active',
+        level:'3'
       },
       {
         id: '876',
@@ -142,7 +156,8 @@ export class UsersService{
         email: 'Karley_Dach@jasper.info',
         phone: '1-477-935-8478 x6430',
         website: 'ola.org',
-        status: 'In-Active'
+        status: 'In-Active',
+        level:'2'
       },
       {
         id: '547',
@@ -151,7 +166,8 @@ export class UsersService{
         email: 'Telly.Hoeger@billy.biz',
         phone: '210.067.6132',
         website: 'elvis.io',
-        status: 'Active'
+        status: 'Active',
+        level:'1'
       },
       {
         id: '458',
@@ -160,7 +176,8 @@ export class UsersService{
         email: 'Sherwood@rosamond.me',
         phone: '586.493.6943 x140',
         website: 'jacynthe.com',
-        status: 'In-Active'
+        status: 'In-Active',
+        level:'3'
       },
       
       {
@@ -170,7 +187,8 @@ export class UsersService{
         email: 'Rey.Padberg@karina.biz',
         phone: '024-648-3804',
         website: 'ambrose.net',
-        status: 'Active'
+        status: 'Active',
+        level:'1'
       },
       
  ]
@@ -222,4 +240,5 @@ export interface User {
      phone: string,
      website: string,
      status: string,
+     level?: string;
    }

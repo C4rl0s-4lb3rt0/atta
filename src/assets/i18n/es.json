@@ -21,5 +21,20 @@
      "navbarRight":{
           "title":"Editar",
           "button-save":"Guardar cambios"
+     },
+     "abc-atta":{
+          "title":"Crea un Usuario ",
+          "title-table":"Reclutadores",
+          "crear-usuario":"Crear Usuario",
+          "title1-table":"Nombre",
+          "title2-table":"Nivel",
+          "title3-table":"Negocio",
+          "title4-table":"Email",
+          "title5-table":"Id Reclutador"
+     },
+     "abc-atta-createrUser":{
+          "title":"Crea un Usuario ",
+          "sub-title":"Llena todos los datos necesarios para crear un nuevo usuario"
      }
+     
 }

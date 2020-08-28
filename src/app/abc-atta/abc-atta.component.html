@@ -10,112 +10,240 @@
                </mat-drawer>
                <mat-drawer-content class="content animated fadeIn">
                     
-                    <h2>Create User</h2>
-                    <h3>Fill all the necesary data to create a new user</h3>
+                    <h2>{{ 'abc-atta-createrUser.title' | translate }}</h2>
+                    <h3>{{ 'abc-atta-createrUser.sub-title' | translate }}</h3>
 
                     <form autocomplete="off"  [formGroup]="firstFormGroup" class="alta-form">
-                         <div class="form-row">        
-                              <div class="cont-input">
-                                   <mat-form-field class="example-full-width">
-                                             <mat-label>User</mat-label>
-                                             <input 
-                                                  matInput 
-                                                  type="text"
-                                                  placeholder="User" 
-                                                  name="user"
-                                                  required
-                                                  formControlName="user"
-                                                  >
-                                   </mat-form-field>
-                              </div>    
-                              <div class="cont-input">
-                                   <mat-form-field class="example-full-width">
-                                        <mat-label>First Name</mat-label>
-                                        <input 
-                                             matInput 
-                                             type="text"
-                                             placeholder="First Name" 
-                                             name="name"
-                                             required
-                                             formControlName="firstName"
-                                             >
-                                   </mat-form-field>
-                              </div>    
-                              <div class="cont-input">
-                                   <mat-form-field class="example-full-width">
-                                        <mat-label>Last Name</mat-label>
-                                        <input 
-                                             matInput 
-                                             type="text"
-                                             placeholder="Last Name" 
-                                             name="last_name"
-                                             required
-                                             formControlName="lastName"
-                                        >
-                                   </mat-form-field>
-                              </div>    
+                         <!-- formulario para español -->
+                         <div class="form-esp" *ngIf="  !this.isEnglish()  ">
+                              <div class="form-row">        
+                                        <div class="cont-input">
+                                             <mat-form-field class="example-full-width">
+                                                       <mat-label>Usuario</mat-label>
+                                                       <input 
+                                                            matInput 
+                                                            type="text"
+                                                            placeholder="User" 
+                                                            name="user"
+                                                            required
+                                                            formControlName="user"
+                                                            >
+                                             </mat-form-field>
+                                        </div>    
+                                        <div class="cont-input">
+                                             <mat-form-field class="example-full-width">
+                                                  <mat-label>Nombre</mat-label>
+                                                  <input 
+                                                       matInput 
+                                                       type="text"
+                                                       placeholder="First Name" 
+                                                       name="name"
+                                                       required
+                                                       formControlName="firstName"
+                                                       >
+                                             </mat-form-field>
+                                        </div>    
+                                        <div class="cont-input">
+                                             <mat-form-field class="example-full-width">
+                                                  <mat-label>Apellido Paterno</mat-label>
+                                                  <input 
+                                                       matInput 
+                                                       type="text"
+                                                       placeholder="Apellido Paterno" 
+                                                       name="lastNameEsp"
+                                                       required
+                                                       formControlName="lastNameEsp"
+                                                       >
+                                             </mat-form-field>
+                                        </div>    
+                                   </div>
+                                   <div class="form-row">
+                                             
+                                             <div class="cont-input">
+
+                                                  <mat-form-field class="example-full-width">
+                                                       <mat-label>Apellid Materno</mat-label>
+                                                       <input 
+                                                            matInput 
+                                                            type="text"
+                                                            placeholder="Last Name" 
+                                                            name="last_name"
+                                                            required
+                                                            formControlName="lastName"
+                                                       >
+                                                  </mat-form-field>
+
+                                                  
+                                             </div>    
+                                             <div class="cont-input">
+
+                                                  <mat-form-field class="example-full-width">
+                                                       <mat-label>Email</mat-label>
+                                                       <input 
+                                                            matInput 
+                                                            type="email"
+                                                            placeholder="jane_@gmail.com" 
+                                                            name="email"
+                                                            required
+                                                            formControlName="email"
+                                                            >
+                                                  </mat-form-field>
+                                             </div>    
+                                             <div class="cont-input">
+                                                  <mat-form-field appearance="fill">
+                                                       <mat-label>Business Unit</mat-label>
+                                                       <mat-select required                          formControlName="business"
+                                                       >
+                                                            <mat-option *ngFor="let busine of business"  [value]="busine.value">
+                                                                 {{busine.viewValue}}
+                                                            </mat-option>
+                                                       </mat-select>
+                                                  </mat-form-field>
+                                             </div>        
+                                   </div>
+                                   <div class="form-row">        
+                                        <div class="cont-input">
+                                             <mat-form-field appearance="fill">
+                                                  <mat-label>Level</mat-label>
+                                                  <mat-select required
+                                                  formControlName="level">
+                                                       <mat-option *ngFor="let level of levels"  [value]="level">
+                                                            {{level}}
+                                                       </mat-option>
+                                                  </mat-select>
+                                             </mat-form-field>
+                                        </div>    
+                                        <div class="cont-input">
+                                             <mat-form-field appearance="fill">
+                                                  <mat-label>Select a Level</mat-label>
+                                                  <mat-select required formControlName="business">
+                                                       <mat-option *ngFor="let busine of business"  [value]="busine.value">
+                                                            {{busine.viewValue}}
+                                                       </mat-option>
+                                                  </mat-select>
+                                             </mat-form-field>
+                                        </div>    
+                                        <div class="cont-input">
+                                             
+                                        </div>    
+                                   </div>
+                         
+                         
                          </div>
-                         <div class="form-row">
-                                   <div class="cont-input">
-                                        <mat-form-field class="example-full-width">
-                                             <mat-label>Email</mat-label>
-                                             <input 
-                                                  matInput 
-                                                  type="email"
-                                                  placeholder="jane_@gmail.com" 
-                                                  name="email"
-                                                  required
-                                                  formControlName="email"
-                                                  >
-                                        </mat-form-field>
-                                   </div>    
-                                   <div class="cont-input">
-                                        <mat-form-field appearance="fill">
-                                             <mat-label>Business Unit</mat-label>
-                                             <mat-select required                          formControlName="business"
-                                             >
-                                                  <mat-option *ngFor="let busine of business"  [value]="busine.value">
-                                                       {{busine.viewValue}}
-                                                  </mat-option>
-                                             </mat-select>
-                                        </mat-form-field>
-                                   </div>    
-                                   <div class="cont-input">
-                                        <mat-form-field appearance="fill">
-                                             <mat-label>Level</mat-label>
-                                             <mat-select required
-                                             formControlName="level">
-                                                  <mat-option *ngFor="let level of levels"  [value]="level">
-                                                       {{level}}
-                                                  </mat-option>
-                                             </mat-select>
-                                        </mat-form-field>
-                                   </div>        
+
+                         <!-- formulario para ingles -->
+                         <div class="form-ingl" *ngIf="  this.isEnglish()  ">
+                                   <div class="form-row">        
+                                             <div class="cont-input">
+                                                  <mat-form-field class="example-full-width">
+                                                       <mat-label>User</mat-label>
+                                                       <input 
+                                                            matInput 
+                                                            type="text"
+                                                            placeholder="User" 
+                                                            name="user"
+                                                            required
+                                                            formControlName="user"
+                                                            >
+                                                  </mat-form-field>
+                                             </div>    
+                                             <div class="cont-input">
+                                                  <mat-form-field class="example-full-width">
+                                                       <mat-label>First Name</mat-label>
+                                                       <input 
+                                                            matInput 
+                                                            type="text"
+                                                            placeholder="First Name" 
+                                                            name="name"
+                                                            required
+                                                            formControlName="firstName"
+                                                            >
+                                                  </mat-form-field>
+                                             </div>    
+                                             <div class="cont-input">
+                                                  <mat-form-field class="example-full-width">
+                                                       <mat-label>Last Name</mat-label>
+                                                       <input 
+                                                            matInput 
+                                                            type="text"
+                                                            placeholder="Last Name" 
+                                                            name="last_name"
+                                                            required
+                                                            formControlName="lastName"
+                                                       >
+                                                  </mat-form-field>
+                                             </div>    
+                                        </div>
+                                        <div class="form-row">
+                                                  <div class="cont-input">
+                                                       <mat-form-field class="example-full-width">
+                                                            <mat-label>Email</mat-label>
+                                                            <input 
+                                                                 matInput 
+                                                                 type="email"
+                                                                 placeholder="jane_@gmail.com" 
+                                                                 name="email"
+                                                                 required
+                                                                 formControlName="email"
+                                                                 >
+                                                       </mat-form-field>
+                                                  </div>    
+                                                  <div class="cont-input">
+                                                       <mat-form-field class="example-full-width">
+                                                            <mat-label>Phone Number</mat-label>
+                                                            <input 
+                                                                 matInput 
+                                                                 placeholder="Enter phone number" 
+                                                                 name="number"
+                                                                 required
+                                                                 type="number"  
+                                                                 minlength="6"
+                                                                 formControlName="phone"
+                                                            >
+                                                       </mat-form-field>
+                                                  </div>    
+                                                  <div class="cont-input">
+                                                            <mat-form-field appearance="fill">
+                                                                      <mat-label>Business Unit</mat-label>
+                                                                      <mat-select required formControlName="business">
+                                                                           <mat-option *ngFor="let busine of business"  [value]="busine.value">
+                                                                                {{busine.viewValue}}
+                                                                           </mat-option>
+                                                                      </mat-select>
+                                                                 </mat-form-field>
+                                                  </div>        
+                                        </div>
+                                        <div class="form-row">        
+                                             <div class="cont-input">
+                                                  <mat-form-field appearance="fill">
+                                                       <mat-label>Level</mat-label>
+                                                       <mat-select required
+                                                       formControlName="level">
+                                                            <mat-option *ngFor="let level of levels"  [value]="level">
+                                                                 {{level}}
+                                                            </mat-option>
+                                                       </mat-select>
+                                                  </mat-form-field>
+                                                  
+                                             </div>    
+                                             <div class="cont-input">
+                                                  
+                                             </div>    
+                                             <div class="cont-input">
+                                                  
+                                             </div>    
+                                        </div>
+
                          </div>
-                         <div class="form-row">        
-                              <div class="cont-input">
-                                   <mat-form-field appearance="fill">
-                                        <mat-label>Select a Level</mat-label>
-                                        <mat-select required formControlName="business">
-                                             <mat-option *ngFor="let busine of business"  [value]="busine.value">
-                                                  {{busine.viewValue}}
-                                             </mat-option>
-                                        </mat-select>
-                                   </mat-form-field>
-                              </div>    
-                              <div class="cont-input">
-                                   
-                              </div>    
-                              <div class="cont-input">
-                                   
-                              </div>    
-                         </div>
+                        
                          <div class="form-row" style="
-                         display: flex;
-                         align-items: flex-end;
-                         justify-content: flex-end;
-                     "> 
-                              <button mat-raised-button color="primary" class="login" disabled=true type="submit"> Cancel </button>
+                              display: flex;
+                              align-items: flex-end;
+                              justify-content: flex-end;
+                              "> 
+
+                              
+                              <button mat-raised-button color="primary" class="login"   routerLink="/abc-atta/" > Cancel </button>
                               <button mat-raised-button color="primary" class="login" type="submit"> Save </button>
                          </div>
                     </form>
