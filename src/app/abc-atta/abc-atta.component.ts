@@ -57,9 +57,10 @@ export class AbcAttaComponent implements OnInit {
       this.firstFormGroup = this._formBuilder.group({
         user:['', Validators.required],
         firstName:['', Validators.required],
-        lastNameEsp:['', Validators.required],
-        lastName:['',Validators.required],
+        apPaterno:['', Validators.required],
+        apMaterno:['',Validators.required],
         email:['',[Validators.required , Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+        phone:['',Validators.required],
         business:['',Validators.required],
         level:['',Validators.required], 
         leng:['esp']
