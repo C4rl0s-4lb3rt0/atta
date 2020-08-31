@@ -3,108 +3,108 @@
      </app-main-nav>
      <mat-drawer-container class="left-container">
                <mat-drawer mode="side" class="sidenav" opened>
-                   
+
                     <p><button mat-button routerLink="/dashboard">Dash Board </button></p>
                     <p><button mat-button  class="active-but" >ABC ATTA</button></p>
-                    
+
                </mat-drawer>
                <mat-drawer-content class="content animated fadeIn">
-                    
+
                     <h2>{{ 'abc-atta-createrUser.title' | translate }}</h2>
                     <h3>{{ 'abc-atta-createrUser.sub-title' | translate }}</h3>
 
-                    <form autocomplete="off"  [formGroup]="firstFormGroup" class="alta-form">
+                    <form autocomplete="off"  [formGroup]="firstFormGroup" class="alta-form" (ngSubmit)="guardar()">
                          <!-- formulario para español -->
                          <div class="form-esp" *ngIf="  !this.isEnglish()  ">
-                              <div class="form-row">        
+                              <div class="form-row">
                                         <div class="cont-input">
                                              <mat-form-field class="example-full-width">
                                                        <mat-label>Usuario</mat-label>
-                                                       <input 
-                                                            matInput 
+                                                       <input
+                                                            matInput
                                                             type="text"
-                                                            placeholder="User" 
+                                                            placeholder="User"
                                                             name="user"
                                                             required
                                                             formControlName="user"
                                                             >
                                              </mat-form-field>
-                                        </div>    
+                                        </div>
                                         <div class="cont-input">
                                              <mat-form-field class="example-full-width">
                                                   <mat-label>Nombre</mat-label>
-                                                  <input 
-                                                       matInput 
+                                                  <input
+                                                       matInput
                                                        type="text"
-                                                       placeholder="First Name" 
+                                                       placeholder="First Name"
                                                        name="name"
                                                        required
                                                        formControlName="firstName"
                                                        >
                                              </mat-form-field>
-                                        </div>    
+                                        </div>
                                         <div class="cont-input">
                                              <mat-form-field class="example-full-width">
                                                   <mat-label>Apellido Paterno</mat-label>
-                                                  <input 
-                                                       matInput 
+                                                  <input
+                                                       matInput
                                                        type="text"
-                                                       placeholder="Apellido Paterno" 
+                                                       placeholder="Apellido Paterno"
                                                        name="apPaterno"
                                                        required
                                                        formControlName="apPaterno"
                                                        >
                                              </mat-form-field>
-                                        </div>    
+                                        </div>
                                    </div>
                                    <div class="form-row">
-                                             
+
                                              <div class="cont-input">
 
                                                   <mat-form-field class="example-full-width">
                                                        <mat-label>Apellid Materno</mat-label>
-                                                       <input 
-                                                            matInput 
+                                                       <input
+                                                            matInput
                                                             type="text"
-                                                            placeholder="Last Name" 
+                                                            placeholder="Last Name"
                                                             name="apMaterno"
                                                             required
                                                             formControlName="apMaterno"
                                                        >
                                                   </mat-form-field>
 
-                                                  
-                                             </div>    
+
+                                             </div>
                                              <div class="cont-input">
 
                                                   <mat-form-field class="example-full-width">
                                                        <mat-label>Email</mat-label>
-                                                       <input 
-                                                            matInput 
+                                                       <input
+                                                            matInput
                                                             type="email"
-                                                            placeholder="jane_@gmail.com" 
+                                                            placeholder="jane_@gmail.com"
                                                             name="email"
                                                             required
                                                             formControlName="email"
                                                             >
                                                   </mat-form-field>
-                                             </div>    
+                                             </div>
                                              <div class="cont-input">
                                                   <mat-form-field class="example-full-width">
                                                        <mat-label>Phone Number</mat-label>
-                                                       <input 
-                                                            matInput 
-                                                            placeholder="Enter phone number" 
+                                                       <input
+                                                            matInput
+                                                            placeholder="Enter phone number"
                                                             name="number"
                                                             required
-                                                            type="number"  
+                                                            type="number"
                                                             minlength="6"
                                                             formControlName="phone"
                                                        >
                                                   </mat-form-field>
-                                             </div>        
+                                             </div>
                                    </div>
-                                   <div class="form-row">        
+                                   <div class="form-row">
                                         <div class="cont-input">
                                              <mat-form-field appearance="fill">
                                                   <mat-label>Bussines Unit</mat-label>
@@ -114,7 +114,7 @@
                                                        </mat-option>
                                                   </mat-select>
                                              </mat-form-field>
-                                        </div>    
+                                        </div>
                                         <div class="cont-input">
                                                   <mat-form-field appearance="fill">
                                                             <mat-label>Level</mat-label>
@@ -125,86 +125,86 @@
                                                                  </mat-option>
                                                             </mat-select>
                                                        </mat-form-field>
-                                        </div>    
+                                        </div>
                                         <div class="cont-input">
-                                             
-                                        </div>    
+
+                                        </div>
                                    </div>
-                         
-                         
+
+
                          </div>
 
                          <!-- formulario para ingles -->
                          <div class="form-ingl" *ngIf="  this.isEnglish()  ">
-                                   <div class="form-row">        
+                                   <div class="form-row">
                                              <div class="cont-input">
                                                   <mat-form-field class="example-full-width">
                                                        <mat-label>User</mat-label>
-                                                       <input 
-                                                            matInput 
+                                                       <input
+                                                            matInput
                                                             type="text"
-                                                            placeholder="User" 
+                                                            placeholder="User"
                                                             name="user"
                                                             required
                                                             formControlName="user"
                                                             >
                                                   </mat-form-field>
-                                             </div>    
+                                             </div>
                                              <div class="cont-input">
                                                   <mat-form-field class="example-full-width">
                                                        <mat-label>First Name</mat-label>
-                                                       <input 
-                                                            matInput 
+                                                       <input
+                                                            matInput
                                                             type="text"
-                                                            placeholder="First Name" 
+                                                            placeholder="First Name"
                                                             name="name"
                                                             required
                                                             formControlName="firstName"
                                                             >
                                                   </mat-form-field>
-                                             </div>    
+                                             </div>
                                              <div class="cont-input">
                                                   <mat-form-field class="example-full-width">
                                                        <mat-label>Last Name</mat-label>
-                                                       <input 
-                                                            matInput 
+                                                       <input
+                                                            matInput
                                                             type="text"
-                                                            placeholder="Last Name" 
+                                                            placeholder="Last Name"
                                                             name="last_name"
                                                             required
                                                             formControlName="lastName"
                                                        >
                                                   </mat-form-field>
-                                             </div>    
+                                             </div>
                                         </div>
                                         <div class="form-row">
                                                   <div class="cont-input">
                                                        <mat-form-field class="example-full-width">
                                                             <mat-label>Email</mat-label>
-                                                            <input 
-                                                                 matInput 
+                                                            <input
+                                                                 matInput
                                                                  type="email"
-                                                                 placeholder="jane_@gmail.com" 
+                                                                 placeholder="jane_@gmail.com"
                                                                  name="email"
                                                                  required
                                                                  formControlName="email"
                                                                  >
                                                        </mat-form-field>
-                                                  </div>    
+                                                  </div>
                                                   <div class="cont-input">
                                                        <mat-form-field class="example-full-width">
                                                             <mat-label>Phone Number</mat-label>
-                                                            <input 
-                                                                 matInput 
-                                                                 placeholder="Enter phone number" 
+                                                            <input
+                                                                 matInput
+                                                                 placeholder="Enter phone number"
                                                                  name="number"
                                                                  required
-                                                                 type="number"  
+                                                                 type="number"
                                                                  minlength="6"
                                                                  formControlName="phone"
                                                             >
                                                        </mat-form-field>
-                                                  </div>    
+                                                  </div>
                                                   <div class="cont-input">
                                                             <mat-form-field appearance="fill">
                                                                       <mat-label>Business Unit</mat-label>
@@ -214,9 +214,9 @@
                                                                            </mat-option>
                                                                       </mat-select>
                                                                  </mat-form-field>
-                                                  </div>        
+                                                  </div>
                                         </div>
-                                        <div class="form-row">        
+                                        <div class="form-row">
                                              <div class="cont-input">
                                                   <mat-form-field appearance="fill">
                                                        <mat-label>Level</mat-label>
@@ -227,91 +227,91 @@
                                                             </mat-option>
                                                        </mat-select>
                                                   </mat-form-field>
-                                                  
-                                             </div>    
+
+                                             </div>
                                              <div class="cont-input">
-                                                  
-                                             </div>    
+
+                                             </div>
                                              <div class="cont-input">
-                                                  
-                                             </div>    
+
+                                             </div>
                                         </div>
 
                          </div>
-                        
+
                          <div class="form-row" style="
                               display: flex;
                               align-items: flex-end;
                               justify-content: flex-end;
-                              "> 
+                              ">
 
-                              
+
                               <button mat-raised-button color="primary" class="login"   routerLink="/abc-atta/" > Cancel </button>
-                              <button mat-raised-button color="primary" class="login" type="submit" [disabled]="!firstFormGroup.valid"> Save </button>
+                              <button mat-raised-button color="primary" class="login" type="submit" [disabled]="!firstFormGroup.valid"> Save</button>
                          </div>
                     </form>
 
-        
+
 
 
 
 <!-- <form autocomplete="off"  [formGroup]="firstFormGroup" (ngSubmit)="guardar()">
      <div class="form-row">
-          
+
           <div class="cont-input">
                <mat-form-field class="example-full-width">
                          <mat-label>User</mat-label>
-                         <input 
-                              matInput 
+                         <input
+                              matInput
                               type="text"
-                              placeholder="User" 
+                              placeholder="User"
                               name="user"
                               required
                               formControlName="user"
                               >
                </mat-form-field>
-          </div>    
+          </div>
           <div class="cont-input">
                <mat-form-field class="example-full-width">
                     <mat-label>First Name</mat-label>
-                    <input 
-                         matInput 
+                    <input
+                         matInput
                          type="text"
-                         placeholder="First Name" 
+                         placeholder="First Name"
                          name="name"
                          required
                          formControlName="firstName"
                          >
                </mat-form-field>
-          </div>    
+          </div>
           <div class="cont-input">
                <mat-form-field class="example-full-width">
                     <mat-label>Last Name</mat-label>
-                    <input 
-                         matInput 
+                    <input
+                         matInput
                          type="text"
-                         placeholder="Last Name" 
+                         placeholder="Last Name"
                          name="last_name"
                          required
                          formControlName="lastName"
                     >
                </mat-form-field>
-          </div>    
+          </div>
      </div>
      <div class="form-row">
           <div class="cont-input">
                <mat-form-field class="example-full-width">
                     <mat-label>Email</mat-label>
-                    <input 
-                         matInput 
+                    <input
+                         matInput
                          type="email"
-                         placeholder="jane_@gmail.com" 
+                         placeholder="jane_@gmail.com"
                          name="email"
                          required
                          formControlName="email"
                          >
                </mat-form-field>
-          </div>    
+          </div>
           <div class="cont-input">
                <mat-form-field appearance="fill">
                     <mat-label>Business Unit</mat-label>
@@ -322,7 +322,7 @@
                          </mat-option>
                     </mat-select>
                </mat-form-field>
-          </div>    
+          </div>
           <div class="cont-input">
                <mat-form-field appearance="fill">
                     <mat-label>Level</mat-label>
@@ -333,18 +333,18 @@
                          </mat-option>
                     </mat-select>
                </mat-form-field>
-          </div>    
-               
+          </div>
+
      </div>
      <div class="form-row align-left">
                <div class="cont-text">
-                    <p *ngIf="!auxtext ">*Make sure you’re using the correct character convenon. </p>    
+                    <p *ngIf="!auxtext ">*Make sure you’re using the correct character convenon. </p>
                </div>
                <div class="cont-buttons">
                          <button mat-raised-button color="primary" class="login" >Cancel</button>
                          <button mat-raised-button color="primary" class="login" type="submit">Next</button>
-               </div>    
-                 
+               </div>
+
      </div>
 </form> -->
 
@@ -356,6 +356,6 @@
 
      {{ firstFormGroup.value | json }}
 </pre>
-               </mat-drawer-content> 
+               </mat-drawer-content>
      </mat-drawer-container>
 </div>
