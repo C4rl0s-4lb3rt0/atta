@@ -3,13 +3,13 @@
           </app-main-nav>
           <mat-drawer-container class="left-container">
                     <mat-drawer mode="side" class="sidenav" opened>
-                        
+
                          <p><button mat-button routerLink="/dashboard">Dash Board </button></p>
                          <p><button mat-button  class="active-but" >ABC ATTA</button></p>
-                         
+
                     </mat-drawer>
                     <mat-drawer-content class="content animated fadeIn">
-                         
+
                          <div class="contenedor-prin" >
                               <div class="content-body">
                                         <ng-container >
@@ -34,18 +34,18 @@
                                                                       <mat-icon matChipRemove *ngIf="varChipStatus">cancel</mat-icon>
                                                                       </mat-chip>
                                                                  </mat-chip-list>
-                                                            </mat-form-field>   
+                                                            </mat-form-field>
                                                        </div>
                                                        <div *ngIf="isAllSelected()" class="content-all" >
                                                             <div class="cont-select-all">
-                                                                 
-                                                                 
-                                                                 <button   mat-button  
+
+
+                                                                 <button   mat-button
                                                                            matTooltip="Move to Job Applicants">
                                                                       <mat-icon>edit</mat-icon>
                                                                  </button>
-                                                                 
-                                                                 
+
+
                                                                  <!-- <button mat-button [matMenuTriggerFor]="cont">
                                                                       <mat-icon> contact_mail</mat-icon>
                                                                  </button>
@@ -53,9 +53,9 @@
                                                                       <button mat-menu-item>Item 1</button>
                                                                       <button mat-menu-item>Item 2</button>
                                                                  </mat-menu>
-                              
-                              
-                              
+
+
+
                                                                  <button mat-button [matMenuTriggerFor]="search">
                                                                       <mat-icon> youtube_searched_for</mat-icon>
                                                                  </button>
@@ -63,8 +63,8 @@
                                                                       <button mat-menu-item>Item 1</button>
                                                                       <button mat-menu-item>Item 2</button>
                                                                  </mat-menu>
-                              
-                              
+
+
                                                                  <button mat-button [matMenuTriggerFor]="search">
                                                                       <mat-icon>ballot</mat-icon>
                                                                  </button>
@@ -72,17 +72,17 @@
                                                                       <button mat-menu-item>Item 1</button>
                                                                       <button mat-menu-item>Item 2</button>
                                                                  </mat-menu>     -->
-                              
+
                                                             </div>
                                                        </div>
-                              
+
                                                   </div>
                                                   <button mat-raised-button color="primary" class="login" routerLink="/abc-atta/createUser" >{{ 'abc-atta.crear-usuario' | translate}}</button>
                                                   <div class="cont-chips-button">
                                                        <button mat-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
                                                   </div>
                                              </div>
-                                             
+
                                              <mat-menu #menu="matMenu" >
                                                   <div (click) = "$event.stopPropagation()" class="content-filtro" >
                                                        <div class="title-filter">
@@ -107,34 +107,34 @@
                                                   </div>
                                              </mat-menu>
                                         </div>
-                                        
 
-                                        
-                                        
-                                        
+
+
+
+
                                         <mat-table [dataSource]="dataSource" matSort>
 
-                                             
 
-                                             
+
+
                                              <ng-container matColumnDef="level">
                                              <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'abc-atta.title5-table' | translate }}  </mat-header-cell>
-                                             <mat-cell *matCellDef="let element" > {{element.website}} </mat-cell>
+                                             <mat-cell *matCellDef="let element" > {{element.username}} </mat-cell>
                                              </ng-container>
-                                             
+
 
                                              <ng-container matColumnDef="name" >
                                              <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'abc-atta.title1-table' | translate }}  </mat-header-cell>
                                              <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
                                              </ng-container>
-                                             
+
 
                                              <ng-container matColumnDef="email">
                                              <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'abc-atta.title3-table' | translate }}  </mat-header-cell>
-                                             <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+                                             <mat-cell *matCellDef="let element"> {{element.website}} </mat-cell>
                                              </ng-container>
-                                        
-                                             
+
+
                                              <ng-container matColumnDef="bussinets">
                                              <mat-header-cell *matHeaderCellDef > {{ 'abc-atta.title4-table' | translate }}  </mat-header-cell>
                                              <mat-cell *matCellDef="let element" > {{element.email}} </mat-cell>
@@ -144,38 +144,38 @@
                                              <mat-header-cell *matHeaderCellDef  > {{ 'abc-atta.title2-table' | translate }}  </mat-header-cell>
                                              <mat-cell *matCellDef="let element"> {{element.level}} </mat-cell>
                                              </ng-container>
-                                   
-                                             
-                                             
-                                        
-                                        
+
+
+
+
+
                                         <mat-header-row *matHeaderRowDef="displayedColumns;"></mat-header-row >
                                         <!-- <mat-row *matRowDef="let row; columns: displayedColumns;"(click)="selection.toggle(row)"></mat-row> -->
                                         <mat-row *matRowDef="let row; columns: displayedColumns;" ></mat-row>
-                                        
-                              
-                                             
-                              
-                              
-                                        </mat-table>   
-                                        
-                                        
+
+
+
+
+
+                                        </mat-table>
+
+
                                         <!-- <mat-paginator [pageSize]="5" [pageSizeOptions]="[2, 3, 4, 5, 6]">
                                         </mat-paginator> -->
-                                        
-                              
+
+
                                         <!-- <button mat-flat-button color="warn" (click)="sendFileInterrupt()">datos</button> -->
-                                        
-                                        
+
+
                                         <!-- <pre>
                                         selection.hasValue(): {{selection.hasValue()}}
                                         isAllSelected(): {{isAllSelected()}}
-                                        
+
                                         {{ selection }}
                                         </pre> -->
                                         </ng-container>
                               </div>
                          </div>
-                    </mat-drawer-content> 
+                    </mat-drawer-content>
           </mat-drawer-container>
      </div>
