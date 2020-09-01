@@ -54,12 +54,12 @@
       <!-- <a *ngIf="Islogged" mat-list-item >About Us</a>
       <a *ngIf="Islogged"  mat-list-item >Contact</a> -->
 
-      <button *ngIf="!Islogged" [ngClass]="{'active': botonLan()  === true}" (click)="cambiarLenguaje('es')">Español</button>
+      <a class="switch" *ngIf="!Islogged" [ngClass]="{'active': botonLan()  === true}" (click)="cambiarLenguaje('es')">Switch to Spanish</a>
 
-       <button *ngIf="!Islogged" [ngClass]="{'active': botonLan() === false}" (click)="cambiarLenguaje('en')">Inglés</button>
+       <a class="switch" *ngIf="!Islogged" [ngClass]="{'active': botonLan() === false}" (click)="cambiarLenguaje('en')">Switch to English</a>
       <!-- {{ Islogged }} -->
 
-      <button  *ngIf="Islogged" (click)="salir()">    Salir  </button>
+      <a class="logout"  *ngIf="Islogged" (click)="salir()" >   {{ 'main-nav.salir' | translate }} </a>
               
     </mat-toolbar>
     <ng-content>

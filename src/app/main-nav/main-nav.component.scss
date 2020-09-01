@@ -2,6 +2,12 @@
   height: 100%;
 }
 
+.mat-toolbar.mat-primary{
+  background: white;
+  border-bottom: 1px solid #a8a8a8;;
+  
+
+}
 .sidenav {
   width: 200px;
 }
@@ -34,17 +40,54 @@ mat-sidenav-content{
     // outline: 5px solid red;
   }
   svg{
+    padding-left:70px ;
     width: 200px;
     height: auto;
+    width: 160px;
+    height: 43px;
+    object-fit: contain;
+    
   }
 }
-button{
+
+mat-toolbar a.switch{
+  margin-right:70px ;
   display: block;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: right;
+  color: #323232!important;
+  cursor:pointer;
   &.active{
     display: none;
     // outline:1px solid red;
   }
 }
+
+mat-sidenav-content{
+  outline: 5px solid red;
+}
+
+.logout{
+    display: block;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-align: right;
+    color: #323232 !important;
+    cursor: pointer;
+    padding-right: 150px;
+}
+
+
+
 
 @media(max-width:600px){
   mat-toolbar a{ 

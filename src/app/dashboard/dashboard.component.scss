@@ -27,25 +27,47 @@
      bottom: 60px;
      left: 0;
      right: 0;
-     height: calc(100vh - 65px);
+     height: calc(100vh - 60px);
      .sidenav {
           padding-top: 40px;
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 300px;
-          background: #2196F3;
+          width: 240px;
+          background:  #0e5375;
           p{
                width: 100%;
                // outline: 1px solid red;
                button{
-                    width: 80%;
+                    width: 100%;
                     // outline: 1px solid blue;
                     text-align: left;
                     &.active-but{
                          color:white;
-                         background: black;
+                         // background: black;
+                         background: rgb(35,131,182);
+                         background: linear-gradient(90deg, rgba(35,131,182,1) 0%, rgba(0,223,195,1) 100%);
+                         font-size: 14px;
+                         font-weight: bold;
+                         font-stretch: normal;
+                         font-style: normal;
+                         line-height: normal;
+                         letter-spacing: normal;
+                         color: #ffffff;
+                         padding-top:10px;
+                         padding-bottom:10px;
+                         padding-left: 15px;
                     }
+                    font-size: 14px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: normal;
+                    letter-spacing: normal;
+                    color: #ffffff;
+                    padding-top:10px;
+                    padding-bottom:10px;
+                    padding-left: 15px;
                }
           }
      }

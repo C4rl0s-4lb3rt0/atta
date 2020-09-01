@@ -1,7 +1,10 @@
 {
+     "main-nav":{
+          "salir":"Log-out"
+     },
      "principal": {
-          "titulo": "EN AgileThought EN",
-          "texto" : "EN It is a long established fact that a reader will be distracted  when looking at its layout. The point of using Lorem Ipsum is that it ha EN",
+          "titulo": "Sign in",
+          "texto" : "Welcome to the Agile Thought Talent Attraction platform",
           "invalidUser":"Please enter a valid user id",
           "invalidPass":"Please enter a valid password"
      },
@@ -24,7 +27,7 @@
      },
      "abc-atta":{
           "title":"Create User",
-          "title-table":"Recruiters",
+          "title-table":"Register recruiters",
           "crear-usuario":"Create user",
           "title1-table":"Name",
           "title2-table":"Level",

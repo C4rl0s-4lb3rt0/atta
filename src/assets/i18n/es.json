@@ -1,7 +1,10 @@
 {
+     "main-nav":{
+          "salir":"Salir"
+     },   
      "principal": {
-          "titulo": "ES AgileThought ES",
-          "texto" : " ES Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. ES",
+          "titulo": "Registro",
+          "texto" : " Bienvenidos a Agile Thought Talent Attraction",
           "invalidUser":"Escribe un ID valido",
           "invalidPass":"Escribe un Password valido"
      },

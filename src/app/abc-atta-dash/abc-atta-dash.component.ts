@@ -10,6 +10,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import {SelectionModel} from '@angular/cdk/collections';
 
+import { AuthApiService } from '../services/auth-api.service';
 
 
 import { UsersService } from '../services/user.service';
@@ -35,9 +36,8 @@ export class AbcAttaDashComponent implements OnInit {
 
   dataSource;
 
-  usersData:User[];
-
-  selection = new SelectionModel<User>(true, []);
+  
+  selection = new SelectionModel<Recruiter>(true, []);
 
   events: string[] = [];
   opened: boolean;
@@ -59,6 +59,7 @@ export class AbcAttaDashComponent implements OnInit {
 }
 
   // chips
+  showChips=false;
   visible = true;
   selectable = true;
   removable = true;
@@ -73,12 +74,15 @@ export class AbcAttaDashComponent implements OnInit {
   // chips
 
 
+  recruiters:any[]= []
+  loading:boolean;
 
   constructor(private auth: AuthService,
               private router: Router,
-              private _usersService: UsersService
+              private _apiServide:AuthApiService
               ) {
       
+          this.loading= true;
           this.filterSelectObj = [
                   {
                     name: 'Level',
@@ -87,13 +91,33 @@ export class AbcAttaDashComponent implements OnInit {
                   },
                   {
                     name: 'Recluter Id',
-                    columnProp: 'website',
+                    columnProp: 'id',
                     options: []
                   }
                 ]
-          this.usersData=this._usersService.getUsers();
           
-          this.dataSource = new MatTableDataSource<User>(this.usersData);
+          this._apiServide.getUsers()
+              .subscribe( (data:any) => {
+                  console.log(data);
+                  this.recruiters=data
+                  this.loading=false;
+                  this.dataSource = new MatTableDataSource<Recruiter>(data);
+                  this.getRemoteData();
+                  this.dataSource.sort = this.sort;
+                  this.dataSource.filterPredicate = this.createFilter();
+                  this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
+    
+
+    
+                  }
+              )
+          
+      console.log('debemos ini');
+      console.log(this.recruiters);
+      console.log('debemos final');
+          
+          // this.dataSource = new MatTableDataSource<Recruiter>(this._apiServide);
 
 
       }
@@ -105,9 +129,11 @@ export class AbcAttaDashComponent implements OnInit {
 
   ngOnInit(): void {
     // this.dataSource.sort = this.sort;
-    this.getRemoteData();
-
+    
     // Overrride default filter behaviour of Material Datatable
+    
+    
+    this.getRemoteData();
     this.dataSource.filterPredicate = this.createFilter();
     this.dataSource.sort = this.sort;
 
@@ -138,7 +164,7 @@ export class AbcAttaDashComponent implements OnInit {
   getRemoteData() {
 
     
-    
+    console.log(this.dataSource.data)
     this.filterSelectObj.filter((o) => {
       o.options = this.getFilterObject(this.dataSource.data, o.columnProp);
     });
@@ -149,21 +175,22 @@ export class AbcAttaDashComponent implements OnInit {
     //let filterValues = {}
     // console.log(filter);
     // console.log('vamos');
-    // console.log(event.target.value.trim().toLowerCase());
+    console.log(event.target.value.trim().toLowerCase());
     
     // console.log('atras');
     
     this.filterValues[filter.columnProp] = event.target.value.trim().toLowerCase()
     this.dataSource.filter = JSON.stringify(this.filterValues)
+    console.log(filter.name);
     
-    
-    if(filter.name=='ID'){
-      this.varChipIdUser = `Id recluter: ${filter.modelValue}`
+    if(filter.name=='Level'){
+      this.varChipIdUser = `Level: ${filter.modelValue}`
+   
     }
-    if(filter.name=='STATUS'){
-      this.varChipStatus =`Status: ${filter.modelValue}`;
+    if(filter.name=='Recluter Id'){
+      this.varChipStatus =`Recluter Id: ${filter.modelValue}`;
     }
-
+      this.showChips=true;
   }
 
 
@@ -284,14 +311,16 @@ resetFiltersStatus() {
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
+
+    // this.dataSource.sort = this.sort;
+    // this.dataSource.paginator = this.paginator;
+  
   }
 
    /** Whether the number of selected elements matches the total number of rows. */
    isAllSelected() {
     const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
+    const numRows = this.recruiters.length;
     return numSelected === numRows;
   }
 
@@ -350,7 +379,7 @@ resetFiltersStatus() {
     }
   
     /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: User): string {
+  checkboxLabel(row?: Recruiter): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
@@ -370,13 +399,15 @@ resetFiltersStatus() {
 
 
 
-export interface User {
+
+
+export interface Recruiter {
   id: string,
-  name: string,
-  username: string,
+  name: string
   email: string,
   phone: string,
+  level: string,
+  username: string,
   website: string,
-  status: string,
+  status: string
 }
-

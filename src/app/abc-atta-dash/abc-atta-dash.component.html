@@ -1,3 +1,9 @@
+
+
+<!-- <p *ngIf="loading">
+     loading....
+</p> -->
+
 <div>
           <app-main-nav>
           </app-main-nav>
@@ -14,12 +20,48 @@
                               <div class="content-body">
                                         <ng-container >
                                         <div class="filtro">
-                                             <div class="cont-chips-title">
-                                                  <h2> {{ 'abc-atta.title-table' | translate}}</h2>
-
+                                             <div class="row-up">
+                                                  <div class="cont-chips-title">
+                                                       <h2> {{ 'abc-atta.title-table' | translate}}</h2>
+     
+                                                  </div>
+                                                  <div class="cont-chips-prin" [ngClass]="{'first': isAllSelected() }">
+                                                       
+                                                       <button mat-raised-button color="primary" class="login" routerLink="/abc-atta/createUser" >{{ 'abc-atta.crear-usuario' | translate}}</button>
+                                                       <div class="cont-chips-button">
+                                                            <button mat-button [matMenuTriggerFor]="menu"><mat-icon>filter_list</mat-icon>
+                                                            </button>
+                                                       </div>
+                                                  </div>
+     
+                                                  <mat-menu #menu="matMenu" >
+                                                       <div (click) = "$event.stopPropagation()" class="content-filtro" >
+                                                            <div class="title-filter">
+                                                                 <p>{{ 'dashboard.title-filter' | translate }}</p>
+                                                            </div>
+                                                            <div class="filters">
+                                                                 <mat-form-field *ngFor="let filter of filterSelectObj" style="margin-left: 15px;">
+                                                                      <mat-label>{{filter.name}}</mat-label>
+                                                                      <select matNativeControl name="{{filter.columnProp}}" [(ngModel)]="filter.modelValue"
+                                                                           (change)="filterChange(filter,$event)">
+                                                                           <option value="">-- Select {{filter.name}} --</option>
+                                                                           <option [value]="item" *ngFor="let item of filter.options">{{item}}</option>
+                                                                      </select>
+                                                                 </mat-form-field>
+                                                            </div>
+                                                            <div class="filter-button" style="display: flex;
+                                                            justify-content:flex-end">
+                                                                      <button mat-raised-button color="primary"
+                                                                      (click) = "someMethod()"
+                                                                      >{{ 'dashboard.buton-filter' | translate }}</button>
+                                                            </div>
+                                                       </div>
+                                                  </mat-menu>
                                              </div>
-                                             <div class="cont-chips-prin" [ngClass]="{'first': isAllSelected() }">
-                                                  <div class="cont-tent">
+
+                                             <div class="row-bottom" *ngIf="showChips">
+                                                  <div class="cont-tent"  style="outline:1px solid red;display: flex;width:100%">
+                                                       <span class="title-filter">Filters</span>
                                                        <div class="cont-chips-cont">
                                                             <mat-form-field class="chip-list">
                                                                  <mat-chip-list #chipList >
@@ -36,76 +78,9 @@
                                                                  </mat-chip-list>
                                                             </mat-form-field>
                                                        </div>
-                                                       <div *ngIf="isAllSelected()" class="content-all" >
-                                                            <div class="cont-select-all">
-
-
-                                                                 <button   mat-button
-                                                                           matTooltip="Move to Job Applicants">
-                                                                      <mat-icon>edit</mat-icon>
-                                                                 </button>
-
-
-                                                                 <!-- <button mat-button [matMenuTriggerFor]="cont">
-                                                                      <mat-icon> contact_mail</mat-icon>
-                                                                 </button>
-                                                                 <mat-menu #cont="matMenu">
-                                                                      <button mat-menu-item>Item 1</button>
-                                                                      <button mat-menu-item>Item 2</button>
-                                                                 </mat-menu>
-
-
-
-                                                                 <button mat-button [matMenuTriggerFor]="search">
-                                                                      <mat-icon> youtube_searched_for</mat-icon>
-                                                                 </button>
-                                                                 <mat-menu #search="matMenu">
-                                                                      <button mat-menu-item>Item 1</button>
-                                                                      <button mat-menu-item>Item 2</button>
-                                                                 </mat-menu>
-
-
-                                                                 <button mat-button [matMenuTriggerFor]="search">
-                                                                      <mat-icon>ballot</mat-icon>
-                                                                 </button>
-                                                                 <mat-menu #search="matMenu">
-                                                                      <button mat-menu-item>Item 1</button>
-                                                                      <button mat-menu-item>Item 2</button>
-                                                                 </mat-menu>     -->
-
-                                                            </div>
-                                                       </div>
-
-                                                  </div>
-                                                  <button mat-raised-button color="primary" class="login" routerLink="/abc-atta/createUser" >{{ 'abc-atta.crear-usuario' | translate}}</button>
-                                                  <div class="cont-chips-button">
-                                                       <button mat-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
                                                   </div>
                                              </div>
-
-                                             <mat-menu #menu="matMenu" >
-                                                  <div (click) = "$event.stopPropagation()" class="content-filtro" >
-                                                       <div class="title-filter">
-                                                            <p>{{ 'dashboard.title-filter' | translate }}</p>
-                                                       </div>
-                                                       <div class="filters">
-                                                            <mat-form-field *ngFor="let filter of filterSelectObj" style="margin-left: 15px;">
-                                                                 <mat-label>{{filter.name}}</mat-label>
-                                                                 <select matNativeControl name="{{filter.columnProp}}" [(ngModel)]="filter.modelValue"
-                                                                      (change)="filterChange(filter,$event)">
-                                                                      <option value="">-- Select {{filter.name}} --</option>
-                                                                      <option [value]="item" *ngFor="let item of filter.options">{{item}}</option>
-                                                                 </select>
-                                                            </mat-form-field>
-                                                       </div>
-                                                       <div class="filter-button" style="display: flex;
-                                                       justify-content:flex-end">
-                                                                 <button mat-raised-button color="primary"
-                                                                 (click) = "someMethod()"
-                                                                 >{{ 'dashboard.buton-filter' | translate }}</button>
-                                                       </div>
-                                                  </div>
-                                             </mat-menu>
+                                             
                                         </div>
 
 
@@ -136,12 +111,12 @@
 
 
                                              <ng-container matColumnDef="bussinets">
-                                             <mat-header-cell *matHeaderCellDef > {{ 'abc-atta.title4-table' | translate }}  </mat-header-cell>
+                                             <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'abc-atta.title4-table' | translate }}  </mat-header-cell>
                                              <mat-cell *matCellDef="let element" > {{element.email}} </mat-cell>
                                              </ng-container>
 
                                              <ng-container matColumnDef="recluiterId">
-                                             <mat-header-cell *matHeaderCellDef  > {{ 'abc-atta.title2-table' | translate }}  </mat-header-cell>
+                                             <mat-header-cell *matHeaderCellDef  mat-sort-header> {{ 'abc-atta.title2-table' | translate }}  </mat-header-cell>
                                              <mat-cell *matCellDef="let element"> {{element.level}} </mat-cell>
                                              </ng-container>
 
@@ -150,7 +125,6 @@
 
 
                                         <mat-header-row *matHeaderRowDef="displayedColumns;"></mat-header-row >
-                                        <!-- <mat-row *matRowDef="let row; columns: displayedColumns;"(click)="selection.toggle(row)"></mat-row> -->
                                         <mat-row *matRowDef="let row; columns: displayedColumns;" ></mat-row>
 
 
@@ -160,19 +134,6 @@
                                         </mat-table>
 
 
-                                        <!-- <mat-paginator [pageSize]="5" [pageSizeOptions]="[2, 3, 4, 5, 6]">
-                                        </mat-paginator> -->
-
-
-                                        <!-- <button mat-flat-button color="warn" (click)="sendFileInterrupt()">datos</button> -->
-
-
-                                        <!-- <pre>
-                                        selection.hasValue(): {{selection.hasValue()}}
-                                        isAllSelected(): {{isAllSelected()}}
-
-                                        {{ selection }}
-                                        </pre> -->
                                         </ng-container>
                               </div>
                          </div>

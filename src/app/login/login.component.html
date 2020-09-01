@@ -5,7 +5,10 @@
 
      <div class="wrapper">
                <div class="wrapper-left">
-                  
+                  <div class="cont-text">
+                       <h2>We Are AgileThinkers</h2>
+                       <p>Collaborate With the Industry’s Best Talent</p>
+                  </div>
                </div>
                <div class="wrapper-right animated fadeIn">
                          <!-- <app-login></app-login>  -->
@@ -21,13 +24,12 @@
                                         #form="ngForm">
                                         <div class="cont-input">
                                              <mat-form-field class="example-full-width">
-                                                  <mat-label>User ID</mat-label>
+                                                  <mat-label>User ID or e-mail</mat-label>
                                                   <input 
                                                        matInput 
                                                        type="text"
                                                        placeholder="edin.brin" 
                                                        name="user"
-                                                       minlength="6"
                                                        formControlName="email"
                                                        >
                                                        <mat-icon matSuffix *ngIf="inputNoValido" style="color:red">error_outline</mat-icon>
@@ -56,7 +58,7 @@
                                         
                                         
                                         
-                                        <button mat-raised-button color="primary" class="login" type="submit"[disabled]="!forma.valid">Login</button>
+                                        <button mat-raised-button   class="login" type="submit"[disabled]="!forma.valid">Login</button>
                                         
                                         <!-- <an-button [className]="'success'" type="submit">Log In</an-button> -->
 
@@ -71,6 +73,11 @@
                          
                                    </form> 
                               </div>
+                              <div class="div-copyright">
+                              <p>
+                                   Copyright 2020 © Agile Thougth All Rights Reserved
+                              </p>
+                         </div>  
                </div>
      </div>
 
