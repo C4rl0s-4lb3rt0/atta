@@ -21,6 +21,18 @@
 }
 
 
+::ng-deep .left-container .mat-form-field.mat-focused .mat-form-field-label {
+     color: #0e5375 !important;
+   }
+
+/* underline border color on focused */
+::ng-deep .left-container .mat-focused .mat-form-field-underline .mat-form-field-ripple{
+     background-color: #0e5375 !important;
+}
+
+
+
+
 .left-container {
      position: absolute;
      top: 64px;
@@ -28,6 +40,7 @@
      left: 0;
      right: 0;
      height: calc(100vh - 60px);
+     
      .sidenav {
           padding-top: 40px;
           display: flex;
@@ -103,12 +116,9 @@
      display: flex;
      justify-content: flex-end;
      width: 100%;
-     // outline: 1px solid red;
      .mat-form-field-wrapper{
           width: 100%;
-          // outline: 1px solid red;
           .mat-form-field-infix {
-               // display: block;
                position: relative;
                flex: auto;
                min-width: 0;
@@ -370,32 +380,35 @@ mat-table {
                width: 100%;
                min-height:50px;
                // outline:1px solid blue;
-               .title-filter{
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    font-size: 14px;
-                    font-weight: normal;
-                    font-stretch: normal;
-                    font-style: normal;
-                    line-height: 1.71;
-                    letter-spacing: normal;
-                    color: #323232;
-                    margin-left: 20px;
-               }.cont-chips-cont{
-                    margin-left: 20px;
-                    .mat-chip.mat-standard-chip {
-                         background-color: #fafafa;
-                         color: rgba(0,0,0,.87);
-                         border: 1px solid #cccccc;
-                         font-size: 10px;
+               .cont-tent{
+                    display: flex;width:100%;
+                    .title-filter{
+                         display: flex;
+                         justify-content: center;
+                         align-items: center;
+                         font-size: 14px;
                          font-weight: normal;
                          font-stretch: normal;
                          font-style: normal;
-                         line-height: normal;
+                         line-height: 1.71;
                          letter-spacing: normal;
-                         color: #525252;
-                     }
+                         color: #323232;
+                         margin-left: 20px;
+                    }.cont-chips-cont{
+                         margin-left: 20px;
+                         .mat-chip.mat-standard-chip {
+                              background-color: #fafafa;
+                              color: rgba(0,0,0,.87);
+                              border: 1px solid #cccccc;
+                              font-size: 10px;
+                              font-weight: normal;
+                              font-stretch: normal;
+                              font-style: normal;
+                              line-height: normal;
+                              letter-spacing: normal;
+                              color: #525252;
+                          }
+                    }
                }
 
           }

@@ -67,7 +67,7 @@ export class AbcAttaDashComponent implements OnInit {
   varChipIdUser:string=null;
   chipIdUser:string=null;
   
-  varChipStatus:string=null;
+  varChipLevel:string=null;
   chipStatus:string=null;
 
 
@@ -163,11 +163,15 @@ export class AbcAttaDashComponent implements OnInit {
   // Get remote serve data using HTTP call
   getRemoteData() {
 
-    
-    console.log(this.dataSource.data)
     this.filterSelectObj.filter((o) => {
       o.options = this.getFilterObject(this.dataSource.data, o.columnProp);
     });
+    if(this.filterSelectObj[0].modelValue == null && this.filterSelectObj[1].modelValue == null){
+      this.showChips=false
+
+    }
+    
+
   }
 
   // Called on Filter change
@@ -188,14 +192,14 @@ export class AbcAttaDashComponent implements OnInit {
    
     }
     if(filter.name=='Recluter Id'){
-      this.varChipStatus =`Recluter Id: ${filter.modelValue}`;
+      this.varChipLevel =`Recluter Id: ${filter.modelValue}`;
     }
       this.showChips=true;
   }
 
 
   filterChangeMore(filter,status) {
-    if(this.varChipStatus==null){
+    if(this.varChipLevel==null){
       this.filterValues[filter.columnProp] = '';
     }else{
       this.filterValues[filter.columnProp] = status;
@@ -220,6 +224,8 @@ export class AbcAttaDashComponent implements OnInit {
   createFilter() {
     let filterFunction = function (data: any, filter: string): boolean {
       let searchTerms = JSON.parse(filter);
+      console.log(searchTerms)
+      console.log('!!!!')
       let isFilterSet = false;
       for (const col in searchTerms) {
         if (searchTerms[col].toString() !== '') {
@@ -257,43 +263,59 @@ export class AbcAttaDashComponent implements OnInit {
   
   }
 
-  removableChipStatus(){
-    this.varChipStatus=null;
+  removableChipLevel(){
+    console.log('remover nivel');
+    this.varChipLevel=null;
     this.dataSource.filterPredicate = this.createFilter();
-    this.resetFiltersStatus();
+    this.resetFiltersLevel();
 
     
   }
 
 resetFiltersIdUser() {
   this.filterValues = {}
+ 
   this.filterSelectObj.forEach((value, key) => {
-    if(value.name=='ID'){
-      value.modelValue = undefined;
+    // console.log(value.name)
+    // console.log('soy que ???......!!!!')
+    // debugger
+    if(value.name=='Level'){
+      value.modelValue = null;
+      
     }else{
       this.filterSelectObj.forEach( (value ) => {
-        if(value.name!='ID'){
-          this.filterChangeMore(value,this.varChipStatus)
+        if(value.name!='Level'){
+          this.filterChangeMore(value,this.varChipLevel)
         }
       })
     }
+    // console.log(this.filterSelectObj); 
+    // console.log('this.filterSelectObj----'); 
+    // console.log('id Usser');
   this.getRemoteData();
   })
 }
 
 
-resetFiltersStatus() {
+resetFiltersLevel() {
   this.filterValues = {}
+
   this.filterSelectObj.forEach((value, key) => {
-    if(value.name=='STATUS'){
-      value.modelValue = undefined;
+    // console.log(value.name)
+    // console.log('value......!!!!')
+    // debugger
+    if(value.name=='Recluter Id'){
+      value.modelValue = null;
     }else{
       this.filterSelectObj.forEach( (value ) => {
-        if(value.name!='status'){
+        if(value.name!='Recluter Id'){
           this.filterChangeMoreID(value,this.varChipIdUser)
         }
       })
     }
+    // console.log(this.filterSelectObj); 
+    // console.log('this.filterSelectObj----'); 
+    // console.log('id Usser');
   this.getRemoteData();
   })
 }
@@ -347,7 +369,7 @@ resetFiltersStatus() {
     if(data.saveUser==true){
       this.selection.clear();
       this.removableChipIdUser();
-      this.removableChipStatus()
+      this.removableChipLevel()
       this.resetFilters();
       // console.log('se guardo y se cierra con reseteo')
     }else{

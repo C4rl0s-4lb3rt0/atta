@@ -60,7 +60,7 @@
                                              </div>
 
                                              <div class="row-bottom" *ngIf="showChips">
-                                                  <div class="cont-tent"  style="outline:1px solid red;display: flex;width:100%">
+                                                  <div class="cont-tent">
                                                        <span class="title-filter">Filters</span>
                                                        <div class="cont-chips-cont">
                                                             <mat-form-field class="chip-list">
@@ -70,10 +70,10 @@
                                                                       {{ varChipIdUser }}
                                                                       <mat-icon matChipRemove *ngIf="varChipIdUser">cancel</mat-icon>
                                                                       </mat-chip>
-                                                                      <mat-chip  *ngIf="varChipStatus"  [selectable]="selectable"
-                                                                                [removable]="removable" (removed)="removableChipStatus()">
-                                                                      {{ varChipStatus }}
-                                                                      <mat-icon matChipRemove *ngIf="varChipStatus">cancel</mat-icon>
+                                                                      <mat-chip  *ngIf="varChipLevel"  [selectable]="selectable"
+                                                                                [removable]="removable" (removed)="removableChipLevel()">
+                                                                      {{ varChipLevel }}
+                                                                      <mat-icon matChipRemove *ngIf="varChipLevel">cancel</mat-icon>
                                                                       </mat-chip>
                                                                  </mat-chip-list>
                                                             </mat-form-field>
