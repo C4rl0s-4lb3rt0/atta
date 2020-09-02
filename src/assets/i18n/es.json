@@ -26,6 +26,8 @@
           "button-save":"Guardar cambios"
      },
      "abc-atta":{
+          "sidebarlink1":"Lista de solicitantes",
+          "sidebarlink2":"Registra a los reclutadores",
           "title":"Crea un Usuario ",
           "title-table":"Reclutadores",
           "crear-usuario":"Crear Usuario",

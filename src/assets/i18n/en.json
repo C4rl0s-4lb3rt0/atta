@@ -26,6 +26,8 @@
           "button-save":"Save Changes"
      },
      "abc-atta":{
+          "sidebarlink1":"Applicants list",
+          "sidebarlink2":"Register recruiters",
           "title":"Create User",
           "title-table":"Register recruiters",
           "crear-usuario":"Create user",

@@ -14,11 +14,12 @@
 
 .left-container {
      position: absolute;
-     top: 60px;
+     top: 64px;
      bottom: 60px;
      left: 0;
      right: 0;
      height: calc(100vh - 60px);
+     
      .sidenav {
           padding-top: 40px;
           display: flex;
@@ -26,6 +27,8 @@
           justify-content: center;
           width: 240px;
           background:  #0e5375;
+          border-radius: 0px;
+          // width:100%;
           p{
                width: 100%;
                // outline: 1px solid red;
@@ -48,6 +51,8 @@
                          padding-top:10px;
                          padding-bottom:10px;
                          padding-left: 15px;
+                         border-radius: 0px;
+                         width: 100%;
                     }
                     font-size: 14px;
                     font-weight: normal;
@@ -100,12 +105,90 @@ input[type=number] {
 
 
 
+// color y botones  de los input con colores de Agile
 
-::ng-deeo.mat-form-field-wrapper{
-     position: relative;
-     height: 40px !important;
-     outline: 1px solid red; 
+
+::ng-deep input.mat-input-element {
+     color: #484a4c;
+   }
+::ng-deep mat-form-field-flex {
+     // height: 150px;
+   }
+/* Change label color on focused */
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+color: #0e5375 !important;
 }
+
+/* underline border color on focused */
+::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple{
+     background-color: #0e5375 !important;
+
+}
+.mat-raised-button[ng-reflect-disabled=false] {
+     background-color: #2383b6;
+     color:white;
+     height: 40px;
+     border-radius: 4px;
+     background-color: #2383b6;
+
+}
+
+
+
+
+
+
+
+
+::ng-deep input.mat-input-element {
+     color: #484a4c;
+   }
+
+/* Change label color on focused */
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+     color: #0e5375 !important;
+   }
+
+/* underline border color on focused */
+     ::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple{
+       background-color: #0e5375 !important;
+     }
+     .mat-raised-button[ng-reflect-disabled=false] {
+       background-color: #2383b6;
+       color:white;
+       height: 40px;
+       border-radius: 4px;
+       background-color: #2383b6;
+            width: 155px;
+          }
+          
+          ::ng-deep  .mat-raised-button.mat-primary{
+               background-color: #2383b6;
+               color:white;
+               height: 40px;
+               border-radius: 4px;
+               background-color: #2383b6;
+               width: 155px;
+               margin-left: 30px;
+     }
+
+
+
+
+*{
+     // outline: 1px solid red;
+}
+
+
+
+
+
+
+// ::ng-deep.mat-form-field-wrapper{
+//      position: relative;
+//      height: 40px !important;
+//      outline: 1px solid red; 
+// }
 ::ng-deep .mat-select-trigger {
      // outline: 1px solid black;
      // min-height: 35px;
@@ -146,8 +229,19 @@ input[type=number] {
      }
      .cont-input{
           flex-basis: 30%;
+          &.input-text{
+               margin-top: 10px;
+               mat-form-field{
+                    mat-form-field-infix{
+                         background-color: rgba(0,0,0,0.04);
+                         width: 100%;
+                    }
+
+               } 
+          }
           mat-form-field{
                width: 100%;
+
           } 
           // &:nth-child(1){
           //      margin-right: 30px;
@@ -179,15 +273,37 @@ input[type=number] {
      outline: 3px solid blue;
 
 }
-::ng-deep .mat-horizontal-stepper-header-container {
-     order: solid 1px red;
-    width: 30%;
-    position: relative;
-    right: -70%;
+// ::ng-deep .mat-horizontal-stepper-header-container {
+//      border: solid 1px red;
+//      width: 30%;
+//      position: relative;
+//      right: -70%;
 
-   }
+//    }
    
 ::ng-deep mat-stepper-horizontal, mat-stepper-horizontal {
 border: dashed 10px blue; 
 padding: 1em;
 }
+.form-row.botones{
+     display: flex;
+     align-items: flex-end;
+     justify-content: flex-end;
+     .msn-error{
+          p{
+               color:red;
+          }
+     }
+
+}
+
+
+
+// change para fill appearance
+::ng-deep .alta-form {
+     .mat-form-field .mat-form-field-flex{
+          // background-color: rgba(0,0,0,.12);
+          background-color: rgba(0,0,0,.03);
+
+     }
+   }

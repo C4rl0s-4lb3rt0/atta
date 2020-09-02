@@ -424,12 +424,12 @@ resetFiltersLevel() {
 
 
 export interface Recruiter {
-  id: string,
-  name: string
-  email: string,
-  phone: string,
-  level: string,
-  username: string,
-  website: string,
-  status: string
+  id?: string,
+  name?: string
+  email?: string,
+  phone?: string,
+  level?: string,
+  username?: string,
+  website?: string,
+  status?: string,
 }

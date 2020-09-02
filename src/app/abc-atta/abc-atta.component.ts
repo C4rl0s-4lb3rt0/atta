@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {AuthApiService} from "../services/auth-api.service";
+import Swal from 'sweetalert2';
 
 interface Business {
   value: string;
   viewValue: string;
 }
+
 
 
 @Component({
@@ -15,6 +17,9 @@ interface Business {
   styleUrls: ['./abc-atta.component.scss']
 })
 export class AbcAttaComponent implements OnInit {
+  
+  auxError= false;
+  msgError:string;
 
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -58,12 +63,12 @@ export class AbcAttaComponent implements OnInit {
     if ( !this.isEnglish() ) {
       console.log('entra a español');
       this.firstFormGroup = this._formBuilder.group({
-        user: ['', Validators.required],
+        user: ['', [Validators.required, Validators.pattern('[a-z]+\.+[a-z]') ]],
         firstName: ['', Validators.required],
         apPaterno: ['', Validators.required],
         apMaterno: ['', Validators.required],
         email: ['', [Validators.required , Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-        phone: ['', Validators.required],
+        phone: ['', [Validators.required ,Validators.min(11111111),Validators.max(9999999999)] ],
         business: ['', Validators.required],
         level: ['', Validators.required],
         leng: ['esp']
@@ -71,11 +76,11 @@ export class AbcAttaComponent implements OnInit {
     } else {
       console.log('entra a ingle');
       this.firstFormGroup = this._formBuilder.group({
-          user: ['', Validators.required],
+          user: ['', [Validators.required, Validators.pattern('[a-z]+\.+[a-z]')]],
           firstName: ['', Validators.required],
           lastName: ['', Validators.required],
           email: ['', [Validators.required , Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-          phone: ['', Validators.required],
+          phone: ['', [Validators.required ,Validators.min(11111111),Validators.max(9999999999)] ],
           business: ['', Validators.required],
           level: ['', Validators.required],
           leng: ['eng']
@@ -100,19 +105,36 @@ export class AbcAttaComponent implements OnInit {
     }
   }
 
+
+
+
+
   guardar() {
-    console.log('entro a guardar');
-    if (this.firstFormGroup.invalid) {
-      this.auxtext = !this.auxtext;
-    } else {
-
-      console.log(this.firstFormGroup);
-      this.api.insertUsers(this.firstFormGroup.value);
-
-
-      // this.router.navigateByUrl('/dashboard');
-    }
+    
+    this.api.insertUsers(this.firstFormGroup.value).subscribe( data => {
+          if(data['resp'] == 'Failed'){
+                this.msgError = data['desc'];
+                this.auxError= true
+                if( this.msgError.includes('Nombre') ){
+                    this.firstFormGroup.controls['firstName'].setErrors({'incorrect': true});
+                }
+                if( this.msgError.includes('Correo') ){
+                    this.firstFormGroup.controls['email'].setErrors({'incorrect': true});
+                }
+                if( this.msgError.includes('Telefono') ){
+                    this.firstFormGroup.controls['phone'].setErrors({'incorrect': true});
+                }
+          }else{
+            Swal.fire({
+              allowOutsideClick:false,
+              icon: 'success',
+              title: 'User has been saved',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            this.router.navigateByUrl('/abc-atta');
+          }
+        });
   }
-
 
 }

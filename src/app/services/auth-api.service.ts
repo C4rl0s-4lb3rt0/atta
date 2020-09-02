@@ -118,8 +118,9 @@ export class AuthApiService {
             phone: element.telCelular,
             level: element.idNivel,
             username: element.nickName,
-            website: element.unidadNegocio,
-            status: 'Active'
+            unidadNegocio: element.unidadNegocio,
+            status: 'Active',
+            nickName:element.nickName
           };
 
           usuarios.push(user);
@@ -163,47 +164,63 @@ estaAutentificadoApi(): boolean {
   insertUsers(user) {
 
     console.log(user);
-    /*const usuarios = new Array();
     const headers  = new HttpHeaders({
       Authorization: 'Bearer ' + this.leerToken(),
+      'Content-Type':  'application/json'
     });
+  
+  
     const httpOptions = {
       headers
     };
-    return this.http.get('/api/users/users',  httpOptions ).pipe(
-      map( (resp: any) => {
-        console.log('============Impresion de usuarios ==================');
-        resp._embedded.users.forEach(function(element) {
-          console.log(element);
-          const nombreCompleto = element.nombre + ' ' + element.apellidoMaterno
-            + ' ' + element.apellidoPaterno;
-          const user = {
-            id: element.id,
-            name: nombreCompleto,
-            email: element.correo,
-            phone: element.telCelular,
-            level: element.idNivel,
-            username: element.nickName,
-            website: element.unidadNegocio,
-            status: 'Active'
-          };
-
-          usuarios.push(user);
-
-
-        });
-        console.log('usuarios en json**********');
-        console.log(usuarios);
-
-
-
-        return usuarios;
-      })
-
-
-    );
-*/
-
+    let body;
+  if(user.leng == 'eng'){
+     body = {
+      "nickName": user.user,
+      "nombre": user.firstName,
+      "apellidoPaterno": user.lastName,
+      "apellidoMaterno": null,
+      "unidadNegocio": user.business,
+      "correo": user.email,
+      "telCelular": user.phone,
+      "password": " ",
+      "tokenUser": null,
+      "idNivel": user.level,
+      "accesoLocal": false
+  
+    };
+  
+  }else{
+    body = {
+      "nickName": user.user,
+      "nombre": user.firstName,
+      "apellidoPaterno": user.apPaterno,
+      "apellidoMaterno": user.apMaterno,
+      "unidadNegocio": user.business,
+      "correo": user.email,
+      "telCelular": user.phone,
+      "password": " ",
+      "tokenUser": null,
+      "idNivel": user.level,
+      "accesoLocal": false
+  
+    };
+  }
+  
+   console.log(body);
+   console.log("guardando en bd....");
+  
+    return this.http.post('/api/user/adduser',body,httpOptions);
+  //   return this.http.post('/api/user/adduser',body,httpOptions).toPromise().then(data =>{
+  //       console.log(data['desc']);
+  //       console.log(data['resp']);
+  //       console.log('salio de envio post*/**/**/*/*/*/*/*/*/*');
+  //       console.log(data);
+  //    }
+  //  );
+  
+  
+  
   }
 
 }

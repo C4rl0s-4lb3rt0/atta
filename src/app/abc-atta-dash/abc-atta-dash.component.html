@@ -10,8 +10,8 @@
           <mat-drawer-container class="left-container">
                     <mat-drawer mode="side" class="sidenav" opened>
 
-                         <p><button mat-button routerLink="/dashboard">Dash Board </button></p>
-                         <p><button mat-button  class="active-but" >ABC ATTA</button></p>
+                         <p><button mat-button routerLink="/dashboard">{{  'abc-atta.sidebarlink1' | translate}}</button></p>
+                         <p><button mat-button  class="active-but" >{{  'abc-atta.sidebarlink2' | translate}}</button></p>
 
                     </mat-drawer>
                     <mat-drawer-content class="content animated fadeIn">
@@ -106,17 +106,17 @@
 
                                              <ng-container matColumnDef="email">
                                              <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'abc-atta.title3-table' | translate }}  </mat-header-cell>
-                                             <mat-cell *matCellDef="let element"> {{element.website}} </mat-cell>
+                                             <mat-cell *matCellDef="let element"> {{element.unidadNegocio}} </mat-cell>
                                              </ng-container>
 
 
                                              <ng-container matColumnDef="bussinets">
-                                             <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'abc-atta.title4-table' | translate }}  </mat-header-cell>
+                                             <mat-header-cell *matHeaderCellDef > {{ 'abc-atta.title4-table' | translate }}  </mat-header-cell>
                                              <mat-cell *matCellDef="let element" > {{element.email}} </mat-cell>
                                              </ng-container>
 
                                              <ng-container matColumnDef="recluiterId">
-                                             <mat-header-cell *matHeaderCellDef  mat-sort-header> {{ 'abc-atta.title2-table' | translate }}  </mat-header-cell>
+                                             <mat-header-cell *matHeaderCellDef  > {{ 'abc-atta.title2-table' | translate }}  </mat-header-cell>
                                              <mat-cell *matCellDef="let element"> {{element.level}} </mat-cell>
                                              </ng-container>
 
@@ -135,6 +135,31 @@
 
 
                                         </ng-container>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <div class="div-copyright">
+                                             <p>
+                                                  Copyright 2020 © Agile Thougth All Rights Reserved
+                                             </p>
+                                        </div>
                               </div>
                          </div>
                     </mat-drawer-content>

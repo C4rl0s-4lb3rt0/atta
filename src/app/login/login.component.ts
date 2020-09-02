@@ -110,9 +110,13 @@ export class LoginComponent implements OnInit {
                     title: 'Error!',
                     text: 'Campos Invalidos',
                     // confirmButtonText: 'Cool'
-                  })
+          })
 
         })
 
+  }
+
+  logginExtra(){
+    console.log('loggin Extra ');
   }
 }

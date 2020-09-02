@@ -4,8 +4,8 @@
      <mat-drawer-container class="left-container">
                <mat-drawer mode="side" class="sidenav" opened>
 
-                    <p><button mat-button routerLink="/dashboard">Dash Board </button></p>
-                    <p><button mat-button  class="active-but" >ABC ATTA</button></p>
+                         <p><button mat-button routerLink="/dashboard">{{  'abc-atta.sidebarlink1' | translate}}</button></p>
+                         <p><button mat-button  class="active-but" >{{  'abc-atta.sidebarlink2' | translate}}</button></p>
 
                </mat-drawer>
                <mat-drawer-content class="content animated fadeIn">
@@ -17,8 +17,8 @@
                          <!-- formulario para español -->
                          <div class="form-esp" *ngIf="  !this.isEnglish()  ">
                               <div class="form-row">
-                                        <div class="cont-input">
-                                             <mat-form-field class="example-full-width">
+                                        <div class="cont-input  ">
+                                             <mat-form-field class="example-full-width" appearance="fill">
                                                        <mat-label>Usuario</mat-label>
                                                        <input
                                                             matInput
@@ -30,8 +30,8 @@
                                                             >
                                              </mat-form-field>
                                         </div>
-                                        <div class="cont-input">
-                                             <mat-form-field class="example-full-width">
+                                        <div class="cont-input  ">
+                                             <mat-form-field class="example-full-width" appearance="fill">
                                                   <mat-label>Nombre</mat-label>
                                                   <input
                                                        matInput
@@ -43,8 +43,8 @@
                                                        >
                                              </mat-form-field>
                                         </div>
-                                        <div class="cont-input">
-                                             <mat-form-field class="example-full-width">
+                                        <div class="cont-input  ">
+                                             <mat-form-field class="example-full-width" appearance="fill">
                                                   <mat-label>Apellido Paterno</mat-label>
                                                   <input
                                                        matInput
@@ -59,10 +59,10 @@
                                    </div>
                                    <div class="form-row">
 
-                                             <div class="cont-input">
+                                             <div class="cont-input  ">
 
-                                                  <mat-form-field class="example-full-width">
-                                                       <mat-label>Apellid Materno</mat-label>
+                                                  <mat-form-field class="example-full-width" appearance="fill">
+                                                       <mat-label>Apellido Materno</mat-label>
                                                        <input
                                                             matInput
                                                             type="text"
@@ -75,9 +75,9 @@
 
 
                                              </div>
-                                             <div class="cont-input">
+                                             <div class="cont-input  ">
 
-                                                  <mat-form-field class="example-full-width">
+                                                  <mat-form-field class="example-full-width" appearance="fill">
                                                        <mat-label>Email</mat-label>
                                                        <input
                                                             matInput
@@ -89,8 +89,8 @@
                                                             >
                                                   </mat-form-field>
                                              </div>
-                                             <div class="cont-input">
-                                                  <mat-form-field class="example-full-width">
+                                             <div class="cont-input  ">
+                                                  <mat-form-field class="example-full-width" appearance="fill">
                                                        <mat-label>Phone Number</mat-label>
                                                        <input
                                                             matInput
@@ -98,7 +98,6 @@
                                                             name="number"
                                                             required
                                                             type="number"
-                                                            minlength="6"
                                                             formControlName="phone"
                                                        >
                                                   </mat-form-field>
@@ -137,8 +136,8 @@
                          <!-- formulario para ingles -->
                          <div class="form-ingl" *ngIf="  this.isEnglish()  ">
                                    <div class="form-row">
-                                             <div class="cont-input">
-                                                  <mat-form-field class="example-full-width">
+                                             <div class="cont-input  ">
+                                                  <mat-form-field class="example-full-width" appearance="fill">
                                                        <mat-label>User</mat-label>
                                                        <input
                                                             matInput
@@ -150,8 +149,8 @@
                                                             >
                                                   </mat-form-field>
                                              </div>
-                                             <div class="cont-input">
-                                                  <mat-form-field class="example-full-width">
+                                             <div class="cont-input  ">
+                                                  <mat-form-field class="example-full-width" appearance="fill">
                                                        <mat-label>First Name</mat-label>
                                                        <input
                                                             matInput
@@ -163,8 +162,8 @@
                                                             >
                                                   </mat-form-field>
                                              </div>
-                                             <div class="cont-input">
-                                                  <mat-form-field class="example-full-width">
+                                             <div class="cont-input  ">
+                                                  <mat-form-field class="example-full-width" appearance="fill">
                                                        <mat-label>Last Name</mat-label>
                                                        <input
                                                             matInput
@@ -178,8 +177,8 @@
                                              </div>
                                         </div>
                                         <div class="form-row">
-                                                  <div class="cont-input">
-                                                       <mat-form-field class="example-full-width">
+                                                  <div class="cont-input " >
+                                                       <mat-form-field class="example-full-width" appearance="fill">
                                                             <mat-label>Email</mat-label>
                                                             <input
                                                                  matInput
@@ -191,8 +190,8 @@
                                                                  >
                                                        </mat-form-field>
                                                   </div>
-                                                  <div class="cont-input">
-                                                       <mat-form-field class="example-full-width">
+                                                  <div class="cont-input  ">
+                                                       <mat-form-field class="example-full-width" appearance="fill">
                                                             <mat-label>Phone Number</mat-label>
                                                             <input
                                                                  matInput
@@ -200,7 +199,6 @@
                                                                  name="number"
                                                                  required
                                                                  type="number"
-                                                                 minlength="6"
                                                                  formControlName="phone"
                                                             >
                                                        </mat-form-field>
@@ -239,14 +237,16 @@
 
                          </div>
 
-                         <div class="form-row" style="
-                              display: flex;
-                              align-items: flex-end;
-                              justify-content: flex-end;
-                              ">
-
+                         <div class="form-row botones">
+                              <div *ngIf="auxError" class="msn-error">
+                                   <p>
+                                        {{ msgError }}
+                                   </p>
+                              </div>
 
                               <button mat-raised-button color="primary" class="login"   routerLink="/abc-atta/" > Cancel </button>
+
+
                               <button mat-raised-button color="primary" class="login" type="submit" [disabled]="!firstFormGroup.valid"> Save</button>
                          </div>
                     </form>
@@ -348,14 +348,14 @@
      </div>
 </form> -->
 
-<pre>
+<!-- <pre>
      edo del form : {{ firstFormGroup.valid }}
 </pre>
 
 <pre>
 
      {{ firstFormGroup.value | json }}
-</pre>
+</pre> -->
                </mat-drawer-content>
      </mat-drawer-container>
 </div>

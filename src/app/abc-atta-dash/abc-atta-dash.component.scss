@@ -16,8 +16,9 @@
 //      height: calc(100vh - 100px);
 //     outline: 1px solid red;
     
-//     overflow-y: auto;
-//     padding-bottom: 130px;
+//     overflow-y: auto;pos
+     height: 100%;
+     position: relative;
 }
 
 
@@ -29,8 +30,6 @@
 ::ng-deep .left-container .mat-focused .mat-form-field-underline .mat-form-field-ripple{
      background-color: #0e5375 !important;
 }
-
-
 
 
 .left-container {
@@ -173,24 +172,38 @@
                     margin-left:0px !important;
                     margin-top:20px;
                }
+              input.mat-input-element {
+                    color: #484a4c;
+                  }
+               
+               .mat-form-field.mat-focused .mat-form-field-label {
+                    color: #0e5375 !important;
+                  }
+               
+               .mat-form-field-underline .mat-form-field-ripple{
+                      background-color: #0e5375 !important;
+                    }
           }
           .mat-raised-button {
                margin-top:40px;
-               background-color: #2383b6;
-               color:white;
+               background-color: white;
+               color:#2383b6;
                height: 25px;
-               border-radius: 4px;
-               background-color: #2383b6;
                display: flex;
                justify-content: center;
                align-items: center;
                width: 100%;
+               border-radius: 6px;
+               border: solid 1px #2383b6;
                padding-top: 15px;
                padding-bottom: 15px;
              }
      }
-   }
+}
  
+
+  
+
 
    
 mat-table {
@@ -311,6 +324,17 @@ mat-table {
                                         display: flex;
                                         justify-content: flex-start;
                                    }
+                                   input.mat-input-element {
+                                        color: transparent;
+                                      }
+                                   
+                                   .mat-form-field.mat-focused .mat-form-field-label {
+                                        color: transparent !important;
+                                      }
+                                   
+                                   .mat-form-field-underline .mat-form-field-ripple{
+                                          background-color: transparent !important;
+                                        }
                               }
                               .content-all{
                                    .cont-select-all{
@@ -590,5 +614,32 @@ mat-table {
           height: 100%;
      }
 }
+
+
+.div-copyright{
+     // outline: 1px solid red;
+     position: relative;
+    width: 1105px;
+    border-top: 1px solid #a8a8a8;
+    margin: 0 auto;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    bottom: 107px;
+     p{
+       font-size: 10px;
+       font-weight: normal;
+       font-stretch: normal;
+       font-style: normal;
+       line-height: 1.6;
+       letter-spacing: normal;
+       color: #999999;
+       padding-left: 15px;
+       padding-top: 15px;
+       padding-right: 15px;
+      
+
+     }
+   }
 
 
