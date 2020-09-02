@@ -123,15 +123,17 @@
       ::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple{
         background-color: #0e5375 !important;
       }
-      .mat-raised-button[ng-reflect-disabled=false] {
-        background-color: #2383b6;
-        color:white;
-        height: 40px;
-        border-radius: 4px;
-        background-color: #2383b6;
-      }
+      
 
    }
+
+   ::ng-deep  button.mat-raised-button.login:not([disabled]) {
+    color:white;
+    height: 40px;
+    border-radius: 4px;
+    background-color: #0e5375 !important;
+  }
+
    .check-link{
     display: flex;
     align-items: center;
