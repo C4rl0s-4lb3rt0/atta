@@ -63,27 +63,27 @@ export class AbcAttaComponent implements OnInit {
     if ( !this.isEnglish() ) {
       console.log('entra a español');
       this.firstFormGroup = this._formBuilder.group({
-        user: ['', [Validators.required, Validators.pattern('[a-z]+\.+[a-z]') ]],
-        firstName: ['', Validators.required],
-        apPaterno: ['', Validators.required],
-        apMaterno: ['', Validators.required],
-        email: ['', [Validators.required , Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-        phone: ['', [Validators.required ,Validators.min(11111111),Validators.max(9999999999)] ],
-        business: ['', Validators.required],
-        level: ['', Validators.required],
-        leng: ['esp']
+        user:         ['', [ Validators.required, Validators.pattern('[a-z]+\.+[a-z]') ]],
+        firstName:    ['', [ Validators.required, Validators.maxLength(10) ,Validators.pattern('[a-z]+\.+[a-z]') ]],
+        apPaterno:    ['', [ Validators.required, Validators.maxLength(10) ,Validators.pattern('[a-z]+\.+[a-z]') ]],
+        apMaterno:    ['', [ Validators.required, Validators.maxLength(10) ,Validators.pattern('[a-z]+\.+[a-z]') ]],
+        email:        ['', [ Validators.required , Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+        phone:        ['', [ Validators.required ,Validators.min(11111111),Validators.max(9999999999)] ],
+        business:     ['', Validators.required],
+        level:        ['', Validators.required],
+        leng:         ['esp']
     });
     } else {
       console.log('entra a ingle');
       this.firstFormGroup = this._formBuilder.group({
-          user: ['', [Validators.required, Validators.pattern('[a-z]+\.+[a-z]')]],
-          firstName: ['', Validators.required],
-          lastName: ['', Validators.required],
-          email: ['', [Validators.required , Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-          phone: ['', [Validators.required ,Validators.min(11111111),Validators.max(9999999999)] ],
-          business: ['', Validators.required],
-          level: ['', Validators.required],
-          leng: ['eng']
+          user:        ['', [ Validators.required, Validators.pattern('[a-z]+\.+[a-z]') ]],
+          firstName:   ['', [ Validators.required, Validators.maxLength(10) ,Validators.pattern('[a-z]+\.+[a-z]') ]],
+          lastName:    ['', [ Validators.required ,Validators.maxLength(10) ,Validators.pattern('[a-z]+\.+[a-z]') ]],
+          email:       ['', [ Validators.required , Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+          phone:       ['', [ Validators.required ,Validators.min(11111111),Validators.max(9999999999)] ],
+          business:    ['', Validators.required],
+          level:       ['', Validators.required],
+          leng:        ['eng']
       });
     }
 
@@ -110,7 +110,7 @@ export class AbcAttaComponent implements OnInit {
 
 
   guardar() {
-    
+
     this.api.insertUsers(this.firstFormGroup.value).subscribe( data => {
           if(data['resp'] == 'Failed'){
                 this.msgError = data['desc'];

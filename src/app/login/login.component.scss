@@ -33,11 +33,11 @@
             font-stretch: normal;
             font-style: normal;
             line-height: 1.21;
-            letter-spacing: 0.48px;
+            letter-spacing: 0.47px;
             color: #ffffff;
           }  
           p{
-            font-weight: bold;
+            font-size: 16px;
             font-stretch: normal;
             font-style: normal;
             line-height: normal;
@@ -178,15 +178,13 @@
     } 
    } 
 .div-copyright{
-  // outline: 1px solid red;
-  position: absolute;
-  bottom: 0;
-  position: absolute;
-  bottom: 0;
-  width: 590px;
-  right: 0;
-  border-top: 1px solid #a8a8a8;
-  left: 30px;
+    position: absolute;
+    bottom: 0;
+    width: 90%;
+    border-top: 1px solid #a8a8a8;
+    margin-left: 60px;
+    margin-right: 60px;
+    box-sizing: border-box;
   p{
     font-size: 10px;
     font-weight: normal;

@@ -127,8 +127,8 @@ export class AuthApiService {
 
 
          });
+         console.log(usuarios.length);
         console.log('usuarios en json**********');
-        console.log(usuarios);
 
 
 
