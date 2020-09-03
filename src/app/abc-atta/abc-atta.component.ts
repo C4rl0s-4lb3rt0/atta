@@ -76,7 +76,7 @@ export class AbcAttaComponent implements OnInit {
     } else {
       console.log('entra a ingle');
       this.firstFormGroup = this._formBuilder.group({
-          user:        ['', [ Validators.required, Validators.pattern('[a-z]+\.+[a-z]') ]],
+          user:        ['', [ Validators.required, Validators.pattern('[a-zA-Z]+\.[a-zA-Z]+') ]],
           firstName:   ['', [ Validators.required, Validators.maxLength(10),Validators.pattern('[a-zA-Z]+') ]],
           lastName:    ['', [ Validators.required ,Validators.maxLength(10) ,Validators.pattern('[a-zA-Z]+') ]],
           email:       ['', [ Validators.required , Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
