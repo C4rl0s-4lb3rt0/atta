@@ -119,9 +119,12 @@
                                                             <mat-label>Level</mat-label>
                                                             <mat-select required
                                                             formControlName="level">
-                                                                 <mat-option *ngFor="let level of levels"  [value]="level">
+                                                                 <!-- <mat-option *ngFor="let level of levels"  [value]="level">
                                                                       {{level}}
-                                                                 </mat-option>
+                                                                 </mat-option> -->
+                                                                 <mat-option value="1"> Level 1 (Admin)  </mat-option>
+                                                                 <mat-option value="2"> Level 2 (Recruiter)  </mat-option>
+                                                                 <mat-option value="1"> Level 3 (Master)  </mat-option>
                                                             </mat-select>
                                                        </mat-form-field>
                                         </div>
@@ -220,9 +223,12 @@
                                                        <mat-label>Level</mat-label>
                                                        <mat-select required
                                                        formControlName="level">
-                                                            <mat-option *ngFor="let level of levels"  [value]="level">
+                                                            <!-- <mat-option *ngFor="let level of levels"  [value]="level">
                                                                  {{level}}
-                                                            </mat-option>
+                                                            </mat-option> -->
+                                                            <mat-option value="1"> Level 1 (Admin)  </mat-option>
+                                                            <mat-option value="2"> Level 2 (Recruiter)  </mat-option>
+                                                            <mat-option value="1"> Level 3 (Master)  </mat-option>
                                                        </mat-select>
                                                   </mat-form-field>
 

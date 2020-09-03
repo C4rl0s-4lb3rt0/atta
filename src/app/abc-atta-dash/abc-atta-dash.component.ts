@@ -133,10 +133,15 @@ export class AbcAttaDashComponent implements OnInit {
     // Overrride default filter behaviour of Material Datatable
     
     
-    this.getRemoteData();
-    this.dataSource.filterPredicate = this.createFilter();
-    this.dataSource.sort = this.sort;
 
+
+    // this.getRemoteData();
+    // this.dataSource.filterPredicate = this.createFilter();
+    // this.dataSource.sort = this.sort;
+
+
+
+    
   }
 
   salir(){
