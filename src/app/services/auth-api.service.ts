@@ -104,13 +104,13 @@ export class AuthApiService {
     const httpOptions = {
       headers
     };
-    return this.http.get('/api/users/users',  httpOptions ).pipe(
+    return this.http.get('/api/user/getusers',  httpOptions ).pipe(
       map( (resp: any) => {
         console.log('============Impresion de usuarios ==================');
-        resp._embedded.users.forEach(function(element) {
+        resp.forEach(function(element) {
           console.log(element);
-          const nombreCompleto = element.nombre + ' ' + element.apellidoMaterno
-            + ' ' + element.apellidoPaterno;
+          const nombreCompleto = element.nombre + ' ' + element.apellidoPaterno
+            + ' ' + element.apellidoMaterno;
           const user = {
             id: element.id,
             name: nombreCompleto,
@@ -120,7 +120,7 @@ export class AuthApiService {
             username: element.nickName,
             unidadNegocio: element.unidadNegocio,
             status: 'Active',
-            nickName:element.nickName
+            nickName: element.nickName
           };
 
           usuarios.push(user);
@@ -128,7 +128,7 @@ export class AuthApiService {
 
          });
          console.log(usuarios.length);
-        console.log('usuarios en json**********');
+        console.log('usuarios en json****');
 
 
 

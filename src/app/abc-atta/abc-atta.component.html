@@ -29,6 +29,8 @@
                                                                  required
                                                                  formControlName="user"
                                                                  >
+                                                            <mat-icon matSuffix *ngIf="firstFormGroup.controls.user.errors && firstFormGroup.controls.user.dirty " class="error-input"class="error-input" >error_outline</mat-icon>
+                                                            <mat-hint  *ngIf="firstFormGroup.controls.user.errors && firstFormGroup.controls.user.dirty " class="error-input" >Introduce un User Id válido</mat-hint>
                                                   </mat-form-field>
                                              </div>
                                              <div class="cont-input  ">
@@ -42,6 +44,9 @@
                                                             required
                                                             formControlName="firstName"
                                                             >
+                                                       <mat-icon matSuffix 
+                                                            *ngIf="firstFormGroup.controls.firstName.errors && firstFormGroup.controls.firstName.dirty " class="error-input" >error_outline</mat-icon>
+                                                       <mat-hint  *ngIf="firstFormGroup.controls.firstName.errors && firstFormGroup.controls.firstName.dirty " class="error-input" >Introduce un nombre válido </mat-hint>
                                                   </mat-form-field>
                                              </div>
                                              <div class="cont-input  ">
@@ -55,6 +60,8 @@
                                                             required
                                                             formControlName="apPaterno"
                                                             >
+                                                       <mat-icon matSuffix *ngIf="firstFormGroup.controls.apPaterno.errors && firstFormGroup.controls.apPaterno.dirty " class="error-input" >error_outline</mat-icon>
+                                                       <mat-hint  *ngIf="firstFormGroup.controls.apPaterno.errors && firstFormGroup.controls.apPaterno.dirty " class="error-input" >Introduce un apellido válido</mat-hint>
                                                   </mat-form-field>
                                              </div>
                                         </div>
@@ -72,6 +79,8 @@
                                                                  required
                                                                  formControlName="apMaterno"
                                                             >
+                                                            <mat-icon matSuffix *ngIf="firstFormGroup.controls.apMaterno.errors && firstFormGroup.controls.apMaterno.dirty " class="error-input" >error_outline</mat-icon>
+                                                            <mat-hint  *ngIf="firstFormGroup.controls.apMaterno.errors && firstFormGroup.controls.apMaterno.dirty " class="error-input" >Introduce un apellido válido</mat-hint>
                                                        </mat-form-field>
      
      
@@ -88,11 +97,13 @@
                                                                  required
                                                                  formControlName="email"
                                                                  >
+                                                            <mat-icon matSuffix *ngIf="firstFormGroup.controls.email.errors && firstFormGroup.controls.email.dirty " class="error-input" >error_outline</mat-icon>
+                                                            <mat-hint  *ngIf="firstFormGroup.controls.email.errors && firstFormGroup.controls.email.dirty " class="error-input" >Introduce un email válido </mat-hint>
                                                        </mat-form-field>
                                                   </div>
                                                   <div class="cont-input  ">
                                                        <mat-form-field class="example-full-width" appearance="fill">
-                                                            <mat-label>Phone Number</mat-label>
+                                                            <mat-label>Número Telefónico</mat-label>
                                                             <input
                                                                  matInput
                                                                  placeholder="Enter phone number"
@@ -101,23 +112,27 @@
                                                                  type="number"
                                                                  formControlName="phone"
                                                             >
+                                                            <mat-icon matSuffix *ngIf="firstFormGroup.controls.phone.errors && firstFormGroup.controls.phone.dirty " class="error-input" >error_outline</mat-icon>
+                                                            <mat-hint  *ngIf="firstFormGroup.controls.phone.errors && firstFormGroup.controls.phone.dirty " class="error-input" >Introduce un teléfono válido </mat-hint>
                                                        </mat-form-field>
                                                   </div>
                                         </div>
                                         <div class="form-row">
                                              <div class="cont-input">
                                                   <mat-form-field appearance="fill">
-                                                       <mat-label>Bussines Unit</mat-label>
+                                                       <mat-label>Unidad de Negocio</mat-label>
                                                        <mat-select required formControlName="business">
                                                             <mat-option *ngFor="let busine of business"  [value]="busine.value">
                                                                  {{busine.viewValue}}
                                                             </mat-option>
                                                        </mat-select>
+                                                       <mat-icon matSuffix *ngIf="firstFormGroup.controls.business.errors && firstFormGroup.controls.business.dirty " class="error-input" >error_outline</mat-icon>
+                                                       <mat-hint  *ngIf="firstFormGroup.controls.business.errors && firstFormGroup.controls.business.dirty " class="error-input" >Introduce una unidad de negocio válido </mat-hint>
                                                   </mat-form-field>
                                              </div>
                                              <div class="cont-input">
                                                        <mat-form-field appearance="fill">
-                                                                 <mat-label>Level</mat-label>
+                                                                 <mat-label>Nivell</mat-label>
                                                                  <mat-select required
                                                                  formControlName="level">
                                                                       <!-- <mat-option *ngFor="let level of levels"  [value]="level">
@@ -127,6 +142,8 @@
                                                                       <mat-option value="2"> Level 2 (Recruiter)  </mat-option>
                                                                       <mat-option value="1"> Level 3 (Master)  </mat-option>
                                                                  </mat-select>
+                                                                 <mat-icon matSuffix *ngIf="firstFormGroup.controls.level.errors && firstFormGroup.controls.level.dirty " class="error-input" >error_outline</mat-icon>
+                                                                 <mat-hint  *ngIf="firstFormGroup.controls.level.errors && firstFormGroup.controls.level.dirty " class="error-input" >Introduce un nivel válido  </mat-hint>
                                                             </mat-form-field>
                                              </div>
                                              <div class="cont-input">
@@ -151,8 +168,8 @@
                                                                  required
                                                                  formControlName="user"
                                                                  >
-                                                                 <mat-icon matSuffix *ngIf="firstFormGroup.controls.user.errors && firstFormGroup.controls.user.dirty " style="color:red">error_outline</mat-icon>
-                                                                 <mat-hint  *ngIf="firstFormGroup.controls.user.errors && firstFormGroup.controls.user.dirty " style="color:red">Please enter a valid user id</mat-hint>
+                                                                 <mat-icon matSuffix *ngIf="firstFormGroup.controls.user.errors && firstFormGroup.controls.user.dirty " class="error-input"class="error-input" >error_outline</mat-icon>
+                                                                 <mat-hint  *ngIf="firstFormGroup.controls.user.errors && firstFormGroup.controls.user.dirty " class="error-input" >Please enter a valid user id</mat-hint>
                                                        </mat-form-field>
                                                   </div>
                                                   <div class="cont-input  ">
@@ -167,8 +184,8 @@
                                                                  formControlName="firstName"
                                                                  >
                                                                  <mat-icon matSuffix 
-                                                                           *ngIf="firstFormGroup.controls.firstName.errors && firstFormGroup.controls.firstName.dirty " style="color:red">error_outline</mat-icon>
-                                                                 <mat-hint  *ngIf="firstFormGroup.controls.firstName.errors && firstFormGroup.controls.firstName.dirty " style="color:red">Please enter a valid Name </mat-hint>
+                                                                           *ngIf="firstFormGroup.controls.firstName.errors && firstFormGroup.controls.firstName.dirty " class="error-input" >error_outline</mat-icon>
+                                                                 <mat-hint  *ngIf="firstFormGroup.controls.firstName.errors && firstFormGroup.controls.firstName.dirty " class="error-input" >Please enter a valid Name </mat-hint>
                                                        </mat-form-field>
                                                   </div>
                                                   <div class="cont-input  ">
@@ -182,9 +199,8 @@
                                                                  required
                                                                  formControlName="lastName"
                                                             >
-                                                            <mat-icon matSuffix 
-                                                                           *ngIf="firstFormGroup.controls.lastName.errors && firstFormGroup.controls.lastName.dirty " style="color:red">error_outline</mat-icon>
-                                                            <mat-hint  *ngIf="firstFormGroup.controls.lastName.errors && firstFormGroup.controls.lastName.dirty " style="color:red">Please enter a valid Last Name </mat-hint>
+                                                            <mat-icon matSuffix *ngIf="firstFormGroup.controls.lastName.errors && firstFormGroup.controls.lastName.dirty " class="error-input" >error_outline</mat-icon>
+                                                            <mat-hint  *ngIf="firstFormGroup.controls.lastName.errors && firstFormGroup.controls.lastName.dirty " class="error-input" >Please enter a valid Last Name </mat-hint>
                                                        </mat-form-field>
                                                   </div>
                                              </div>
@@ -201,8 +217,8 @@
                                                                       formControlName="email"
                                                                       >
                                                                       <mat-icon matSuffix 
-                                                                                     *ngIf="firstFormGroup.controls.email.errors && firstFormGroup.controls.email.dirty " style="color:red">error_outline</mat-icon>
-                                                                      <mat-hint  *ngIf="firstFormGroup.controls.email.errors && firstFormGroup.controls.email.dirty " style="color:red">Please enter a valid Email </mat-hint>
+                                                                                     *ngIf="firstFormGroup.controls.email.errors && firstFormGroup.controls.email.dirty " class="error-input" >error_outline</mat-icon>
+                                                                      <mat-hint  *ngIf="firstFormGroup.controls.email.errors && firstFormGroup.controls.email.dirty " class="error-input" >Please enter a valid Email </mat-hint>
                                                             </mat-form-field>
                                                        </div>
                                                        <div class="cont-input  ">
@@ -217,8 +233,8 @@
                                                                       formControlName="phone"
                                                                  >
                                                                  <mat-icon matSuffix 
-                                                                 *ngIf="firstFormGroup.controls.phone.errors && firstFormGroup.controls.phone.dirty " style="color:red">error_outline</mat-icon>
-                                                                 <mat-hint  *ngIf="firstFormGroup.controls.phone.errors && firstFormGroup.controls.phone.dirty " style="color:red">Please enter a valid Phone </mat-hint>
+                                                                 *ngIf="firstFormGroup.controls.phone.errors && firstFormGroup.controls.phone.dirty " class="error-input" >error_outline</mat-icon>
+                                                                 <mat-hint  *ngIf="firstFormGroup.controls.phone.errors && firstFormGroup.controls.phone.dirty " class="error-input" >Please enter a valid Phone </mat-hint>
                                                             </mat-form-field>
                                                        </div>
                                                        <div class="cont-input">
@@ -230,8 +246,8 @@
                                                                       </mat-option>
                                                                  </mat-select>
                                                                  <mat-icon matSuffix 
-                                                                 *ngIf="firstFormGroup.controls.business.errors && firstFormGroup.controls.business.dirty " style="color:red">error_outline</mat-icon>
-                                                                 <mat-hint  *ngIf="firstFormGroup.controls.business.errors && firstFormGroup.controls.business.dirty " style="color:red">Please select a valid Business Unit </mat-hint>
+                                                                 *ngIf="firstFormGroup.controls.business.errors && firstFormGroup.controls.business.dirty " class="error-input" >error_outline</mat-icon>
+                                                                 <mat-hint  *ngIf="firstFormGroup.controls.business.errors && firstFormGroup.controls.business.dirty " class="error-input" >Please select a valid Business Unit </mat-hint>
                                                             </mat-form-field>
                                                        </div>
                                              </div>
@@ -249,8 +265,8 @@
                                                                  <mat-option value="1"> Level 3 (Master)  </mat-option>
                                                             </mat-select>
                                                             <mat-icon matSuffix 
-                                                                 *ngIf="firstFormGroup.controls.level.errors && firstFormGroup.controls.level.dirty " style="color:red">error_outline</mat-icon>
-                                                                 <mat-hint  *ngIf="firstFormGroup.controls.level.errors && firstFormGroup.controls.level.dirty " style="color:red">Please select a valid Business Unit </mat-hint>
+                                                                 *ngIf="firstFormGroup.controls.level.errors && firstFormGroup.controls.level.dirty " class="error-input" >error_outline</mat-icon>
+                                                                 <mat-hint  *ngIf="firstFormGroup.controls.level.errors && firstFormGroup.controls.level.dirty " class="error-input" >Please select a valid Business Unit </mat-hint>
                                                        </mat-form-field>
      
                                                   </div>

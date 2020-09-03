@@ -33,9 +33,9 @@
           "crear-usuario":"Create user",
           "title1-table":"Name",
           "title2-table":"Level",
-          "title3-table":"Bussines Unit",
+          "title3-table":"Business Unit",
           "title4-table":"Email",
-          "title5-table":"Recluiter ID"
+          "title5-table":"Recruiter ID"
      },
      "abc-atta-createrUser":{
           "title":"Create User",

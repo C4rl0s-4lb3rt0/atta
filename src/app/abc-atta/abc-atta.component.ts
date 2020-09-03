@@ -64,9 +64,9 @@ export class AbcAttaComponent implements OnInit {
       console.log('entra a español');
       this.firstFormGroup = this._formBuilder.group({
         user:         ['', [ Validators.required, Validators.pattern('[a-z]+\.+[a-z]') ]],
-        firstName:    ['', [ Validators.required, Validators.maxLength(10) ,Validators.pattern('[a-z]+\.+[a-z]') ]],
-        apPaterno:    ['', [ Validators.required, Validators.maxLength(10) ,Validators.pattern('[a-z]+\.+[a-z]') ]],
-        apMaterno:    ['', [ Validators.required, Validators.maxLength(10) ,Validators.pattern('[a-z]+\.+[a-z]') ]],
+        firstName:    ['', [ Validators.required, Validators.maxLength(10) ,Validators.pattern('[a-z]+')]],
+        apPaterno:    ['', [ Validators.required, Validators.maxLength(10) ,Validators.pattern('[a-z]+') ]],
+        apMaterno:    ['', [ Validators.required, Validators.maxLength(10) ,Validators.pattern('[a-z]+') ]],
         email:        ['', [ Validators.required , Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
         phone:        ['', [ Validators.required ,Validators.min(11111111),Validators.max(9999999999)] ],
         business:     ['', Validators.required],
@@ -77,8 +77,8 @@ export class AbcAttaComponent implements OnInit {
       console.log('entra a ingle');
       this.firstFormGroup = this._formBuilder.group({
           user:        ['', [ Validators.required, Validators.pattern('[a-z]+\.+[a-z]') ]],
-          firstName:   ['', [ Validators.required, Validators.maxLength(10) ,Validators.pattern('[a-z]+\.+[a-z]') ]],
-          lastName:    ['', [ Validators.required ,Validators.maxLength(10) ,Validators.pattern('[a-z]+\.+[a-z]') ]],
+          firstName:   ['', [ Validators.required, Validators.maxLength(10),Validators.pattern('[a-z]+') ]],
+          lastName:    ['', [ Validators.required ,Validators.maxLength(10) ,Validators.pattern('[a-z]+') ]],
           email:       ['', [ Validators.required , Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
           phone:       ['', [ Validators.required ,Validators.min(11111111),Validators.max(9999999999)] ],
           business:    ['', Validators.required],
