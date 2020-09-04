@@ -44,7 +44,7 @@
                                                                       <mat-label>{{filter.name}}</mat-label>
                                                                       <select matNativeControl name="{{filter.columnProp}}" [(ngModel)]="filter.modelValue"
                                                                            (change)="filterChange(filter,$event)">
-                                                                           <option value="">-- Select {{filter.name}} --</option>
+                                                                           <option value="" disabled>-- Select {{filter.name}} --</option>
                                                                            <option [value]="item" *ngFor="let item of filter.options">{{item}}</option>
                                                                       </select>
                                                                  </mat-form-field>
@@ -80,6 +80,11 @@
                                                             </mat-form-field>
                                                        </div>
                                                   </div>
+                                             </div>
+
+                                             <div class="row-userCreated" *ngIf="auxUserCreated">
+                                                  <p>The user has been created succesfully!</p>
+                                                  <span (click)="closeUserCreated()"><mat-icon>close</mat-icon></span>
                                              </div>
                                              
                                         </div>

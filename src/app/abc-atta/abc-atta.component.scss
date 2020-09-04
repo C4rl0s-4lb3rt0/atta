@@ -18,7 +18,7 @@
      bottom: 60px;
      left: 0;
      right: 0;
-     height: calc(100vh - 60px);
+     height: calc(100vh - 70px);
      
      .sidenav {
           padding-top: 40px;
@@ -78,7 +78,7 @@
                border:1px solid #c8afaf;
                margin:0 auto;
                margin-top:30px;
-               height: calc(100vh - 160px);
+               height: 540px;
                box-sizing: border-box;
                .content-head{
                     display: flex;
@@ -340,7 +340,7 @@ padding: 1em;
      margin: 0 auto;
      left: 0;
      right: 0;
-     bottom: 0px;
+     margin-top:40px;
      p{
           font-size: 10px;
           font-weight: normal;

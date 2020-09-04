@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import {MatSort} from '@angular/material/sort';
-import { Router } from '@angular/router';
+import { Router , ActivatedRoute, RouterStateSnapshot} from '@angular/router';
 
 import {MatTableDataSource} from '@angular/material/table';
 // import {Sort} from '@angular/material/sort';
@@ -76,10 +76,11 @@ export class AbcAttaDashComponent implements OnInit {
 
   recruiters:any[]= []
   loading:boolean;
+  auxUserCreated:boolean=false;
 
   constructor(private auth: AuthService,
               private router: Router,
-              private _apiServide:AuthApiService
+              private _apiServide:AuthApiService,private routeraux:ActivatedRoute
               ) {
       
           this.loading= true;
@@ -90,7 +91,7 @@ export class AbcAttaDashComponent implements OnInit {
                     options: []
                   },
                   {
-                    name: 'Recluter Id',
+                    name: 'Recruiter Id',
                     columnProp: 'id',
                     options: []
                   }
@@ -112,13 +113,20 @@ export class AbcAttaDashComponent implements OnInit {
     
                   }
               )
-          
-      console.log('debemos ini');
-      console.log(this.recruiters);
-      console.log('debemos final');
+
+          console.log('debemos ini');
+          console.log(this.recruiters);
+          console.log('debemos final');
+    
+    
+          const snapshot: RouterStateSnapshot = router.routerState.snapshot;
+          console.log(snapshot.url);  // <-- hope it helps
           
           // this.dataSource = new MatTableDataSource<Recruiter>(this._apiServide);
-
+          if( snapshot.url.includes('success') ){
+              this.auxUserCreated=true
+              console.log(this.auxUserCreated)
+          }
 
       }
 
@@ -128,6 +136,8 @@ export class AbcAttaDashComponent implements OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   ngOnInit(): void {
+
+   
     // this.dataSource.sort = this.sort;
     
     // Overrride default filter behaviour of Material Datatable
@@ -150,6 +160,9 @@ export class AbcAttaDashComponent implements OnInit {
       this.router.navigateByUrl('/login');
   }
 
+  closeUserCreated(){
+    this.auxUserCreated=false;
+  }
   
   // Get Uniqu values from columns to build filter
   getFilterObject(fullObj, key) {
@@ -196,8 +209,8 @@ export class AbcAttaDashComponent implements OnInit {
       this.varChipIdUser = `Level: ${filter.modelValue}`
    
     }
-    if(filter.name=='Recluter Id'){
-      this.varChipLevel =`Recluter Id: ${filter.modelValue}`;
+    if(filter.name=='Recruiter Id'){
+      this.varChipLevel =`Recruiter Id: ${filter.modelValue}`;
     }
       this.showChips=true;
   }
@@ -267,7 +280,7 @@ export class AbcAttaDashComponent implements OnInit {
     this.resetFiltersIdUser();
   
   }
-
+  
   removableChipLevel(){
     console.log('remover nivel');
     this.varChipLevel=null;
@@ -281,8 +294,8 @@ resetFiltersIdUser() {
   this.filterValues = {}
  
   this.filterSelectObj.forEach((value, key) => {
-    // console.log(value.name)
-    // console.log('soy que ???......!!!!')
+    console.log(value.name)
+    console.log('soy que ???......!!!!')
     // debugger
     if(value.name=='Level'){
       value.modelValue = null;
@@ -309,11 +322,11 @@ resetFiltersLevel() {
     // console.log(value.name)
     // console.log('value......!!!!')
     // debugger
-    if(value.name=='Recluter Id'){
+    if(value.name=='Recruiter Id'){
       value.modelValue = null;
     }else{
       this.filterSelectObj.forEach( (value ) => {
-        if(value.name!='Recluter Id'){
+        if(value.name!='Recruiter Id'){
           this.filterChangeMoreID(value,this.varChipIdUser)
         }
       })

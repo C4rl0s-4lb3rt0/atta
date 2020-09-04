@@ -28,17 +28,16 @@ export class AbcAttaComponent implements OnInit {
   forma: FormGroup;
 
   business: Business[] = [
-    {value: 'nearshore', viewValue: 'Nearshore'},
-    {value: 'nearshore/corporate', viewValue: 'Nearshore/Corporate'},
-    {value: 'corporate', viewValue: 'Corporate'},
-    {value: 'transformation-mx', viewValue: 'Transformation Mx'},
-    {value: 'time&materials', viewValue: 'Time & Materials'},
-    {value: 'anzen', viewValue: 'Anzen'},
-    {value: 'southamerica', viewValue: 'South America'},
-    {value: 'cloud', viewValue: 'Cloud'},
-    {value: 'hr', viewValue: 'HR'},
+    {value: 'Cloud', viewValue: 'Cloud'},
+    {value: 'TMX-CAM', viewValue: 'TMX-CAM'},
+    {value: 'Digital', viewValue: 'Digital'},
+    {value: 'Nearshore', viewValue: 'Nearshore'},
+    {value: 'ABU', viewValue: 'ABU'},
+    {value: 'Commerce', viewValue: 'Commerce'},
+    {value: 'Analytics', viewValue: 'Analytics'},
+    {value: 'Corporate', viewValue: 'Corporate'},
+    {value: 'TSA', viewValue: 'TSA'},
   ];
-
 
   levels: string[] = ['1', '2', '3', '4'];
 
@@ -63,12 +62,12 @@ export class AbcAttaComponent implements OnInit {
     if ( !this.isEnglish() ) {
       console.log('entra a español');
       this.firstFormGroup = this._formBuilder.group({
-        user:         ['', [ Validators.required, Validators.pattern('[a-zA-Z]+\.+[a-zA-Z]') ]],
+        user:         ['', [ Validators.required, Validators.pattern('[a-z]+[.]{1}[a-zA-Z]+')]],
         firstName:    ['', [ Validators.required, Validators.maxLength(10) ,Validators.pattern('[a-zA-Z]+')]],
         apPaterno:    ['', [ Validators.required, Validators.maxLength(10) ,Validators.pattern('[a-zA-Z]+') ]],
         apMaterno:    ['', [ Validators.required, Validators.maxLength(10) ,Validators.pattern('[a-zA-Z]+') ]],
         email:        ['', [ Validators.required , Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-        phone:        ['', [ Validators.required ,Validators.min(11111111),Validators.max(9999999999)] ],
+        phone:        ['', [ Validators.required ,Validators.min(1111111111),Validators.max(9999999999)] ],
         business:     ['', Validators.required],
         level:        ['', Validators.required],
         leng:         ['esp']
@@ -76,11 +75,11 @@ export class AbcAttaComponent implements OnInit {
     } else {
       console.log('entra a ingle');
       this.firstFormGroup = this._formBuilder.group({
-          user:        ['', [ Validators.required, Validators.pattern('[a-zA-Z]+\.[a-zA-Z]+') ]],
+          user:        ['', [ Validators.required, Validators.pattern('[a-z]+[.]{1}[a-zA-Z]+')]],
           firstName:   ['', [ Validators.required, Validators.maxLength(10),Validators.pattern('[a-zA-Z]+') ]],
           lastName:    ['', [ Validators.required ,Validators.maxLength(10) ,Validators.pattern('[a-zA-Z]+') ]],
           email:       ['', [ Validators.required , Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-          phone:       ['', [ Validators.required ,Validators.min(11111111),Validators.max(9999999999)] ],
+          phone:       ['', [ Validators.required ,Validators.min(1111111111),Validators.max(9999999999)] ],
           business:    ['', Validators.required],
           level:       ['', Validators.required],
           leng:        ['eng']
@@ -105,12 +104,18 @@ export class AbcAttaComponent implements OnInit {
     }
   }
 
-
-
-
+   maxLengthCheck($event)
+  {
+    console.log($event.target.value.length)
+    console.log($event.target.maxLength)
+    console.log('$event')
+    if ($event.target.value.length > $event.target.maxLength)
+    $event.target.value = $event.target.value.slice(0, $event.target.maxLength)
+  }
 
   guardar() {
 
+    
     this.api.insertUsers(this.firstFormGroup.value).subscribe( data => {
           if(data['resp'] == 'Failed'){
                 this.msgError = data['desc'];
@@ -132,7 +137,7 @@ export class AbcAttaComponent implements OnInit {
               showConfirmButton: false,
               timer: 1500
             })
-            this.router.navigateByUrl('/abc-atta');
+            this.router.navigateByUrl('/abc-atta?resp=success');
           }
         });
   }
