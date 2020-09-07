@@ -27,7 +27,7 @@
      bottom: 60px;
      left: 0;
      right: 0;
-     height: calc(100vh - 70px);
+     height: calc(100vh - 65px);
      
      .sidenav {
           padding-top: 40px;
@@ -144,12 +144,12 @@
  }
 
  ::ng-deep .mat-menu-panel {
-     max-width: none !important;
-     min-width: 400px !important;
-     max-width: 400px !important;
+     min-width: 300px !important;
+     max-width: 300px !important;
      // outline: 5px solid red;
      background: white;
-     padding: 20px 30px;;
+     padding: 40px 20px 20px 20px;
+     box-sizing:border-box; 
      .content-filtro{
           .title-filter{
                font-weight: bold;
