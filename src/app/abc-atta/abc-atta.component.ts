@@ -118,6 +118,12 @@ export class AbcAttaComponent implements OnInit {
     
     this.api.insertUsers(this.firstFormGroup.value).subscribe( data => {
           if(data['resp'] == 'Failed'){
+                if(this.firstFormGroup.value.leng == 'eng') {
+                  this.msgError = data['descEn'];
+                }
+                else {
+                  this.msgError = data['desc'];
+                }
                 this.msgError = data['desc'];
                 this.auxError= true
                 if( this.msgError.includes('Nombre') ){
