@@ -17,7 +17,7 @@ interface Business {
   styleUrls: ['./abc-atta.component.scss']
 })
 export class AbcAttaComponent implements OnInit {
-  
+
   auxError= false;
   msgError:string;
 
@@ -115,11 +115,17 @@ export class AbcAttaComponent implements OnInit {
 
   guardar() {
 
-    
+
     this.api.insertUsers(this.firstFormGroup.value).subscribe( data => {
           if(data['resp'] == 'Failed'){
-                this.msgError = data['desc'];
-                this.auxError= true
+                
+                if(this.firstFormGroup.value.leng == 'eng') {
+                  this.msgError = data['descEn'];
+                }
+                else {
+                  this.msgError = data['desc'];
+                }
+                this.auxError= true;
                 if( this.msgError.includes('Nombre') ){
                     this.firstFormGroup.controls['firstName'].setErrors({'incorrect': true});
                 }
