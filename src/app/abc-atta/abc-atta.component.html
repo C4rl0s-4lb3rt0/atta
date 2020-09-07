@@ -13,7 +13,7 @@
                     <div class="content-principal">
                          <h2>{{ 'abc-atta-createrUser.title' | translate }}</h2>
                          <h3>{{ 'abc-atta-createrUser.sub-title' | translate }}</h3>
-     
+
                          <form autocomplete="off"  [formGroup]="firstFormGroup" class="alta-form" (ngSubmit)="guardar()">
                               <!-- formulario para español -->
                               <div class="form-esp" *ngIf="  !this.isEnglish()  ">
@@ -47,7 +47,7 @@
                                                             formControlName="firstName"
                                                             onkeypress="return /[a-z]/i.test(event.key)"
                                                             >
-                                                       <mat-icon matSuffix 
+                                                       <mat-icon matSuffix
                                                             *ngIf="firstFormGroup.controls.firstName.errors && firstFormGroup.controls.firstName.dirty " class="error-input" >error_outline</mat-icon>
                                                        <mat-hint  *ngIf="firstFormGroup.controls.firstName.errors && firstFormGroup.controls.firstName.dirty " class="error-input" >Introduce un nombre válido </mat-hint>
                                                   </mat-form-field>
@@ -70,9 +70,9 @@
                                              </div>
                                         </div>
                                         <div class="form-row">
-     
+
                                                   <div class="cont-input  ">
-     
+
                                                        <mat-form-field class="example-full-width" appearance="fill">
                                                             <mat-label>Apellido Materno</mat-label>
                                                             <input
@@ -87,11 +87,11 @@
                                                             <mat-icon matSuffix *ngIf="firstFormGroup.controls.apMaterno.errors && firstFormGroup.controls.apMaterno.dirty " class="error-input" >error_outline</mat-icon>
                                                             <mat-hint  *ngIf="firstFormGroup.controls.apMaterno.errors && firstFormGroup.controls.apMaterno.dirty " class="error-input" >Introduce un apellido válido</mat-hint>
                                                        </mat-form-field>
-     
-     
+
+
                                                   </div>
                                                   <div class="cont-input  ">
-     
+
                                                        <mat-form-field class="example-full-width" appearance="fill">
                                                             <mat-label>Email</mat-label>
                                                             <input
@@ -101,7 +101,7 @@
                                                                  name="email"
                                                                  required
                                                                  formControlName="email"
-                                                                 maxlength="30"
+                                                                 maxlength="50"
                                                                  >
                                                             <mat-icon matSuffix *ngIf="firstFormGroup.controls.email.errors && firstFormGroup.controls.email.dirty " class="error-input" >error_outline</mat-icon>
                                                             <mat-hint  *ngIf="firstFormGroup.controls.email.errors && firstFormGroup.controls.email.dirty " class="error-input" >Introduce un email válido </mat-hint>
@@ -153,13 +153,13 @@
                                                             </mat-form-field>
                                              </div>
                                              <div class="cont-input">
-     
+
                                              </div>
                                         </div>
-     
-     
+
+
                               </div>
-     
+
                               <!-- formulario para ingles -->
                               <div class="form-ingl" *ngIf="  this.isEnglish()  ">
                                         <div class="form-row">
@@ -193,7 +193,7 @@
                                                                  maxlength="10"
                                                                  onkeypress="return /[a-z]/i.test(event.key)"
                                                                  >
-                                                                 <mat-icon matSuffix 
+                                                                 <mat-icon matSuffix
                                                                            *ngIf="firstFormGroup.controls.firstName.errors && firstFormGroup.controls.firstName.dirty " class="error-input" >error_outline</mat-icon>
                                                                  <mat-hint  *ngIf="firstFormGroup.controls.firstName.errors && firstFormGroup.controls.firstName.dirty " class="error-input" >Please enter a valid Name </mat-hint>
                                                        </mat-form-field>
@@ -229,7 +229,7 @@
                                                                       formControlName="email"
                                                                       maxlength="30"
                                                                       >
-                                                                      <mat-icon matSuffix 
+                                                                      <mat-icon matSuffix
                                                                                      *ngIf="firstFormGroup.controls.email.errors && firstFormGroup.controls.email.dirty " class="error-input" >error_outline</mat-icon>
                                                                       <mat-hint  *ngIf="firstFormGroup.controls.email.errors && firstFormGroup.controls.email.dirty " class="error-input" >Please enter a valid Email </mat-hint>
                                                             </mat-form-field>
@@ -243,12 +243,12 @@
                                                                       name="number"
                                                                       required
                                                                       formControlName="phone"
-                                                                      type="number" 
+                                                                      type="number"
                                                                       maxlength = "10"
                                                                       (input)=maxLengthCheck($event)
-                                                                      
+
                                                                  >
-                                                                 <mat-icon matSuffix 
+                                                                 <mat-icon matSuffix
                                                                  *ngIf="firstFormGroup.controls.phone.errors && firstFormGroup.controls.phone.dirty " class="error-input" >error_outline</mat-icon>
                                                                  <mat-hint  *ngIf="firstFormGroup.controls.phone.errors && firstFormGroup.controls.phone.dirty " class="error-input" >Please enter a valid Phone </mat-hint>
                                                             </mat-form-field>
@@ -261,7 +261,7 @@
                                                                            {{busine.viewValue}}
                                                                       </mat-option>
                                                                  </mat-select>
-                                                                 <mat-icon matSuffix 
+                                                                 <mat-icon matSuffix
                                                                  *ngIf="firstFormGroup.controls.business.errors && firstFormGroup.controls.business.dirty " class="error-input" >error_outline</mat-icon>
                                                                  <mat-hint  *ngIf="firstFormGroup.controls.business.errors && firstFormGroup.controls.business.dirty " class="error-input" >Please select a valid Business Unit </mat-hint>
                                                             </mat-form-field>
@@ -280,32 +280,32 @@
                                                                  <mat-option value="2"> Level 2 (Recruiter)  </mat-option>
                                                                  <!-- <mat-option value="1"> Level 3 (Master)  </mat-option> -->
                                                             </mat-select>
-                                                            <mat-icon matSuffix 
+                                                            <mat-icon matSuffix
                                                                  *ngIf="firstFormGroup.controls.level.errors && firstFormGroup.controls.level.dirty " class="error-input" >error_outline</mat-icon>
                                                                  <mat-hint  *ngIf="firstFormGroup.controls.level.errors && firstFormGroup.controls.level.dirty " class="error-input" >Please select a valid Business Unit </mat-hint>
                                                        </mat-form-field>
-     
+
                                                   </div>
                                                   <div class="cont-input">
-     
+
                                                   </div>
                                                   <div class="cont-input">
-     
+
                                                   </div>
                                              </div>
-     
+
                               </div>
-     
+
                               <div class="form-row botones">
                                    <div *ngIf="auxError" class="msn-error">
                                         <p>
                                              {{ msgError }}
                                         </p>
                                    </div>
-     
+
                                    <button mat-raised-button color="primary"  class="abc-atta-invert" routerLink="/abc-atta/" > Cancel </button>
-     
-     
+
+
                                    <button mat-raised-button color="primary" class="abc-atta-create" type="submit" [disabled]="!firstFormGroup.valid">Create</button>
                               </div>
                          </form>

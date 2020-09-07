@@ -168,8 +168,8 @@ estaAutentificadoApi(): boolean {
       Authorization: 'Bearer ' + this.leerToken(),
       'Content-Type':  'application/json'
     });
-  
-  
+
+
     const httpOptions = {
       headers
     };
@@ -179,17 +179,17 @@ estaAutentificadoApi(): boolean {
       "nickName": user.user,
       "nombre": user.firstName,
       "apellidoPaterno": user.lastName,
-      "apellidoMaterno": null,
+      "apellidoMaterno": "",
       "unidadNegocio": user.business,
       "correo": user.email,
       "telCelular": user.phone,
       "password": " ",
-      "tokenUser": null,
+      "tokenUser": "",
       "idNivel": user.level,
       "accesoLocal": false
-  
+
     };
-  
+
   }else{
     body = {
       "nickName": user.user,
@@ -200,16 +200,16 @@ estaAutentificadoApi(): boolean {
       "correo": user.email,
       "telCelular": user.phone,
       "password": " ",
-      "tokenUser": null,
+      "tokenUser": " ",
       "idNivel": user.level,
       "accesoLocal": false
-  
+
     };
   }
-  
+
    console.log(body);
    console.log("guardando en bd....");
-  
+
     return this.http.post('/api/user/adduser',body,httpOptions);
   //   return this.http.post('/api/user/adduser',body,httpOptions).toPromise().then(data =>{
   //       console.log(data['desc']);
@@ -218,9 +218,9 @@ estaAutentificadoApi(): boolean {
   //       console.log(data);
   //    }
   //  );
-  
-  
-  
+
+
+
   }
 
 }
