@@ -56,15 +56,15 @@
      }
 }
    
-::ng-deep  .left-container .content .content-body .filtro .mat-form-field .mat-form-field-underline {
+::ng-deep  .left-container .content .content-body .page-blacklist .filtro .mat-form-field .mat-form-field-underline {
      background-color: transparent;
  }  
 
- ::ng-deep .left-container .content .content-body .filtro .mat-form-field.mat-focused .mat-form-field-ripple {
+ ::ng-deep .left-container .content .content-body .page-blacklist .filtro .mat-form-field.mat-focused .mat-form-field-ripple {
      background-color: transparent;
  }
  
- ::ng-deep .left-container .content .content-body .filtro .mat-form-field {
+ ::ng-deep .left-container .content .content-body .page-blacklist .filtro .mat-form-field {
      display: flex;
      justify-content: flex-end;
      width: 100%;
@@ -86,13 +86,13 @@
 
  }
 
- ::ng-deep.menu-filtro .mat-menu-panel {
-     max-width: none !important;
-     min-width: 400px !important;
-     max-width: 400px !important;
-     // outline: 1px solid rgb(206, 69, 69);
+ ::ng-deep.menu-filtro .page-blacklist  .mat-menu-panel {
+     min-width: 300px !important;
+     max-width: 300px !important;
+     // outline: 5px solid red;
      background: white;
-     padding: 20px 30px;;
+     padding: 40px 20px 20px 20px;
+     box-sizing:border-box; 
      .content-filtro{
           .title-filter{
                font-weight: bold;
@@ -167,181 +167,186 @@ th.mat-sort-header-sorted {
    }
 
 ::ng-deep  .content-body{
-     .filtro{
-          display: flex;
-          justify-content: space-between;
-          background: white;
-          min-height:60px ;
-          width: 1105px;
-          margin:0 auto;
-          border-top-left-radius: 4px;
-          border-top-right-radius: 4px;
-          // border-radius: 4px;
-          border: solid 1px #cccccc;
-          flex-direction: column;
-          .row-up{
+     
+     .page-blacklist{
+
+          .filtro{
                display: flex;
                justify-content: space-between;
                background: white;
-               height:60px ;
-               .cont-chips-title{
-                  width: 230px;  
-                  display: flex;
-                  justify-content: flex-start;
-                  align-items: center;
-               //    outline: 1px solid red;
-     
-                  h2{
-                       margin-top:0 ;
-                       margin-bottom:0 ;
-                       padding-left: 20px;
-                  }
-               }
-               .cont-chips-prin{
-                    // outline: 5px solid blue;
-                    width: 850px;
+               min-height:60px ;
+               width: 1105px;
+               margin:0 auto;
+               border-top-left-radius: 4px;
+               border-top-right-radius: 4px;
+               // border-radius: 4px;
+               border: solid 1px #cccccc;
+               flex-direction: column;
+               .row-up{
                     display: flex;
-                    justify-content: flex-end;
-                    align-items: center;
-                    &.first{
-                         justify-content: space-around;
-                         // background: red;
-                         .cont-tent{
-                              width: 650px;
-                              // outline:13px solid green;
-                              .cont-chips-cont{
-                                   width:500px;
-                                   .mat-form-field .mat-form-field-wrapper .mat-form-field-infix {
-                                        position: relative;
-                                        flex: auto;
-                                        min-width: 0;
-                                        width: 180px;
-                                        display: flex;
-                                        justify-content: flex-start;
-                                   }
-                                   input.mat-input-element {
-                                        color: transparent;
-                                      }
-                                   
-                                   .mat-form-field.mat-focused .mat-form-field-label {
-                                        color: transparent !important;
-                                      }
-                                   
-                                   .mat-form-field-underline .mat-form-field-ripple{
-                                          background-color: transparent !important;
+                    justify-content: space-between;
+                    background: white;
+                    height:60px ;
+                    .cont-chips-title{
+                       width: 230px;  
+                       display: flex;
+                       justify-content: flex-start;
+                       align-items: center;
+                    //    outline: 1px solid red;
+          
+                       h2{
+                            margin-top:0 ;
+                            margin-bottom:0 ;
+                            padding-left: 20px;
+                       }
+                    }
+                    .cont-chips-prin{
+                         // outline: 5px solid blue;
+                         width: 850px;
+                         display: flex;
+                         justify-content: flex-end;
+                         align-items: center;
+                         &.first{
+                              justify-content: space-around;
+                              // background: red;
+                              .cont-tent{
+                                   width: 650px;
+                                   // outline:13px solid green;
+                                   .cont-chips-cont{
+                                        width:500px;
+                                        .mat-form-field .mat-form-field-wrapper .mat-form-field-infix {
+                                             position: relative;
+                                             flex: auto;
+                                             min-width: 0;
+                                             width: 180px;
+                                             display: flex;
+                                             justify-content: flex-start;
                                         }
+                                        input.mat-input-element {
+                                             color: transparent;
+                                           }
+                                        
+                                        .mat-form-field.mat-focused .mat-form-field-label {
+                                             color: transparent !important;
+                                           }
+                                        
+                                        .mat-form-field-underline .mat-form-field-ripple{
+                                               background-color: transparent !important;
+                                             }
+                                   }
+                                   .content-all{
+                                        .cont-select-all{
+                                             display: flex;
+                                             button{
+                                                  margin-left:10px;
+                                                  margin-right:10px;
+                                             }
+                                        }
+                                   }
+                              }
+                         }
+          
+                         .cont-tent{
+                              width: 500px;
+                              // outline: 12px solid blue;
+                              display: flex;
+                              justify-content: flex-end;
+                              .cont-chips-cont{
+                                   width: 400px;
+                                   .mat-form-field-appearance-legacy .mat-form-field-underline{
+                                        // border:5px solid red !important;
+                                        // outline: 1px solid blue;
+                                   }
+                                   .mat-form-field{
+                                        width: 400px;
+                                        .mat-input-underline {
+                                             display: none;
+                                         }
+                                        // outline: 1px solid blue;
+                                        .mat-form-field-wrapper {
+                                             // outline: 1px solid red;
+                    
+                                        }
+                                        .mat-chip-list-wrapper{
+                                             justify-content: flex-end;
+                                        }
+                                        
+                                   }
                               }
                               .content-all{
+                                   display: flex;
+                                   justify-content: center;
+                                   align-items: center;
                                    .cont-select-all{
-                                        display: flex;
-                                        button{
-                                             margin-left:10px;
-                                             margin-right:10px;
-                                        }
+          
                                    }
+                              }
+                         }
+                         .cont-chips-button{
+                              width:50px;
+                              // outline: 1px solid green;
+                              display: flex;
+                              align-items: center;
+                              justify-content: center;
+                              margin-right: 25px;
+                              margin-left: 25px;
+                              mat-icon{
+                                   color:#2383b6;
                               }
                          }
                     }
      
+               }
+               .row-bottom{
+                    display: flex;
+                    width: 100%;
+                    min-height:50px;
+                    // outline:1px solid blue;
                     .cont-tent{
-                         width: 500px;
-                         // outline: 12px solid blue;
-                         display: flex;
-                         justify-content: flex-end;
-                         .cont-chips-cont{
-                              width: 400px;
-                              .mat-form-field-appearance-legacy .mat-form-field-underline{
-                                   // border:5px solid red !important;
-                                   // outline: 1px solid blue;
-                              }
-                              .mat-form-field{
-                                   width: 400px;
-                                   .mat-input-underline {
-                                        display: none;
-                                    }
-                                   // outline: 1px solid blue;
-                                   .mat-form-field-wrapper {
-                                        // outline: 1px solid red;
-               
-                                   }
-                                   .mat-chip-list-wrapper{
-                                        justify-content: flex-end;
-                                   }
-                                   
-                              }
-                         }
-                         .content-all{
+                         display: flex;width:100%;
+                         .title-filter{
                               display: flex;
                               justify-content: center;
                               align-items: center;
-                              .cont-select-all{
-     
-                              }
-                         }
-                    }
-                    .cont-chips-button{
-                         width:50px;
-                         // outline: 1px solid green;
-                         display: flex;
-                         align-items: center;
-                         justify-content: center;
-                         margin-right: 25px;
-                         margin-left: 25px;
-                         mat-icon{
-                              color:#2383b6;
-                         }
-                    }
-               }
-
-          }
-          .row-bottom{
-               display: flex;
-               width: 100%;
-               min-height:50px;
-               // outline:1px solid blue;
-               .cont-tent{
-                    display: flex;width:100%;
-                    .title-filter{
-                         display: flex;
-                         justify-content: center;
-                         align-items: center;
-                         font-size: 14px;
-                         font-weight: normal;
-                         font-stretch: normal;
-                         font-style: normal;
-                         line-height: 1.71;
-                         letter-spacing: normal;
-                         color: #323232;
-                         margin-left: 20px;
-                    }.cont-chips-cont{
-                         margin-left: 20px;
-                         .mat-chip.mat-standard-chip {
-                              background-color: #fafafa;
-                              color: rgba(0,0,0,.87);
-                              border: 1px solid #cccccc;
-                              font-size: 10px;
+                              font-size: 14px;
                               font-weight: normal;
                               font-stretch: normal;
                               font-style: normal;
-                              line-height: normal;
+                              line-height: 1.71;
                               letter-spacing: normal;
-                              color: #525252;
-                          }
+                              color: #323232;
+                              margin-left: 20px;
+                         }.cont-chips-cont{
+                              margin-left: 20px;
+                              .mat-chip.mat-standard-chip {
+                                   background-color: #fafafa;
+                                   color: rgba(0,0,0,.87);
+                                   border: 1px solid #cccccc;
+                                   font-size: 10px;
+                                   font-weight: normal;
+                                   font-stretch: normal;
+                                   font-style: normal;
+                                   line-height: normal;
+                                   letter-spacing: normal;
+                                   color: #525252;
+                               }
+                         }
                     }
+     
                }
-
-          }
-          .mat-raised-button {
-               background-color: #2383b6;
-               color:white;
-               height: 30px;
-               border-radius: 4px;
-               background-color: #2383b6;
-               display: flex;
-               justify-content: center;
-               align-items: center;
+               .mat-raised-button {
+                    background-color: #2383b6;
+                    color:white;
+                    height: 30px;
+                    border-radius: 4px;
+                    background-color: #2383b6;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+               }
           }
      }
+     
 
      .mat-column-name {
           word-wrap: break-word !important;

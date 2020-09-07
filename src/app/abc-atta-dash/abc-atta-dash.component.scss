@@ -38,7 +38,7 @@
      bottom: 60px;
      left: 0;
      right: 0;
-     height: calc(100vh - 70px);
+     height: calc(100vh - 65px);
      
      .sidenav {
           padding-top: 40px;
@@ -130,22 +130,7 @@
 
  }
 
-::ng-deep #mat-menu-panel,
-::ng-deep #mat-menu-panel-2,
-::ng-deep #mat-menu-panel-3,
-::ng-deep #mat-menu-panel-4{
-     max-width: none !important;
-     min-width: 140px !important;
-     max-width: 140px !important;
-     // outline: 5px solid red;
-     background: white;
-     padding: 5px 10px;;
-     .content-filtro{
-          .title-filter{
-               font-weight: bold;
-          }
-     }
- }
+
 
  ::ng-deep .mat-menu-panel {
      max-width: none !important;
