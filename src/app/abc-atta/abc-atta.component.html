@@ -190,8 +190,8 @@
                                                                  name="name"
                                                                  required
                                                                  formControlName="firstName"
-                                                                 maxlength="10"
-                                                                 onkeypress="return /[a-z]/i.test(event.key)"
+                                                                 maxlength="20"
+                                                                 onkeypress="return /[a-z\s]/i.test(event.key)"
                                                                  >
                                                                  <mat-icon matSuffix
                                                                            *ngIf="firstFormGroup.controls.firstName.errors && firstFormGroup.controls.firstName.dirty " class="error-input" >error_outline</mat-icon>
@@ -208,8 +208,8 @@
                                                                  name="last_name"
                                                                  required
                                                                  formControlName="lastName"
-                                                                 maxlength="10"
-                                                                 onkeypress="return /[a-z]/i.test(event.key)"
+                                                                 maxlength="20"
+                                                                 onkeypress="return /[a-z\s]/i.test(event.key)"
                                                             >
                                                             <mat-icon matSuffix *ngIf="firstFormGroup.controls.lastName.errors && firstFormGroup.controls.lastName.dirty " class="error-input" >error_outline</mat-icon>
                                                             <mat-hint  *ngIf="firstFormGroup.controls.lastName.errors && firstFormGroup.controls.lastName.dirty " class="error-input" >Please enter a valid Last Name </mat-hint>

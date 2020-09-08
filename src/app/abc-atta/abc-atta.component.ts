@@ -62,11 +62,11 @@ export class AbcAttaComponent implements OnInit {
     if ( !this.isEnglish() ) {
       console.log('entra a español');
       this.firstFormGroup = this._formBuilder.group({
-        user:         ['', [ Validators.required, Validators.pattern('[a-z]+[.]{1}[a-zA-Z]+')]],
-        firstName:    ['', [ Validators.required, Validators.maxLength(10) ,Validators.pattern('[a-zA-Z]+')]],
-        apPaterno:    ['', [ Validators.required, Validators.maxLength(10) ,Validators.pattern('[a-zA-Z]+') ]],
-        apMaterno:    ['', [ Validators.required, Validators.maxLength(10) ,Validators.pattern('[a-zA-Z]+') ]],
-        email:        ['', [ Validators.required , Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+        user:         ['', [ Validators.required, Validators.pattern('[A-Za-z]+[.]{1}[a-zA-Z]+')]],
+        firstName:    ['', [ Validators.required, Validators.maxLength(20) ,Validators.pattern('[a-zA-Z]+[\\s*[a-zA-Z]*]*')]],
+        apPaterno:    ['', [ Validators.required, Validators.maxLength(20) ,Validators.pattern('[a-zA-Z]+[\\s*[a-zA-Z]*]*') ]],
+        apMaterno:    ['', [ Validators.required, Validators.maxLength(20) ,Validators.pattern('[a-zA-Z]+[\\s*[a-zA-Z]*]*') ]],
+        email:        ['', [ Validators.required , Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$')]],
         phone:        ['', [ Validators.required ,Validators.min(1111111111),Validators.max(9999999999)] ],
         business:     ['', Validators.required],
         level:        ['', Validators.required],
@@ -75,10 +75,10 @@ export class AbcAttaComponent implements OnInit {
     } else {
       console.log('entra a ingle');
       this.firstFormGroup = this._formBuilder.group({
-          user:        ['', [ Validators.required, Validators.pattern('[a-z]+[.]{1}[a-zA-Z]+')]],
-          firstName:   ['', [ Validators.required, Validators.maxLength(10),Validators.pattern('[a-zA-Z]+') ]],
-          lastName:    ['', [ Validators.required ,Validators.maxLength(10) ,Validators.pattern('[a-zA-Z]+') ]],
-          email:       ['', [ Validators.required , Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+          user:        ['', [ Validators.required, Validators.pattern('[A-Za-z]+[.]{1}[a-zA-Z]+')]],
+          firstName:   ['', [ Validators.required, Validators.maxLength(20),Validators.pattern('[a-zA-Z]+[\\s*[a-zA-Z]*]*') ]],
+          lastName:    ['', [ Validators.required ,Validators.maxLength(20) ,Validators.pattern('[a-zA-Z]+[\\s*[a-zA-Z]*]*') ]],
+          email:       ['', [ Validators.required , Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$')]],
           phone:       ['', [ Validators.required ,Validators.min(1111111111),Validators.max(9999999999)] ],
           business:    ['', Validators.required],
           level:       ['', Validators.required],
@@ -118,7 +118,7 @@ export class AbcAttaComponent implements OnInit {
 
     this.api.insertUsers(this.firstFormGroup.value).subscribe( data => {
           if(data['resp'] == 'Failed'){
-                
+
                 if(this.firstFormGroup.value.leng == 'eng') {
                   this.msgError = data['descEn'];
                 }
@@ -126,7 +126,7 @@ export class AbcAttaComponent implements OnInit {
                   this.msgError = data['desc'];
                 }
                 this.auxError= true;
-                if( this.msgError.includes('Nombre') ){
+                if( this.msgError.includes('Nombre')  ){
                     this.firstFormGroup.controls['firstName'].setErrors({'incorrect': true});
                 }
                 if( this.msgError.includes('Correo') ){
