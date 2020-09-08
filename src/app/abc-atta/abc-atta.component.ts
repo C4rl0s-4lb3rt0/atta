@@ -136,6 +136,9 @@ export class AbcAttaComponent implements OnInit {
                 if( this.msgError.includes('Telefono') || this.msgError.includes('Phone') ){
                     this.firstFormGroup.controls['phone'].setErrors({'incorrect': true});
                 }
+                if( this.msgError.includes('IdUser')  ){
+                  this.firstFormGroup.controls['user'].setErrors({'incorrect': true});
+                }
           }else{
             Swal.fire({
               allowOutsideClick:false,
