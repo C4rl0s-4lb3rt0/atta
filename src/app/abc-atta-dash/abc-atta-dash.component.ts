@@ -15,6 +15,7 @@ import { AuthApiService } from '../services/auth-api.service';
 
 import { UsersService } from '../services/user.service';
 import { MatMenuTrigger } from '@angular/material/menu';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-abc-atta-dash',
@@ -23,21 +24,14 @@ import { MatMenuTrigger } from '@angular/material/menu';
 })
 export class AbcAttaDashComponent implements OnInit {
 
-  // @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
-
+ 
   parentMessage = "message";
   navTitleChange:string;
   activeNav = false;
   filterValues = {};
 
-  displayedColumns: string[] = ['name','level','email','bussinets','recluiterId'];
-
   filterSelectObj = [];
 
-  dataSource;
-
-  
-  selection = new SelectionModel<Recruiter>(true, []);
 
   events: string[] = [];
   opened: boolean;
@@ -51,8 +45,7 @@ export class AbcAttaDashComponent implements OnInit {
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
 
   
-  // @ViewChild(MatMenuTrigger) triggerMenu: MatMenuTrigger;
-
+  
 
   someMethod() {
     this.trigger.closeMenu(); // <-- put this in your dialog open method
@@ -78,51 +71,36 @@ export class AbcAttaDashComponent implements OnInit {
   loading:boolean;
   auxUserCreated:boolean=false;
 
+
+  forma:FormGroup;
+
+  filtroLevel:boolean=false
+  filtroIdRecruiter:boolean=false;
+
+  valueRecuriterId;
+  valueLevel
+
+
+  ELEMENT_DATA:Recruiter[];
+  displayedColumnsTable: string[]= ['name','username','unidadNegocio','email','level'];
+  dataSource = new MatTableDataSource<Recruiter>(this.ELEMENT_DATA);
+  auxData
+
+  noRecruiters=false;
+
+
   constructor(private auth: AuthService,
               private router: Router,
-              private _apiServide:AuthApiService,private routeraux:ActivatedRoute
+              private _apiServide:AuthApiService,
+              private fb: FormBuilder
               ) {
       
           this.loading= true;
-          this.filterSelectObj = [
-                  {
-                    name: 'Level',
-                    columnProp: 'level',
-                    options: []
-                  },
-                  {
-                    name: 'Recruiter Id',
-                    columnProp: 'id',
-                    options: []
-                  }
-                ]
-          
-          this._apiServide.getUsers()
-              .subscribe( (data:any) => {
-                  console.log(data);
-                  this.recruiters=data
-                  this.loading=false;
-                  this.dataSource = new MatTableDataSource<Recruiter>(data);
-                  this.getRemoteData();
-                  this.dataSource.sort = this.sort;
-                  this.dataSource.filterPredicate = this.createFilter();
-                  this.dataSource.paginator = this.paginator;
-    // this.dataSource.sort = this.sort;
-    
-
-    
-                  }
-              )
-
-          console.log('debemos ini');
-          console.log(this.recruiters);
-          console.log('debemos final');
-    
-    
+          this.crearFormulario();
+        
           const snapshot: RouterStateSnapshot = router.routerState.snapshot;
           console.log(snapshot.url);  // <-- hope it helps
           
-          // this.dataSource = new MatTableDataSource<Recruiter>(this._apiServide);
           if( snapshot.url.includes('success') ){
               this.auxUserCreated=true
               console.log(this.auxUserCreated)
@@ -133,24 +111,10 @@ export class AbcAttaDashComponent implements OnInit {
    
       
 
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
-
+  
   ngOnInit(): void {
 
-   
-    // this.dataSource.sort = this.sort;
-    
-    // Overrride default filter behaviour of Material Datatable
-    
-    
-
-
-    // this.getRemoteData();
-    // this.dataSource.filterPredicate = this.createFilter();
-    // this.dataSource.sort = this.sort;
-
-
-
+       this.getAllRecruiters()
     
   }
 
@@ -164,276 +128,332 @@ export class AbcAttaDashComponent implements OnInit {
     this.auxUserCreated=false;
   }
   
-  // Get Uniqu values from columns to build filter
-  getFilterObject(fullObj, key) {
-    const uniqChk = [];
-    fullObj.filter((obj) => {
-      if (!uniqChk.includes(obj[key])) {
-        uniqChk.push(obj[key]);
-      }
-      return obj;
-    });
-    return uniqChk;
-  }
-
-  
-
-  // Get remote serve data using HTTP call
-  getRemoteData() {
-
-    this.filterSelectObj.filter((o) => {
-      o.options = this.getFilterObject(this.dataSource.data, o.columnProp);
-    });
-    if(this.filterSelectObj[0].modelValue == null && this.filterSelectObj[1].modelValue == null){
-      this.showChips=false
-
-    }
-    
-
-  }
-
-  // Called on Filter change
-  filterChange(filter, event) {
-    //let filterValues = {}
-    // console.log(filter);
-    // console.log('vamos');
-    console.log(event.target.value.trim().toLowerCase());
-    
-    // console.log('atras');
-    
-    this.filterValues[filter.columnProp] = event.target.value.trim().toLowerCase()
-    this.dataSource.filter = JSON.stringify(this.filterValues)
-    console.log(filter.name);
-    
-    if(filter.name=='Level'){
-      this.varChipIdUser = `Level: ${filter.modelValue}`
-   
-    }
-    if(filter.name=='Recruiter Id'){
-      this.varChipLevel =`Recruiter Id: ${filter.modelValue}`;
-    }
-      this.showChips=true;
-  }
-
-
-  filterChangeMore(filter,status) {
-    if(this.varChipLevel==null){
-      this.filterValues[filter.columnProp] = '';
-    }else{
-      this.filterValues[filter.columnProp] = status;
-    }
-    this.dataSource.filter = JSON.stringify(this.filterValues)
-  }
-
-  filterChangeMoreID(filter,status){
-    
-    if(this.varChipIdUser==null){
-      this.filterValues[filter.columnProp] = '';
-    }else{
-      this.filterValues[filter.columnProp] = status;
-    }
-    this.dataSource.filter = JSON.stringify(this.filterValues)
-  }
-
-
-
-
-  // Custom filter method fot Angular Material Datatable
-  createFilter() {
-    let filterFunction = function (data: any, filter: string): boolean {
-      let searchTerms = JSON.parse(filter);
-      console.log(searchTerms)
-      console.log('!!!!')
-      let isFilterSet = false;
-      for (const col in searchTerms) {
-        if (searchTerms[col].toString() !== '') {
-          isFilterSet = true;
-                  } else {
-          delete searchTerms[col];
-        }
-      }
-      
-      let nameSearch = () => {
-        let found = false;
-        if (isFilterSet) {
-          for (const col in searchTerms) {
-            searchTerms[col].trim().toLowerCase().split(' ').forEach(word => {
-              if (data[col].toString().toLowerCase().indexOf(word) != -1 && isFilterSet) {
-                found = true
-              }
-            });
-          }
-          return found
-        } else {
-          return true;
-        }
-      }
-      return nameSearch()
-    }
-    return filterFunction
-  }
-
-
   removableChipIdUser(){
     this.varChipIdUser=null;
-    this.dataSource.filterPredicate = this.createFilter();
-    this.resetFiltersIdUser();
-  
+    this.forma.controls.recluiterId.reset()
+    console.log(this.valueLevel);
+    // debugger
+    this.valueLevel = this.forma.controls.level.value;
+    console.log(this.valueLevel)
+    if(this.valueLevel!=null && this.valueLevel){
+      this.OnSubmitFilterLevel()
+      // this.OnSubmitFilter()
+    }else{
+      this.getAllRecruiters()
+      this.showChips=false
+      this.noRecruiters=false;
+      
+    }
+    console.log(this.valueLevel);
+    
+    
+    
   }
   
   removableChipLevel(){
-    console.log('remover nivel');
     this.varChipLevel=null;
-    this.dataSource.filterPredicate = this.createFilter();
-    this.resetFiltersLevel();
-
+    this.forma.controls.level.reset()
+    this.valueRecuriterId = this.forma.controls.recluiterId.value;
+    console.log(this.valueRecuriterId);
+    if(this.valueRecuriterId!=null && this.valueRecuriterId){
+          this.OnSubmitFilterIdRecruiter()
+          console.log("entra")
+          
+    }else{
+      this.getAllRecruiters()
+      this.showChips=false
+      console.log('todo')
+      this.noRecruiters=false;
+   
+    }
+        // console.log(this.valueRecuriterId);
     
   }
 
-resetFiltersIdUser() {
-  this.filterValues = {}
- 
-  this.filterSelectObj.forEach((value, key) => {
-    console.log(value.name)
-    console.log('soy que ???......!!!!')
-    // debugger
-    if(value.name=='Level'){
-      value.modelValue = null;
+  crearFormulario(){
+    this.forma = this.fb.group({
+      recluiterId : ['', [ Validators.maxLength(10),Validators.pattern('[a-z]+[.]*[a-z]*') ]],
+      level : [''],
+    });
+  }
+
+  OnSubmitFilter(){
+    // console.log("Level:");
+    // console.log(this.forma.controls.level.value);
+    // console.log("RecluiterId");
+    // console.log(this.forma.controls.recluiterId.value);
+    console.log('prueba ara ver si chips');
+    const recruitersFilter = new Array();
+    let levelAux;
+    let levelAuxChips =false;
+
+    let recluiterIdAux;
+    let recluiterIdAuxChips=false;
+
+
+
+    if(  !((!(this.forma.controls.level.value != '' ) && this.forma.controls.level.pristine )) && (this.forma.controls.level.value != null)  ){
+     
+      this.showChips=true;
+      this.varChipLevel = `Level: ${this.forma.controls.level.value}`
+      levelAux = this.forma.controls.level.value;
+      levelAuxChips = this.forma.controls.level.value;
+      this.filtroLevel=true
       
-    }else{
-      this.filterSelectObj.forEach( (value ) => {
-        if(value.name!='Level'){
-          this.filterChangeMore(value,this.varChipLevel)
-        }
-      })
     }
-    // console.log(this.filterSelectObj); 
-    // console.log('this.filterSelectObj----'); 
-    // console.log('id Usser');
-  this.getRemoteData();
-  })
-}
 
-
-resetFiltersLevel() {
-  this.filterValues = {}
-
-  this.filterSelectObj.forEach((value, key) => {
-    // console.log(value.name)
-    // console.log('value......!!!!')
-    // debugger
-    if(value.name=='Recruiter Id'){
-      value.modelValue = null;
-    }else{
-      this.filterSelectObj.forEach( (value ) => {
-        if(value.name!='Recruiter Id'){
-          this.filterChangeMoreID(value,this.varChipIdUser)
-        }
-      })
+    if( !(this.forma.controls.recluiterId.pristine || !(this.forma.controls.recluiterId.value.length > 0 ))  ){
+      this.showChips=true;
+      this.varChipIdUser = `Recruiter Id: ${this.forma.controls.recluiterId.value}`
+      recluiterIdAux = this.forma.controls.recluiterId.value
+      recluiterIdAuxChips = this.forma.controls.recluiterId.value
+      this.filtroIdRecruiter=true;
     }
-    // console.log(this.filterSelectObj); 
-    // console.log('this.filterSelectObj----'); 
-    // console.log('id Usser');
-  this.getRemoteData();
-  })
-}
 
+      levelAuxChips =this.filtroLevel
+      recluiterIdAuxChips= this.filtroIdRecruiter
+      
 
-
-
-  // Reset table filters
-  resetFilters() {
-    this.filterValues = {}
-    this.filterSelectObj.forEach((value, key) => {
-      value.modelValue = undefined;
-    })
-    this.dataSource.filter = "";
-  }
-
-  ngAfterViewInit(): void {
-
-    // this.dataSource.sort = this.sort;
-    // this.dataSource.paginator = this.paginator;
-  
-  }
-
-   /** Whether the number of selected elements matches the total number of rows. */
-   isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.recruiters.length;
-    return numSelected === numRows;
-  }
-
-  sendFileInterrupt() {
-    // let selectedFileIds: string[] = [];
-       for (let item of this.selection.selected) {
-        //  console.log(item.id);
-        //  selectedFileIds.push(item.fileId);
+      if(this.forma.controls.level.value==null){
+        levelAuxChips=false;
       }
-  }
+      if(this.forma.controls.recluiterId.value==null){
+        recluiterIdAuxChips=false;
+      }
+      console.log( levelAuxChips);
+      console.log(recluiterIdAuxChips);
 
-  public moveJAId(recordId) {
+      console.log(this.dataSource.data)
+    this.dataSource.data.forEach(function(element) {
+      // console.log(element);
+
+      if( levelAuxChips == true && recluiterIdAuxChips == true){
+      
+        if(element.level == levelAux &&  element.username.includes(recluiterIdAux)){
+          console.log('los dos true')
+          recruitersFilter.push(element);
+        }
+      }
+
+
+      if( (levelAuxChips == true &&  recluiterIdAuxChips == false)  || (levelAuxChips == true &&  recluiterIdAuxChips == null)){
+        console.log('con level')
+        if(element.level == levelAux){
+            recruitersFilter.push(element);
+        }
+      }
+
+
+      if( (levelAuxChips == false &&  recluiterIdAuxChips == true) || (levelAuxChips == null &&  recluiterIdAuxChips == true) || (levelAuxChips == false &&  recluiterIdAuxChips == true)) {
+        console.log('con Id')
+        if( element.username.includes(recluiterIdAux) ){
+            recruitersFilter.push(element);
+        }
+      }
+    });
+    console.log(this.dataSource.data) 
+    console.log('this.dataSource.data') 
+    this.auxData=this.dataSource.data;
+    // console.log(this.auxData) 
+    console.log('this.auxData') 
+    this.dataSource.data = recruitersFilter;
+    console.log(this.dataSource.data.length);
+    console.log('length.....');
+    if(this.dataSource.data.length == 0) {
+        this.noRecruiters=true;
+    }else{
+      this.noRecruiters=false;
+    }
+
+
+
+    return;
    
-
-     console.log(recordId);
-    console.log('Se movera a JA');
-    // console.log(change);
   }
 
-  
-  change_sideBar(data){
-    console.log(data)
-    console.log('data')
-    if(data.saveUser==true){
-      this.selection.clear();
-      this.removableChipIdUser();
-      this.removableChipLevel()
-      this.resetFilters();
-      // console.log('se guardo y se cierra con reseteo')
+
+
+
+  OnSubmitFilterIdRecruiter(){
+    // console.log("Level:");
+    // console.log(this.forma.controls.level.value);
+    // console.log("RecluiterId");
+    // console.log(this.forma.controls.recluiterId.value);
+    console.log('prueba ara ver si chips');
+    const recruitersFilter = new Array();
+    let levelAux;
+    let levelAuxChips =false;
+
+    let recluiterIdAux;
+    let recluiterIdAuxChips=false;
+
+
+
+    if(  !((!(this.forma.controls.level.value != '' ) && this.forma.controls.level.pristine )) && (this.forma.controls.level.value != null)  ){
+     
+      this.showChips=true;
+      this.varChipLevel = `Level: ${this.forma.controls.level.value}`
+      levelAux = this.forma.controls.level.value;
+      levelAuxChips = this.forma.controls.level.value;
+      this.filtroLevel=true
+      
+    }
+
+    if( !(this.forma.controls.recluiterId.pristine || !(this.forma.controls.recluiterId.value.length > 0 ))  ){
+      this.showChips=true;
+      this.varChipIdUser = `Recruiter Id: ${this.forma.controls.recluiterId.value}`
+      recluiterIdAux = this.forma.controls.recluiterId.value
+      recluiterIdAuxChips = this.forma.controls.recluiterId.value
+      this.filtroIdRecruiter=true;
+    }
+
+      levelAuxChips =this.filtroLevel
+      recluiterIdAuxChips= this.filtroIdRecruiter
+      
+
+      if(this.forma.controls.level.value==null){
+        levelAuxChips=false;
+      }
+      if(this.forma.controls.recluiterId.value==null){
+        recluiterIdAuxChips=false;
+      }
+      console.log( levelAuxChips);
+      console.log(recluiterIdAuxChips);
+
+      console.log(this.dataSource.data)
+    this.auxData.forEach(function(element) {
+      // console.log(element);
+
+      if( levelAuxChips == true && recluiterIdAuxChips == true){
+      
+        if(element.level == levelAux &&  element.username.includes(recluiterIdAux)){
+          console.log('los dos true')
+          recruitersFilter.push(element);
+        }
+      }
+
+
+      if( (levelAuxChips == true &&  recluiterIdAuxChips == false)  || (levelAuxChips == true &&  recluiterIdAuxChips == null)){
+        console.log('con level')
+        if(element.level == levelAux){
+            recruitersFilter.push(element);
+        }
+      }
+
+
+      if( (levelAuxChips == false &&  recluiterIdAuxChips == true) || (levelAuxChips == null &&  recluiterIdAuxChips == true) || (levelAuxChips == false &&  recluiterIdAuxChips == true)) {
+        console.log('con Id')
+        if( element.username.includes(recluiterIdAux) ){
+            recruitersFilter.push(element);
+        }
+      }
+    });
+    
+    this.dataSource.data = recruitersFilter;
+    if(this.dataSource.data.length == 0) {
+        this.noRecruiters=true;
     }else{
-      if(data.onlyclosed){
-        console.log('se debe de dejar filtros')
+      this.noRecruiters=false;
+    }
+
+    return;
+   
+  }
+
+
+
+
+  OnSubmitFilterLevel(){
+    // console.log("Level:");
+    // console.log(this.forma.controls.level.value);
+    // console.log("RecluiterId");
+    // console.log(this.forma.controls.recluiterId.value);
+    console.log('prueba ara ver si chips');
+    const recruitersFilter = new Array();
+    let levelAux;
+    let levelAuxChips =false;
+
+    let recluiterIdAux;
+    let recluiterIdAuxChips=false;
+
+
+
+    if(  !((!(this.forma.controls.level.value != '' ) && this.forma.controls.level.pristine )) && (this.forma.controls.level.value != null)  ){
+     
+      this.showChips=true;
+      this.varChipLevel = `Level: ${this.forma.controls.level.value}`
+      levelAux = this.forma.controls.level.value;
+      levelAuxChips = this.forma.controls.level.value;
+      this.filtroLevel=true
+      
+    }
+
+    if( !(this.forma.controls.recluiterId.pristine || !(this.forma.controls.recluiterId.value.length > 0 ))  ){
+      this.showChips=true;
+      this.varChipIdUser = `Recruiter Id: ${this.forma.controls.recluiterId.value}`
+      recluiterIdAux = this.forma.controls.recluiterId.value
+      recluiterIdAuxChips = this.forma.controls.recluiterId.value
+      this.filtroIdRecruiter=true;
+    }
+
+      levelAuxChips =this.filtroLevel
+      recluiterIdAuxChips= this.filtroIdRecruiter
+      
+
+      if(this.forma.controls.level.value==null){
+        levelAuxChips=false;
       }
-    }
-    this.activeNav = false;
+      if(this.forma.controls.recluiterId.value==null){
+        recluiterIdAuxChips=false;
+      }
+      console.log( levelAuxChips);
+      console.log(recluiterIdAuxChips);
 
-  }
+      console.log(this.dataSource.data)
+    this.auxData.forEach(function(element) {
+      // console.log(element);
 
-  // cambiar(foo,registro){
-  //   this.activeNav =  foo;
-  //   if(registro == true){
-  //   }
-  //   // console.log('se cierra solamente')
-  // }
-
-
-
-/** Selects all rows if they are not all selected; otherwise clear selection. */
-    masterToggle() {
-      this.isAllSelected() ?
-          this.selection.clear() :
-          this.dataSource.data.forEach(row => {
-            this.selection.select(row)
-            // console.log(row);
-          });
-    }
-  
-    /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: Recruiter): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
-    }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
-  }
-
-
-  ngChanges() { 
-    console.log('todos sele')
-  
-      if(this.isAllSelected()== true){
+      if( levelAuxChips == true && recluiterIdAuxChips == true){
+      
+        if(element.level == levelAux &&  element.username.includes(recluiterIdAux)){
+          console.log('los dos true')
+          recruitersFilter.push(element);
+        }
       }
 
+
+      if( (levelAuxChips == true &&  recluiterIdAuxChips == false)  || (levelAuxChips == true &&  recluiterIdAuxChips == null)){
+        console.log('con level')
+        if(element.level == levelAux){
+            recruitersFilter.push(element);
+        }
+      }
+
+
+      if( (levelAuxChips == false &&  recluiterIdAuxChips == true) || (levelAuxChips == null &&  recluiterIdAuxChips == true) || (levelAuxChips == false &&  recluiterIdAuxChips == true)) {
+        console.log('con Id')
+        if( element.username.includes(recluiterIdAux) ){
+            recruitersFilter.push(element);
+        }
+      }
+    });
+    
+    this.dataSource.data = recruitersFilter;
+    if(this.dataSource.data.length == 0) {
+        this.noRecruiters=true;
+    }else{
+      this.noRecruiters=false;
+    }
+
+    return;
+   
   }
+
+  public getAllRecruiters(){
+    let resp = this._apiServide.getUsersTable();
+    resp.subscribe(report => this.dataSource.data=report as Recruiter[] );
+  }
+  
 
 }
 
@@ -442,12 +462,10 @@ resetFiltersLevel() {
 
 
 export interface Recruiter {
-  id?: string,
-  name?: string
+  id?: string
+  name?: string,
   email?: string,
-  phone?: string,
+  unidadNegocio?: string,
   level?: string,
   username?: string,
-  website?: string,
-  status?: string,
 }

@@ -169,20 +169,20 @@
                       background-color: #0e5375 !important;
                     }
           }
-          .mat-raised-button {
-               margin-top:40px;
-               background-color: white;
-               color:#2383b6;
-               height: 25px;
-               display: flex;
-               justify-content: center;
-               align-items: center;
-               width: 100%;
-               border-radius: 6px;
-               border: solid 1px #2383b6;
-               padding-top: 15px;
-               padding-bottom: 15px;
-             }
+          // .mat-raised-button {
+          //      margin-top:40px;
+          //      background-color: white;
+          //      color:#2383b6;
+          //      height: 25px;
+          //      display: flex;
+          //      justify-content: center;
+          //      align-items: center;
+          //      width: 100%;
+          //      border-radius: 6px;
+          //      border: solid 1px #2383b6;
+          //      padding-top: 15px;
+          //      padding-bottom: 15px;
+          //    }
      }
 }
  
@@ -451,10 +451,29 @@ mat-table {
           justify-content: flex-start;
           align-items: center;
 
-        }
+     }
 
+     .mat-column-username {
+          word-wrap: break-word !important;
+          white-space: unset !important;
+          flex: 0 0 20% !important;
+          width: 20% !important;
+         //  outline: 1px solid red;
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+        
+          word-break: break-word;
+        
+          -ms-hyphens: auto;
+          -moz-hyphens: auto;
+          -webkit-hyphens: auto;
+          hyphens: auto;
+          padding-left: 0px;
+          justify-content: flex-start;
+          align-items: center;
+     }
 
-        .mat-column-level{
+     .mat-column-unidadNegocio {
           word-wrap: break-word !important;
           white-space: unset !important;
           flex: 0 0 20% !important;
@@ -468,33 +487,13 @@ mat-table {
           -moz-hyphens: auto;
           -webkit-hyphens: auto;
           hyphens: auto;
-         //  outline: 1px solid green;
+         //  outline: 1px solid blue;
          justify-content: flex-start;
          align-items: center;
 
-        }
+     }
 
      .mat-column-email {
-           word-wrap: break-word !important;
-           white-space: unset !important;
-           flex: 0 0 15% !important;
-           width: 15% !important;
-           overflow-wrap: break-word;
-           word-wrap: break-word;
-         
-           word-break: break-word;
-         
-           -ms-hyphens: auto;
-           -moz-hyphens: auto;
-           -webkit-hyphens: auto;
-           hyphens: auto;
-          //  outline: 1px solid blue;
-          justify-content: flex-start;
-           align-items: center;
-
-         }
-
-         .mat-column-bussinets {
           word-wrap: break-word !important;
           white-space: unset !important;
           flex: 0 0 25% !important;
@@ -510,32 +509,38 @@ mat-table {
           hyphens: auto;
          //  outline: 1px solid blue;
          justify-content: flex-start;
+          align-items: center;
+
+     }
+
+     .mat-column-level{
+          word-wrap: break-word !important;
+          white-space: unset !important;
+          flex: 0 0 10% !important;
+          width: 10% !important;
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+        
+          word-break: break-word;
+        
+          -ms-hyphens: auto;
+          -moz-hyphens: auto;
+          -webkit-hyphens: auto;
+          hyphens: auto;
+         //  outline: 1px solid green;
+         justify-content: flex-start;
          align-items: center;
 
-        }
+     }
+
+     
+
+        
 
 
 
          
-         .mat-column-recluiterId {
-           word-wrap: break-word !important;
-           white-space: unset !important;
-           flex: 0 0 10% !important;
-           width: 10% !important;
-          //  outline: 1px solid red;
-           overflow-wrap: break-word;
-           word-wrap: break-word;
          
-           word-break: break-word;
-         
-           -ms-hyphens: auto;
-           -moz-hyphens: auto;
-           -webkit-hyphens: auto;
-           hyphens: auto;
-           padding-left: 0px;
-           justify-content: flex-start;
-           align-items: center;
-          }
          
      //     .mat-column-id {
      //       word-wrap: break-word !important;
@@ -601,6 +606,33 @@ mat-table {
 }
 
 
+.no-recruiters{
+     width: 1105px;
+     border-bottom: 1px solid #cccccc;
+     border-left: 1px solid #cccccc;
+     border-right: 1px solid #cccccc;
+     border-top: 1px solid #cccccc;
+     margin: 0 auto;
+     margin: 0 auto;
+     height: 45px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background: white;
+      p{
+          font-size: 16px;
+          font-weight: 600;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: normal;
+          letter-spacing: normal;
+          color: #53565a;
+          margin:0;
+       
+ 
+      }
+}
+
 .div-copyright{
      // outline: 1px solid red;
      position: relative;
@@ -662,4 +694,32 @@ mat-table {
                color: #5e5e5e;
           }
      }
+}
+
+
+.mat-raised-button.abc-atta-dash-invert {
+     margin-top:40px;
+     height: 25px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     width: 100%;
+     border-radius: 6px;
+     padding-top: 15px;
+     padding-bottom: 15px;
+}
+
+.mat-raised-button.abc-atta-dash-invert:not([disabled]) {
+     margin-top:40px;
+     background-color: white;
+     color:#2383b6;
+     height: 25px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     width: 100%;
+     border-radius: 6px;
+     border: solid 1px #2383b6;
+     padding-top: 15px;
+     padding-bottom: 15px;
 }

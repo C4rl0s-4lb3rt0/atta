@@ -25,7 +25,7 @@
                                                        <h2> {{ 'abc-atta.title-table' | translate}}</h2>
      
                                                   </div>
-                                                  <div class="cont-chips-prin" [ngClass]="{'first': isAllSelected() }">
+                                                  <div class="cont-chips-prin">
                                                        
                                                        <button mat-raised-button color="primary" class="createrUser" routerLink="/abc-atta/createUser" >{{ 'abc-atta.crear-usuario' | translate}}</button>
                                                        <div class="cont-chips-button">
@@ -35,7 +35,7 @@
                                                   </div>
      
                                                   <mat-menu #menu="matMenu" class="filtro-dash-alta"   >
-                                                       <div (click) = "$event.stopPropagation()" class="content-filtro" >
+                                                       <!-- <div (click) = "$event.stopPropagation()" class="content-filtro" >
                                                             <div class="title-filter">
                                                                  <p>{{ 'dashboard.title-filter' | translate }}</p>
                                                             </div>
@@ -56,7 +56,67 @@
                                                                       (click) = "someMethod()"
                                                                       >{{ 'dashboard.buton-filter' | translate }}</button>
                                                             </div>
+                                                       </div> -->
+                                                       <div (click) = "$event.stopPropagation()" class="content-filtro" >
+                                                            <form [formGroup]="forma" autocomplete="off" (ngSubmit)="OnSubmitFilter()"
+                                                                 #form="ngForm">
+                                                                 <div class="title-filter">
+                                                                           <p>{{ 'dashboard.title-filter' | translate }}</p>
+                                                                      </div>
+                                                                 <div class="filters">
+                                                                      <div class="cont-input">
+                                                                           <mat-form-field >
+                                                                                <mat-label>Enter User ID</mat-label>
+                                                                                <input 
+                                                                                     matInput 
+                                                                                     type="text"
+                                                                                     placeholder="edin.brin" 
+                                                                                     name="recluiterId"
+                                                                                     formControlName="recluiterId"
+                                                                                     maxlength="15"
+                                                                                     onkeypress="return /[a-z.]/i.test(event.key)"
+                                                                                     >
+                                                                           </mat-form-field>
+                                                                      </div>
+                                                                      <div class="cont-input">
+                                                                           <mat-form-field >
+                                                                                     <mat-label>Select Level</mat-label>
+                                                                                     <mat-select 
+                                                                                     formControlName="level">
+                                                                                          <!-- <mat-option value="" disabled> Select Level </mat-option> -->
+                                                                                          <mat-option value="1"> Level 1 (Admin)  </mat-option>
+                                                                                          <mat-option value="2"> Level 2 (Recruiter)  </mat-option>
+                                                                                          <mat-option value="3"> Level 3 (Master)  </mat-option>
+                                                                                     </mat-select>
+                                                                           </mat-form-field>
+                                                                      </div>
+     
+                                                                 </div>
+     
+                                                                 <div class="filter-button" style="display: flex;
+                                                                 justify-content:flex-end">
+                                                                 
+                                                                      <button  mat-raised-button color="primary" class="abc-atta-dash-invert" type="submit" [disabled]="
+     
+                                                                      (this.forma.controls.recluiterId.pristine || !(this.forma.controls.recluiterId.value.length > 0 ) ) &&
+                                                                      
+                                                                      
+                                                                      (!(this.forma.controls.level.value != '' ) &&
+                                                                      this.forma.controls.level.pristine )
+                                                                      ">{{ 'dashboard.buton-filter' | translate }}</button>
+                                                            
+                                                            
+                                                                 </div>
+                                                                 
+                                                                 
+                                                                 
+                                                                 
+                                                       
+                                                      
+                                                     
+                                                            </form> 
                                                        </div>
+                                        
                                                   </mat-menu>
                                              </div>
 
@@ -92,36 +152,35 @@
 
 
 
-
-                                        <mat-table [dataSource]="dataSource" matSort>
-
+                                        <mat-table *ngIf="!noRecruiters" [dataSource]="dataSource" matSort>
 
 
 
-                                             <ng-container matColumnDef="level">
-                                             <mat-header-cell *matHeaderCellDef > {{ 'abc-atta.title5-table' | translate }}  </mat-header-cell>
-                                             <mat-cell *matCellDef="let element" > {{element.username}} </mat-cell>
+
+                                             <ng-container matColumnDef="name">
+                                             <mat-header-cell  *matHeaderCellDef > {{  'abc-atta.title1-table' | translate }}  </mat-header-cell>
+                                             <mat-cell *matCellDef="let element" > {{element.name}} </mat-cell>
                                              </ng-container>
 
 
-                                             <ng-container matColumnDef="name" >
-                                             <mat-header-cell *matHeaderCellDef > {{ 'abc-atta.title1-table' | translate }}  </mat-header-cell>
-                                             <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                                             <ng-container matColumnDef="username" >
+                                             <mat-header-cell *matHeaderCellDef > {{  'abc-atta.title5-table' | translate }}  </mat-header-cell>
+                                             <mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
                                              </ng-container>
 
 
-                                             <ng-container matColumnDef="email">
+                                             <ng-container matColumnDef="unidadNegocio">
                                              <mat-header-cell *matHeaderCellDef > {{ 'abc-atta.title3-table' | translate }}  </mat-header-cell>
                                              <mat-cell *matCellDef="let element"> {{element.unidadNegocio}} </mat-cell>
                                              </ng-container>
 
 
-                                             <ng-container matColumnDef="bussinets">
+                                             <ng-container matColumnDef="email">
                                              <mat-header-cell *matHeaderCellDef > {{ 'abc-atta.title4-table' | translate }}  </mat-header-cell>
                                              <mat-cell *matCellDef="let element" > {{element.email}} </mat-cell>
                                              </ng-container>
 
-                                             <ng-container matColumnDef="recluiterId">
+                                             <ng-container matColumnDef="level">
                                              <mat-header-cell *matHeaderCellDef  > {{ 'abc-atta.title2-table' | translate }}  </mat-header-cell>
                                              <mat-cell *matCellDef="let element"> {{element.level}} </mat-cell>
                                              </ng-container>
@@ -130,27 +189,28 @@
 
 
 
-                                        <mat-header-row *matHeaderRowDef="displayedColumns;"></mat-header-row >
-                                        <mat-row *matRowDef="let row; columns: displayedColumns;" ></mat-row>
+                                        <mat-header-row *matHeaderRowDef="displayedColumnsTable;"></mat-header-row >
+                                        <mat-row *matRowDef="let row; columns: displayedColumnsTable;" ></mat-row> 
 
 
 
 
 
-                                        </mat-table>
+                                        </mat-table> 
 
 
+
+                                        <!-- <pre>
+
+                                                  {{ forma.value | json }}
+                                             </pre>  -->
+
+                                       
+                                        
                                         </ng-container>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
+                                        <div *ngIf="noRecruiters" class="no-recruiters">
+                                             <p>No recruiters found</p>
+                                        </div>
                                         <br>
                                         <br>
                                         <br>

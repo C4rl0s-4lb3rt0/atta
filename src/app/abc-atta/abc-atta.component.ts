@@ -118,21 +118,29 @@ export class AbcAttaComponent implements OnInit {
 
     this.api.insertUsers(this.firstFormGroup.value).subscribe( data => {
           if(data['resp'] == 'Failed'){
+<<<<<<< HEAD
 
+=======
+>>>>>>> 57ba8b62b3c2f94b5e501e216ecdbff73b31b998
                 if(this.firstFormGroup.value.leng == 'eng') {
                   this.msgError = data['descEn'];
                 }
                 else {
                   this.msgError = data['desc'];
                 }
+<<<<<<< HEAD
                 this.auxError= true;
                 if( this.msgError.includes('Nombre')  ){
+=======
+                this.auxError= true
+                if( this.msgError.includes('Nombre') || this.msgError.includes('Name')){
+>>>>>>> 57ba8b62b3c2f94b5e501e216ecdbff73b31b998
                     this.firstFormGroup.controls['firstName'].setErrors({'incorrect': true});
                 }
-                if( this.msgError.includes('Correo') ){
+                if( this.msgError.includes('Correo') || this.msgError.includes('Email') ){
                     this.firstFormGroup.controls['email'].setErrors({'incorrect': true});
                 }
-                if( this.msgError.includes('Telefono') ){
+                if( this.msgError.includes('Telefono') || this.msgError.includes('Phone') ){
                     this.firstFormGroup.controls['phone'].setErrors({'incorrect': true});
                 }
           }else{
