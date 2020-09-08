@@ -140,7 +140,51 @@ export class AuthApiService {
   }
 
 
-estaAutentificadoApi(): boolean {
+  getUsersTable(){
+
+
+    const usuarios = new Array();
+    const headers  = new HttpHeaders({
+      Authorization: 'Bearer ' + this.leerToken(),
+    });
+    const httpOptions = {
+      headers
+    };
+    return this.http.get('/api/user/getusers',  httpOptions ).pipe(
+      map( (resp: any) => {
+        console.log('============Impresion de usuarios table ==================');
+        resp.forEach(function(element) {
+          // console.log(element);
+          const nombreCompleto = element.nombre + ' ' + element.apellidoPaterno
+            + ' ' + element.apellidoMaterno;
+          const user = {
+            id: element.id,
+            name: nombreCompleto,
+            email: element.correo,
+            level: element.idNivel,
+            username: element.nickName,
+            unidadNegocio: element.unidadNegocio,
+          };
+
+          usuarios.push(user);
+
+
+         });
+         console.log(usuarios.length);
+        console.log('usuarios en json table****');
+
+
+
+        return usuarios;
+      })
+    );
+
+
+
+
+  }
+
+  estaAutentificadoApi(): boolean {
 
     if (  this.userToken.length < 2 ) {
       return false;
