@@ -45,7 +45,7 @@
                                                             name="name"
                                                             required
                                                             formControlName="firstName"
-                                                            onkeypress="return /[a-z]/i.test(event.key)"
+                                                            onkeypress="return /[a-z\s]/i.test(event.key)"
                                                             >
                                                        <mat-icon matSuffix
                                                             *ngIf="firstFormGroup.controls.firstName.errors && firstFormGroup.controls.firstName.dirty " class="error-input" >error_outline</mat-icon>
@@ -62,7 +62,7 @@
                                                             name="apPaterno"
                                                             required
                                                             formControlName="apPaterno"
-                                                            onkeypress="return /[a-z]/i.test(event.key)"
+                                                            onkeypress="return /[a-z\s]/i.test(event.key)"
                                                             >
                                                        <mat-icon matSuffix *ngIf="firstFormGroup.controls.apPaterno.errors && firstFormGroup.controls.apPaterno.dirty " class="error-input" >error_outline</mat-icon>
                                                        <mat-hint  *ngIf="firstFormGroup.controls.apPaterno.errors && firstFormGroup.controls.apPaterno.dirty " class="error-input" >Introduce un apellido válido</mat-hint>
@@ -82,7 +82,7 @@
                                                                  name="apMaterno"
                                                                  required
                                                                  formControlName="apMaterno"
-                                                                 onkeypress="return /[a-z]/i.test(event.key)"
+                                                                 onkeypress="return /[a-z\s]/i.test(event.key)"
                                                             >
                                                             <mat-icon matSuffix *ngIf="firstFormGroup.controls.apMaterno.errors && firstFormGroup.controls.apMaterno.dirty " class="error-input" >error_outline</mat-icon>
                                                             <mat-hint  *ngIf="firstFormGroup.controls.apMaterno.errors && firstFormGroup.controls.apMaterno.dirty " class="error-input" >Introduce un apellido válido</mat-hint>
