@@ -124,15 +124,14 @@ export class AbcAttaComponent implements OnInit {
                 else {
                   this.msgError = data['desc'];
                 }
-                this.msgError = data['desc'];
                 this.auxError= true
-                if( this.msgError.includes('Nombre') ){
+                if( this.msgError.includes('Nombre') || this.msgError.includes('Name')){
                     this.firstFormGroup.controls['firstName'].setErrors({'incorrect': true});
                 }
-                if( this.msgError.includes('Correo') ){
+                if( this.msgError.includes('Correo') || this.msgError.includes('Email') ){
                     this.firstFormGroup.controls['email'].setErrors({'incorrect': true});
                 }
-                if( this.msgError.includes('Telefono') ){
+                if( this.msgError.includes('Telefono') || this.msgError.includes('Phone') ){
                     this.firstFormGroup.controls['phone'].setErrors({'incorrect': true});
                 }
           }else{
