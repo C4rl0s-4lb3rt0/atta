@@ -89,6 +89,11 @@ export class AbcAttaDashComponent implements OnInit {
   noRecruiters=false;
 
 
+  disabledIdUserInput=false;
+
+  disabledLevelInput=false;
+
+
   constructor(private auth: AuthService,
               private router: Router,
               private _apiServide:AuthApiService,
@@ -132,6 +137,7 @@ export class AbcAttaDashComponent implements OnInit {
     this.varChipIdUser=null;
     this.forma.controls.recluiterId.reset()
     console.log(this.valueLevel);
+    this.disabledIdUserInput=false;
     // debugger
     this.valueLevel = this.forma.controls.level.value;
     console.log(this.valueLevel)
@@ -154,6 +160,8 @@ export class AbcAttaDashComponent implements OnInit {
     this.varChipLevel=null;
     this.forma.controls.level.reset()
     this.valueRecuriterId = this.forma.controls.recluiterId.value;
+    this.disabledLevelInput=false;
+
     console.log(this.valueRecuriterId);
     if(this.valueRecuriterId!=null && this.valueRecuriterId){
           this.OnSubmitFilterIdRecruiter()
@@ -178,17 +186,19 @@ export class AbcAttaDashComponent implements OnInit {
   }
 
   OnSubmitFilter(){
-    // console.log("Level:");
-    // console.log(this.forma.controls.level.value);
-    // console.log("RecluiterId");
-    // console.log(this.forma.controls.recluiterId.value);
+
+
     console.log('prueba ara ver si chips');
     const recruitersFilter = new Array();
     let levelAux;
     let levelAuxChips =false;
-
+    
     let recluiterIdAux;
     let recluiterIdAuxChips=false;
+    if(this.dataSource.data.length == 0){
+      console.log('bug');
+      
+    }
 
 
 
@@ -200,6 +210,9 @@ export class AbcAttaDashComponent implements OnInit {
       levelAuxChips = this.forma.controls.level.value;
       this.filtroLevel=true
       
+      this.disabledLevelInput=true;
+
+      
     }
 
     if( !(this.forma.controls.recluiterId.pristine || !(this.forma.controls.recluiterId.value.length > 0 ))  ){
@@ -208,6 +221,9 @@ export class AbcAttaDashComponent implements OnInit {
       recluiterIdAux = this.forma.controls.recluiterId.value
       recluiterIdAuxChips = this.forma.controls.recluiterId.value
       this.filtroIdRecruiter=true;
+
+      this.disabledIdUserInput=true;
+
     }
 
       levelAuxChips =this.filtroLevel

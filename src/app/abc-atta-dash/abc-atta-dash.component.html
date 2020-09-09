@@ -65,7 +65,7 @@
                                                                       </div>
                                                                  <div class="filters">
                                                                       <div class="cont-input">
-                                                                           <mat-form-field >
+                                                                           <mat-form-field  >
                                                                                 <mat-label>Enter User ID</mat-label>
                                                                                 <input 
                                                                                      matInput 
@@ -73,8 +73,10 @@
                                                                                      placeholder="edin.brin" 
                                                                                      name="recluiterId"
                                                                                      formControlName="recluiterId"
-                                                                                     maxlength="15"
+                                                                                     maxlength="20"
                                                                                      onkeypress="return /[a-z.]/i.test(event.key)"
+                                                                                     [readonly]="disabledIdUserInput"
+                                                                                     disabled='true'
                                                                                      >
                                                                            </mat-form-field>
                                                                       </div>
@@ -82,7 +84,7 @@
                                                                            <mat-form-field >
                                                                                      <mat-label>Select Level</mat-label>
                                                                                      <mat-select 
-                                                                                     formControlName="level">
+                                                                                     formControlName="level" [disabled]="disabledLevelInput">
                                                                                           <!-- <mat-option value="" disabled> Select Level </mat-option> -->
                                                                                           <mat-option value="1"> Level 1 (Admin)  </mat-option>
                                                                                           <mat-option value="2"> Level 2 (Recruiter)  </mat-option>
