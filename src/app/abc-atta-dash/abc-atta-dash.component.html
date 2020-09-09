@@ -76,7 +76,6 @@
                                                                                      maxlength="20"
                                                                                      onkeypress="return /[a-z.]/i.test(event.key)"
                                                                                      [readonly]="disabledIdUserInput"
-                                                                                     disabled='true'
                                                                                      >
                                                                            </mat-form-field>
                                                                       </div>
@@ -104,7 +103,7 @@
                                                                       
                                                                       
                                                                       (!(this.forma.controls.level.value != '' ) &&
-                                                                      this.forma.controls.level.pristine )
+                                                                      this.forma.controls.level.pristine )  ||  (!this.forma.controls.recluiterId.valid)
                                                                       ">{{ 'dashboard.buton-filter' | translate }}</button>
                                                             
                                                             
@@ -201,11 +200,6 @@
                                         </mat-table> 
 
 
-
-                                        <!-- <pre>
-
-                                                  {{ forma.value | json }}
-                                             </pre>  -->
 
                                        
                                         

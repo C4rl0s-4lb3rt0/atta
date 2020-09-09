@@ -180,7 +180,7 @@ export class AbcAttaDashComponent implements OnInit {
 
   crearFormulario(){
     this.forma = this.fb.group({
-      recluiterId : ['', [ Validators.maxLength(10),Validators.pattern('[a-z]+[.]*[a-z]*') ]],
+      recluiterId : ['', [ Validators.maxLength(20),Validators.pattern('[A-Za-z]+[.]{0,1}[a-zA-Z]*') ]],
       level : [''],
     });
   }
@@ -195,13 +195,6 @@ export class AbcAttaDashComponent implements OnInit {
     
     let recluiterIdAux;
     let recluiterIdAuxChips=false;
-    if(this.dataSource.data.length == 0){
-      console.log('bug');
-      
-    }
-
-
-
     if(  !((!(this.forma.controls.level.value != '' ) && this.forma.controls.level.pristine )) && (this.forma.controls.level.value != null)  ){
      
       this.showChips=true;
