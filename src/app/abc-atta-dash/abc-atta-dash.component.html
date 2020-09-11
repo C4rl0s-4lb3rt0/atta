@@ -12,6 +12,7 @@
 
                          <p><button mat-button routerLink="/dashboard">{{  'abc-atta.sidebarlink1' | translate}}</button></p>
                          <p><button mat-button  class="active-but" >{{  'abc-atta.sidebarlink2' | translate}}</button></p>
+                         <p><button mat-button  routerLink="/search" > Search </button></p>
 
                     </mat-drawer>
                     <mat-drawer-content class="content animated fadeIn">
@@ -97,14 +98,15 @@
                                                                  <div class="filter-button" style="display: flex;
                                                                  justify-content:flex-end">
                                                                  
-                                                                      <button  mat-raised-button color="primary" class="abc-atta-dash-invert" type="submit" [disabled]="
+                                                                      <!-- <button  mat-raised-button color="primary" class="abc-atta-dash-invert" type="submit" [disabled]="
      
                                                                       (this.forma.controls.recluiterId.pristine || !(this.forma.controls.recluiterId.value.length > 0 ) ) &&
                                                                       
                                                                       
                                                                       (!(this.forma.controls.level.value != '' ) &&
                                                                       this.forma.controls.level.pristine )  ||  (!this.forma.controls.recluiterId.valid)
-                                                                      ">{{ 'dashboard.buton-filter' | translate }}</button>
+                                                                      ">{{ 'dashboard.buton-filter' | translate }}</button> -->
+                                                                      <button  mat-raised-button color="primary" class="abc-atta-dash-invert" type="submit"> dame </button>
                                                             
                                                             
                                                                  </div>

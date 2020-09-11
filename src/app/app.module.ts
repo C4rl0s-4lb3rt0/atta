@@ -83,6 +83,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatCardModule} from '@angular/material/card';
 import { BlacklistComponent } from './blacklist/blacklist.component';
 import { AbcAttaDashComponent } from './abc-atta-dash/abc-atta-dash.component';
+import { SearchComponent } from './search/search.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 
 
 
@@ -101,6 +104,7 @@ import { AbcAttaDashComponent } from './abc-atta-dash/abc-atta-dash.component';
     RightNavbarComponent,
     BlacklistComponent,
     AbcAttaDashComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -132,6 +136,8 @@ import { AbcAttaDashComponent } from './abc-atta-dash/abc-atta-dash.component';
     MatCardModule,
     
     AnzenComponentsModule,
+
+    MatAutocompleteModule,
     
     HttpClientModule,
     TranslateModule.forRoot({

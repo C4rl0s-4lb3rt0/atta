@@ -184,6 +184,27 @@ export class AuthApiService {
 
   }
 
+  getUsersTableSearch(){
+
+
+    const usuarios = new Array();
+    const headers  = new HttpHeaders({
+      Authorization: 'Bearer ' + this.leerToken(),
+    });
+    const httpOptions = {
+      headers
+    };
+    return this.http.get('/api/user/getusers',  httpOptions ).pipe(
+      map( (data:any) => {
+        return data
+        })
+    );
+
+
+
+
+  }
+
   estaAutentificadoApi(): boolean {
 
     if (  this.userToken.length < 2 ) {
