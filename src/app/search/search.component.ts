@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { startWith, map } from 'rxjs/operators';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
-import {MatChipInputEvent} from '@angular/material/chips';
+import {MatChipInputEvent, MatChipList} from '@angular/material/chips';
 
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { AuthApiService } from '../services/auth-api.service';
@@ -12,6 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 
 
@@ -20,6 +21,12 @@ export interface Skill {
   skill: string;
 }
 
+const user = {
+  firstName: 'Lindsey',
+  lastName: 'Broos',
+  fruits: [
+    ]
+};
 
 
 @Component({
@@ -35,6 +42,25 @@ export interface Skill {
   ],
 })
 export class SearchComponent implements OnInit {
+  
+  public userForm:FormGroup;
+
+  public selectable = true;
+  public removable = true;
+  public addOnBlur = true;
+  public user: User;
+  public fruits = [
+    { id: 1, name: 'lemon' },
+    { id: 2, name: 'lime' },
+    { id: 3, name: 'orange' },
+    { id: 4, name: 'strawberry' },
+    { id: 5, name: 'raspberry' }];
+  
+   
+
+  public filteredFruits$: Observable<Fruit[]>;
+
+    @ViewChild('fruitList') fruitList: MatChipList;
 
 
   // tabla
@@ -61,8 +87,8 @@ export class SearchComponent implements OnInit {
 
 
   forma:FormGroup;
-  formaDetallado:FormGroup;
 
+ 
 
 
 
@@ -80,11 +106,13 @@ export class SearchComponent implements OnInit {
 
       this.crearFormulario();
 
-      this.formularioDetallado();
+      
   }    
 
 
   ngOnInit(): void {
+    this.user = user;
+    this.formularioDetallado();
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
@@ -106,20 +134,32 @@ export class SearchComponent implements OnInit {
   }
 
   formularioDetallado(){
-    this.formaDetallado = this.fb.group({
+    this.userForm = this.fb.group({
       occ:[],
       computrabajo:[],
       linkedIn:[],
-      bdAtta:[]
-    })
+      bdAtta:[],
+      fruitInput: [null],
+      fruits: [this.user.fruits, this.validateFruits],
+    });
+
+    this.userForm.get('fruits').statusChanges.subscribe(
+      status => this.fruitList.errorState = status === 'INVALID'
+    );
+
+    this.filteredFruits$ = this.userForm.get('fruitInput').valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this.fruitFilter(value))
+      );
   }
 
 
 
   visible = true;
-  selectable = true;
-  removable = true;
-  addOnBlur = true;
+  // selectable = true;
+  // removable = true;
+  // addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
   panelOpenState = false;
@@ -144,7 +184,7 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  remove(skill: Skill): void {
+  removeSkill(skill: Skill): void {
     const index = this.skills.indexOf(skill);
 
     if (index >= 0) {
@@ -182,7 +222,7 @@ export class SearchComponent implements OnInit {
   }
 
   onSubmitDetallado(){
-    console.log(this.formaDetallado);
+    console.log(this.userForm);
   }
 
   public getAllRecruiters(){
@@ -215,8 +255,99 @@ export class SearchComponent implements OnInit {
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
+ 
+
+
+
+
+
+  public selectFruit(event: MatAutocompleteSelectedEvent): void {
+    if (!event.option) {
+      return;
+    }
+
+    const value = event.option.value;
+
+    if (value && value instanceof Object && !this.user.fruits.includes(value)) {
+      this.user.fruits.push(value);
+      this.userForm.get('fruits').setValue(this.user.fruits);
+      this.userForm.get('fruitInput').setValue('');
+    }
+  }
+
+  public addFruit(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    if ((value).trim()) {
+      const matches = this.fruits.filter(fruit =>
+        fruit.name.toLowerCase() === value);
+      const formValue = this.userForm.get('fruits').value;
+      const matchesNotYetSelected = formValue === null ? matches : matches.filter(x =>
+        !(formValue.find(y => y.id === x.id)));
+      if (matchesNotYetSelected.length === 1) {
+        this.user.fruits.push(matchesNotYetSelected[0]);
+        this.userForm.get('fruits').setValue(this.user.fruits);
+        this.userForm.get('fruitInput').setValue('');
+      }
+    }
+
+    // Reset the input value
+    if (input) {
+      input.value = '';
+    }
+  }
+
+  public remove(fruit: Fruit) {
+    const index = this.user.fruits.indexOf(fruit);
+    if (index >= 0) {
+      this.user.fruits.splice(index, 1);
+      this.userForm.get('fruits').setValue(this.user.fruits);
+      this.userForm.get('fruitInput').setValue('');
+    }
+  } 
+
+
+  private fruitFilter(value: any): Fruit[] {
+    const filterValue = (value === null || value instanceof Object) ? '' : value.toLowerCase();
+    const matches = this.fruits.filter(fruit =>
+      fruit.name.toLowerCase().includes(filterValue));
+    const formValue = this.userForm.get('fruits').value;
+    return formValue === null ? matches : matches.filter(x =>
+      !(formValue.find(y => y.id === x.id))
+    );
+  }
+
+  private validateFruits(fruits: FormControl) {
+    if (fruits.value && fruits.value.length === 0) {
+      return {
+        validateFruitsArray: { valid: false }
+      };
+    }
+
+    return null;
+  }
+
+
+
 
 }
+
+
+export interface User {
+  firstName: string;
+  lastName: string;
+  fruits: Fruit[];
+}
+
+
+
+
+export interface Fruit {
+  id: number;
+  name: string;
+}
+
 
 export interface Recruiter {
   id?: string

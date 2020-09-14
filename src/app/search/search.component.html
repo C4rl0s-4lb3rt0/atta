@@ -13,95 +13,120 @@
 
                     <div class="contenedor-principal-search" >
                          <div class="content-body">
-                              <h1> Search / Follow Up </h1>
-                              <p> Fill all the necessary data a new search of follow up </p>
+                              <h1> Follow up</h1>
+                              <p> Type the necessary data for your applicant search </p>
                          </div>
-                         <div>
-
-
-                                   <div class="wrapper">
-
-                                        <div class="item">
-                                             <input id="one" type="checkbox"  (change)="toggleVisibility($event)" />
-                                             <label for="one" style="position: absolute;
-                                             right: 0px;
-                                             top: 30px;">Advanced search</label>
-                                             <div style="height: 100px;display: flex;justify-content: 100%;width: 100%;justify-content: center;align-items: center;">
-                                                  <form [formGroup]="forma" autocomplete="off" (ngSubmit)="onSubmit()" #form="ngForm">
-                                                       <mat-form-field class="example-chip-list" style="width: 700px;">
-                                                            <mat-chip-list #chipList aria-label="Skill selection" >
-                                                                 <mat-chip *ngFor="let skill of skills" [selectable]="selectable"
-                                                                           [removable]="removable" (removed)="remove(skill)">
-                                                                 {{skill.skill}}
-                                                                 <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-                                                                 </mat-chip>
-                                                                 <input placeholder="New skill..."
-                                                                      [matChipInputFor]="chipList"
-                                                                      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                                                                      [matChipInputAddOnBlur]="addOnBlur"
-                                                                      (matChipInputTokenEnd)="add($event)">
-                                                            </mat-chip-list>
-                                                       </mat-form-field>
-                                                       <button mat-raised-button   class="login" type="submit" [disabled]="marked" style="margin-left: 20px;">Send</button>
-                                                  </form> 
-                                             </div>
-                                             <div class="description">
-                                                       <form autocomplete="off" (ngSubmit)="onSubmitDetallado()" [formGroup]="formaDetallado">
-                                                                 <h2>Applicant Search Engine</h2> 
-                                                                 <section class="form-section">
-                                                                       <mat-checkbox class="example-margin" formControlName="occ"> OCC </mat-checkbox>
-                                                                       <mat-checkbox class="example-margin" formControlName="computrabajo"> Computrabajo </mat-checkbox>
-                                                                       <mat-checkbox class="example-margin" formControlName="linkedIn"> LinkedIn </mat-checkbox>
-                                                                       <mat-checkbox class="example-margin" formControlName="bdAtta"> BD ATTA </mat-checkbox>
-                                                                  </section>
-                                                                  <mat-form-field class="example-full-width">
-                                                                       <mat-label>First Name</mat-label>
-                                                                       <input matInput 
-                                                                                 placeholder="First Name">
-                                                                       <mat-hint>Errors appear instantly!</mat-hint>
-                                                                       <!-- <mat-error >
-                                                                            Please enter a valid email address
-                                                                       </mat-error>
-                                                                       <mat-error>
-                                                                            Email is <strong>required</strong>
-                                                                       </mat-error> -->
-                                                                  </mat-form-field>
-                                                                  <mat-form-field class="example-full-width">
-                                                                       <mat-label>Email</mat-label>
-                                                                       <input matInput 
-                                                                                 placeholder="Ex. pat@example.com">
-                                                                       <mat-hint>Errors appear instantly!</mat-hint>
-                                                                       <!-- <mat-error >
-                                                                            Please enter a valid email address
-                                                                       </mat-error>
-                                                                       <mat-error>
-                                                                            Email is <strong>required</strong>
-                                                                       </mat-error> -->
-                                                                  </mat-form-field>
-                               
-                               
-                               
-                                                                  <mat-form-field>
-                                                                       <input type="text" placeholder="Enter City" matInput [formControl]="myControl" [matAutocomplete]="auto">
-                                                                       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                                                                       <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                                                                            {{option}}
-                                                                       </mat-option>
-                                                                       </mat-autocomplete>
-                                                                  </mat-form-field>
-                               
-                               
-                                                                  <button mat-raised-button   class="login" type="submit" [disabled]="!marked" >Send</button>      
-                               <!-- <pre>{{skills|json}}</pre> -->
-                                    
-                                    
-                                                                  <h1 *ngFor="let item of optionsAux">
-                                                                       {{ item['nickName'] }}
-                                                                  </h1>
-                                                       </form>
-                                             </div>
-                                        </div>     
+                    <div class="contenedor-search-input">
+                         <form [formGroup]="forma" autocomplete="off" (ngSubmit)="onSubmit()" #form="ngForm">
+                              <div class="form-normal" >
+                                   <div class="form-normal-input">
+                                        <mat-form-field class="input-row" floatLabel=never >
+                                             <span matPrefix style="font-size: 150%;margin-top:10px"><mat-icon style="margin-top:10px">search</mat-icon></span>
+                                             <mat-chip-list #chipList aria-label="Skill selection" >
+                                                  <mat-chip *ngFor="let skill of skills" [selectable]="selectable"
+                                                            [removable]="removable" (removed)="removeSkill(skill)">
+                                                  {{skill.skill}}
+                                                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                                  </mat-chip>
+                                                  <input placeholder="Search applicant by city, english level or skills"
+                                                       [matChipInputFor]="chipList"
+                                                       [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                                       [matChipInputAddOnBlur]="addOnBlur"
+                                                       (matChipInputTokenEnd)="add($event)">
+                                             </mat-chip-list>
+                                        </mat-form-field>
                                    </div>
+                                   <button mat-raised-button   class="search" type="submit" [disabled]="marked" style="">Search</button>
+
+                              </div>
+                         </form> 
+
+                         <div class="wrapper">
+
+                              <div class="item">
+                                   <div class="aux-item">
+                                        <input id="one" type="checkbox"  (change)="toggleVisibility($event)" />
+                                        <label for="one">Advanced search</label>
+                                        <div style="display: flex;justify-content: 100%;width: 100%;justify-content: center;align-items: center;">
+                                             <!-- <form [formGroup]="forma" autocomplete="off" (ngSubmit)="onSubmit()" #form="ngForm">
+                                                  <mat-form-field class="example-chip-list" style="width: 700px;">
+                                                       <mat-chip-list #chipList aria-label="Skill selection" >
+                                                            <mat-chip *ngFor="let skill of skills" [selectable]="selectable"
+                                                                      [removable]="removable" (removed)="remove(skill)">
+                                                            {{skill.skill}}
+                                                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                                            </mat-chip>
+                                                            <input placeholder="New skill..."
+                                                                 [matChipInputFor]="chipList"
+                                                                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                                                 [matChipInputAddOnBlur]="addOnBlur"
+                                                                 (matChipInputTokenEnd)="add($event)">
+                                                       </mat-chip-list>
+                                                  </mat-form-field>
+                                                  <button mat-raised-button   class="login" type="submit" [disabled]="marked" style="margin-left: 20px;">Send</button>
+                                             </form>  -->
+                                        </div>
+                                        <div class="description">
+                                                  <form autocomplete="off" (ngSubmit)="onSubmitDetallado()" [formGroup]="userForm">
+                                                            <section class="form-section">
+                                                                 <mat-checkbox class="example-margin" formControlName="bdAtta"> BD ATTA </mat-checkbox>
+                                                                 <mat-checkbox class="example-margin" formControlName="computrabajo"> Computrabajo </mat-checkbox>
+                                                                 <mat-checkbox class="example-margin" formControlName="linkedIn"> LinkedIn </mat-checkbox>
+                                                                 <mat-checkbox class="example-margin" formControlName="occ"> OCC </mat-checkbox>
+                                                            </section>
+                                                            <div class="form-select">
+                                                                 <mat-form-field appearance="fill">
+                                                                      <mat-label>City</mat-label>
+                                                                      <mat-select required>
+                                                                           <mat-option value="1"> CDMX  </mat-option>
+                                                                           <mat-option value="2"> Aguascalientes   </mat-option>
+                                                                          
+                                                                      </mat-select>
+                                                                 </mat-form-field>
+                                                                 <mat-form-field appearance="fill">
+                                                                           <mat-label>English Level</mat-label>
+                                                                           <mat-select required>
+                                                                                <mat-option value="1"> Level 1  </mat-option>
+                                                                                <mat-option value="2"> Level 2   </mat-option>
+                                                                               
+                                                                           </mat-select>
+                                                                      </mat-form-field>
+                                                            </div>
+                                                            <div class="form-select-skills">
+                                                                 <mat-form-field >
+                                                                      <mat-chip-list #fruitList>
+                                                                           <mat-chip *ngFor="let fruit of user.fruits" [removable]="removable" (removed)="remove(fruit)">
+                                                                           {{fruit.name}}
+                                                                           <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                                                           </mat-chip>
+                                                                           <input #fruitInput placeholder="Select skills or technologies" [matChipInputFor]="fruitList"
+                                                                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                                                                           (matChipInputTokenEnd)="addFruit($event)" [matAutocomplete]="fruitsAutocomplete" formControlName="fruitInput">
+                                                                      </mat-chip-list>
+                                                                      <mat-autocomplete #fruitsAutocomplete="matAutocomplete" (optionSelected)="selectFruit($event);">
+                                                                           <mat-option *ngFor="let fruit of filteredFruits$ | async" [value]="fruit">
+                                                                           {{fruit.name}}
+                                                                           </mat-option>
+                                                                      </mat-autocomplete>
+                                                                      <mat-error>At least 1 fruit need to be added</mat-error>
+                                                                 </mat-form-field>
+                                                            </div>
+                                                                
+                              
+                                                            <div class="buttons-advance">
+                                                                 <!-- <a mat-raised-button for="one"  class="cancel" > Cancel </a>       -->
+                                                                 <label class="cancel" for="one">Cancel</label>
+                                                                 <button mat-raised-button   class="search-adva" type="submit" [disabled]="!marked" >Search</button>      
+                                   
+
+                                                            </div>
+                                   
+                                                  </form>
+                                        </div>
+
+                                   </div>
+                              </div>     
+                         </div>
 
 
 
@@ -112,16 +137,31 @@
                                    <!-- </mat-expansion-panel>
                               </mat-accordion> -->
                              
-                         </div>
                     </div>
-                    <div class="contenedor-principal-table">
+                    </div>
+
+                    <div class="search-results">
+                         <div class="cont-clock">
+                              <img src="./assets/img/clock.png" alt="">
+                         </div>
+                         <p>Your search results will appear here.</p>
+                    </div>
+
+
+                    <div class="search-warning">
+                         <div class="cont-clock">
+                              <img src="./assets/img/warning.png" alt="">
+                         </div>
+                         <p>Sorry, we couldn’t find any results with that specifiations.</p>
+                    </div>
+                    
+                    <!-- <div class="contenedor-principal-table">
                          <h2>table</h2>
                          <table mat-table
                               [dataSource]="dataSource" multiTemplateDataRows
                               class="mat-elevation-z8">
 
 
-                              <!-- Checkbox Column -->
                               <ng-container matColumnDef="select">
                                    <th mat-header-cell *matHeaderCellDef>
                                         <mat-checkbox (change)="$event ? masterToggle() : null"
@@ -144,7 +184,6 @@
                                    <th   mat-header-cell *matHeaderCellDef> {{column}} </th>
                               </ng-container>
 
-                              <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
                               <ng-container matColumnDef="expandedDetail">
                               <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
                                    <div class="example-element-detail"
@@ -171,7 +210,7 @@
                               </tr>
                               <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
                          </table>
-                    </div>
+                    </div> -->
                </mat-drawer-content>
      </mat-drawer-container>
 </div>
